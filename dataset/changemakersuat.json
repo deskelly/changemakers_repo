@@ -1,0 +1,26 @@
+{
+	"name": "changemakersuat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ChangeMakersMain",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "recordDate",
+				"type": "date"
+			},
+			{
+				"name": "listeners",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Acast_Listeners"
+		}
+	}
+}
