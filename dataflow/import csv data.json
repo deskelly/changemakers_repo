@@ -15,7 +15,15 @@
 					"name": "ListenersAllTimeDailyCSV"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ChangeMakers_Staging",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -30,7 +38,25 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ListenersAllTimeDailyCSV",
 				"ListenersAllTimeDailyCSV derive(Date = toDate(Date, 'yyyy-MM-dd'),",
-				"          Listeners = toInteger(Listeners)) ~> derivedColumn1"
+				"          Listeners = toInteger(Listeners)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          recordDate as date,",
+				"          listeners as integer",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          recordDate = Date,",
+				"          listeners = Listeners",
+				"     )) ~> sink1"
 			]
 		}
 	}
