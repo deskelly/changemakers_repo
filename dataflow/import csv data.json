@@ -1,0 +1,39 @@
+{
+	"name": "import csv data",
+	"properties": {
+		"folder": {
+			"name": "Acast File Imports"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Listeners_All_Time_Data_CSV",
+						"type": "DatasetReference"
+					},
+					"name": "ListenersAllTimeDailyCSV"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "parse1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Date as string,",
+				"          Listeners as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> ListenersAllTimeDailyCSV",
+				"ListenersAllTimeDailyCSV parse(Date = Date ? date,",
+				"          Listeners = Listeners ? integer,",
+				"     format: 'json',",
+				"     documentForm: 'documentPerLine') ~> parse1"
+			]
+		}
+	}
+}
