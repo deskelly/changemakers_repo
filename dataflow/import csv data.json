@@ -18,7 +18,7 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "parse1"
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -29,13 +29,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ListenersAllTimeDailyCSV",
-				"ListenersAllTimeDailyCSV parse(Date = Date ? string,",
-				"          Listeners = Listeners ? string,",
-				"     partitionBy('hash', 1),",
-				"     format: 'delimited',",
-				"     columnNamesAsHeader: true,",
-				"     columnDelimiter: ';',",
-				"     nullValue: '') ~> parse1"
+				"ListenersAllTimeDailyCSV derive(Date = Date,",
+				"          Listeners = toInteger(Listeners)) ~> derivedColumn1"
 			]
 		}
 	}
