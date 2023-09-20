@@ -31,8 +31,11 @@
 				"     ignoreNoFilesFound: false) ~> ListenersAllTimeDailyCSV",
 				"ListenersAllTimeDailyCSV parse(Date = Date ? date,",
 				"          Listeners = Listeners ? integer,",
-				"     format: 'json',",
-				"     documentForm: 'documentPerLine') ~> parse1"
+				"     partitionBy('hash', 1),",
+				"     format: 'delimited',",
+				"     columnNamesAsHeader: false,",
+				"     columnDelimiter: ',',",
+				"     nullValue: '') ~> parse1"
 			]
 		}
 	}
