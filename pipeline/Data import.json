@@ -1,0 +1,9 @@
+{
+	"name": "Data import",
+	"properties": {
+		"folder": {
+			"name": "DataIntegration/Acast"
+		},
+		"annotations": []
+	}
+}
