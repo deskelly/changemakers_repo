@@ -13,6 +13,21 @@
 				"type": "date"
 			},
 			{
+				"name": "recordWeek",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recordMonth",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recordYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
 				"name": "listeners",
 				"type": "int",
 				"precision": 10
