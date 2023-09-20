@@ -29,8 +29,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> ListenersAllTimeDailyCSV",
-				"ListenersAllTimeDailyCSV derive(Date = Date,",
-				"          Listeners = toInteger(Listeners)) ~> derivedColumn1"
+				"ListenersAllTimeDailyCSV derive(DateNew = toDate(Date, 'yyyy-MM-dd'),",
+				"          ListenersNew = toInteger(Listeners)) ~> derivedColumn1"
 			]
 		}
 	}
