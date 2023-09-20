@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Listeners_All_Time_Data_CSV",
+						"referenceName": "Acast_Listeners_All_Time_Data_CSV",
 						"type": "DatasetReference"
 					},
 					"name": "ListenersAllTimeDailyCSV"

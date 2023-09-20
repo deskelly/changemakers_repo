@@ -1,5 +1,5 @@
 {
-	"name": "Listeners_All_Time_Data_CSV",
+	"name": "Acast_Listeners_All_Time_Data_CSV",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ChangemakerBlobStorage",

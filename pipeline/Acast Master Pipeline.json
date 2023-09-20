@@ -1,0 +1,10 @@
+{
+	"name": "Acast Master Pipeline",
+	"properties": {
+		"description": "Pipeline to run Acast data flows",
+		"folder": {
+			"name": "Acast"
+		},
+		"annotations": []
+	}
+}
