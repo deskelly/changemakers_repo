@@ -51,7 +51,6 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     postSQLs:['delete from [changemakers-uat].[dbo].[Acast_Listeners]\\nwhere recordDate in (select distinct recordDate from [staging].[dbo].[Acast_Listeners]\\n','insert into [changemakers-uat].[dbo].[Acast_Listeners]\\nselect recordDate, listeners from [staging].[dbo].[Acast_Listeners]'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
