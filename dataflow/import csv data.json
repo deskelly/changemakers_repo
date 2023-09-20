@@ -57,12 +57,16 @@
 				"     recreate:true,",
 				"     format: 'table',",
 				"     postSQLs:['CREATE NONCLUSTERED INDEX rd ON Acast_Listeners(recordDate); '],",
+				"     dateFormat:'yyyy-MM-dd',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          recordDate = Date,",
-				"          listeners = Listeners",
+				"          listeners = Week,",
+				"          Week = Month,",
+				"          Month = Year,",
+				"          Year",
 				"     )) ~> sink1"
 			]
 		}
