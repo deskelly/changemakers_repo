@@ -1,0 +1,9 @@
+{
+	"name": "JCDUK-ChangeMakers",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c2a1fca9-cba7-4c87-9acb-332e2a0d7837",
+		"tenantId": "f2782d7d-d11b-4aba-a26a-bc8782409cb5"
+	}
+}
