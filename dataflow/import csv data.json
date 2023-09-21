@@ -51,7 +51,7 @@
 				"          recordMonth as integer,",
 				"          recordYear as integer,",
 				"          type as string,",
-				"          listeners as integer",
+				"          number as integer",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -69,7 +69,7 @@
 				"          recordMonth = Month,",
 				"          recordYear = Year,",
 				"          type = Type,",
-				"          listeners = Listeners",
+				"          number = Listeners",
 				"     )) ~> sink1"
 			]
 		}
