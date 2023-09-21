@@ -28,6 +28,10 @@
 				"precision": 10
 			},
 			{
+				"name": "type",
+				"type": "varchar"
+			},
+			{
 				"name": "listeners",
 				"type": "int",
 				"precision": 10
@@ -35,7 +39,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Acast_Listeners"
+			"table": "Acast_Listeners_Watchers"
 		}
 	}
 }
