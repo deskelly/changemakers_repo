@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "import csv data",
+						"referenceName": "import csv data listeners",
 						"type": "DataFlowReference"
 					},
 					"compute": {

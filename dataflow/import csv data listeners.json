@@ -1,5 +1,5 @@
 {
-	"name": "import csv data",
+	"name": "import csv data listeners",
 	"properties": {
 		"folder": {
 			"name": "Acast File Imports"
