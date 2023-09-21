@@ -59,7 +59,6 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     postSQLs:['CREATE NONCLUSTERED INDEX rd_type ON Acast_Listeners_Watchers (recordDate, typeData);'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
