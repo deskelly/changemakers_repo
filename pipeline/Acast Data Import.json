@@ -48,7 +48,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntype,\nlisteners\nFROM Acast_Listeners",
+						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntype,\nnumber\nFROM Acast_Listeners_Watchers",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -120,20 +120,24 @@
 							{
 								"source": {
 									"name": "type",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								},
 								"sink": {
 									"name": "type",
-									"physicalType": "int"
+									"type": "String",
+									"physicalType": "varchar"
 								}
 							},
 							{
 								"source": {
-									"name": "listeners",
+									"name": "number",
+									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
-									"name": "listeners",
+									"name": "number",
+									"type": "Int32",
 									"physicalType": "int"
 								}
 							}
