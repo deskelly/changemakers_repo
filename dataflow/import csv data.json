@@ -50,8 +50,8 @@
 				"          recordWeek as integer,",
 				"          recordMonth as integer,",
 				"          recordYear as integer,",
-				"          type as string,",
-				"          number as integer",
+				"          typeData as string,",
+				"          noTimes as integer",
 				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -68,8 +68,8 @@
 				"          recordWeek = Week,",
 				"          recordMonth = Month,",
 				"          recordYear = Year,",
-				"          type = TypeData,",
-				"          number = Listeners",
+				"          typeData = TypeData,",
+				"          noTimes = Listeners",
 				"     )) ~> sink1"
 			]
 		}
