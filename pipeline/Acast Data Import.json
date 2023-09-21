@@ -59,7 +59,7 @@
 							"useTempDB": true,
 							"keys": [
 								"recordDate",
-								""
+								"type"
 							]
 						},
 						"sqlWriterUseTableLock": false,
@@ -119,13 +119,21 @@
 							},
 							{
 								"source": {
+									"name": "type",
+									"physicalType": "int"
+								},
+								"sink": {
+									"name": "type",
+									"physicalType": "int"
+								}
+							},
+							{
+								"source": {
 									"name": "listeners",
-									"type": "Int32",
 									"physicalType": "int"
 								},
 								"sink": {
 									"name": "listeners",
-									"type": "Int32",
 									"physicalType": "int"
 								}
 							}
