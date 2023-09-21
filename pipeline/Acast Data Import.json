@@ -1,5 +1,5 @@
 {
-	"name": "Acast Data Listeners",
+	"name": "Acast Data Import",
 	"properties": {
 		"activities": [
 			{
@@ -48,7 +48,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\nlisteners\nFROM Acast_Listeners",
+						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntype,\nlisteners\nFROM Acast_Listeners",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -58,7 +58,8 @@
 						"upsertSettings": {
 							"useTempDB": true,
 							"keys": [
-								"recordDate"
+								"recordDate",
+								""
 							]
 						},
 						"sqlWriterUseTableLock": false,
