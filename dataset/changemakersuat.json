@@ -32,7 +32,7 @@
 				"type": "varchar"
 			},
 			{
-				"name": "listeners",
+				"name": "number",
 				"type": "int",
 				"precision": 10
 			}
