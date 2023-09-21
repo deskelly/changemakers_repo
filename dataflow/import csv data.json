@@ -42,7 +42,7 @@
 				"          Week = year(toDate(Date, 'yyyy-MM-dd')) * 100 + weekOfYear(toDate(Date, 'yyyy-MM-dd')),",
 				"          Month = year(toDate(Date, 'yyyy-MM-dd')) * 100 + month(toDate(Date, 'yyyy-MM-dd')),",
 				"          Year = year(toDate(Date, 'yyyy-MM-dd')),",
-				"          Type = 'Listeners') ~> derivedColumn1",
+				"          TypeData = 'Listeners') ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
@@ -68,7 +68,7 @@
 				"          recordWeek = Week,",
 				"          recordMonth = Month,",
 				"          recordYear = Year,",
-				"          type = Type,",
+				"          type = TypeData,",
 				"          number = Listeners",
 				"     )) ~> sink1"
 			]
