@@ -48,7 +48,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntypeData,\nnoTimes\nFROM Acast_Listeners_Watchers\nwhere noTimes IS NOT NULL",
+						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntypeData,\nnoTimes\nFROM Acast_Listeners_Watchers\n",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -165,8 +165,6 @@
 			{
 				"name": "import csv data downloads",
 				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Copy data1",
@@ -198,8 +196,6 @@
 			{
 				"name": "Copy data2",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "import csv data downloads",
