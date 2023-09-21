@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "downloads all time daily.csv",
+				"fileName": "listeners all time daily.csv",
 				"container": "acast-files"
 			},
 			"columnDelimiter": ";",
