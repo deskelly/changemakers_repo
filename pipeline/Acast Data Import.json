@@ -48,7 +48,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntypeData,\nnoTimes\nFROM Acast_Listeners_Watchers",
+						"sqlReaderQuery": "SELECT\nrecordDate,\nrecordWeek,\nrecordMonth,\nrecordYear,\ntypeData,\nnoTimes\nFROM Acast_Listeners_Watchers\nwhere noTimes IS NOT NULL",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
