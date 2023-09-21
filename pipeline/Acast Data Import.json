@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "import csv data",
+				"name": "import csv data listeners",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -31,7 +31,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "import csv data",
+						"activity": "import csv data listeners",
 						"dependencyConditions": [
 							"Completed"
 						]
