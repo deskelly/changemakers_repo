@@ -28,11 +28,11 @@
 				"precision": 10
 			},
 			{
-				"name": "type",
+				"name": "typeData",
 				"type": "varchar"
 			},
 			{
-				"name": "number",
+				"name": "noTimes",
 				"type": "int",
 				"precision": 10
 			}
