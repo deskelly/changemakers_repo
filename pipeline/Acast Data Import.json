@@ -353,6 +353,13 @@
 						"referenceName": "DeleteAcastListenersCSV",
 						"type": "DatasetReference"
 					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "ChangemakerBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "acast-logging"
+					},
 					"enableLogging": true,
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -384,6 +391,13 @@
 					"dataset": {
 						"referenceName": "DeleteAcastDownloadsCSV",
 						"type": "DatasetReference"
+					},
+					"logStorageSettings": {
+						"linkedServiceName": {
+							"referenceName": "ChangemakerBlobStorage",
+							"type": "LinkedServiceReference"
+						},
+						"path": "acast-logging"
 					},
 					"enableLogging": true,
 					"storeSettings": {
