@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "CopyListenerData",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -194,7 +194,7 @@
 				}
 			},
 			{
-				"name": "Copy data2",
+				"name": "CopyDownloadsData",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -334,7 +334,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "CopyListenerData",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -373,7 +373,7 @@
 				"type": "Delete",
 				"dependsOn": [
 					{
-						"activity": "Copy data2",
+						"activity": "CopyDownloadsData",
 						"dependencyConditions": [
 							"Completed"
 						]
