@@ -6,10 +6,10 @@
 		"type": "CommonDataServiceForApps",
 		"typeProperties": {
 			"deploymentType": "Online",
-			"serviceUri": "https://uk-jcdprd.crm4.dynamics.com/uk-jcdprd",
+			"serviceUri": "https://uk-jcdprd.crm4.dynamics.com",
 			"authenticationType": "Office365",
 			"username": "des.kelly@jcdecaux.com",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJFNDVCNTYwLTY2NzctNEZBRi1CMDg4LTJDNDY5RDc3MEZBQ18zMzY2ZGE3Ny1kZjE1LTRjOTItYTc1ZS0yZjBlYzY4OTlhODIiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEJFNDVCNTYwLTY2NzctNEZBRi1CMDg4LTJDNDY5RDc3MEZBQ19jYzI5MTlhOC1kOGFkLTRmN2QtYTI2ZC1iMGVlMWRlNTFjMWMiDQp9"
 		}
 	}
 }
