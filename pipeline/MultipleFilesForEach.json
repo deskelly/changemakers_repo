@@ -25,7 +25,7 @@
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"modifiedDatetimeStart": {
-							"value": "datetime_add('day',-2,current_date())",
+							"value": "@addDays(utcNow(), -1)\r\n",
 							"type": "Expression"
 						},
 						"enablePartitionDiscovery": false
