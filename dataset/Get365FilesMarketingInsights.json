@@ -1,0 +1,21 @@
+{
+	"name": "Get365FilesMarketingInsights",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Get365FilesFromMarketingInsights",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
