@@ -1,0 +1,18 @@
+{
+	"name": "DeleteAcastDownloadsCSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ChangemakerBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "export.csv",
+				"container": "acast-downloads-daily"
+			}
+		}
+	}
+}

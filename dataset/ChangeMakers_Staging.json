@@ -1,0 +1,45 @@
+{
+	"name": "ChangeMakers_Staging",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabaseStaging",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "recordDate",
+				"type": "date"
+			},
+			{
+				"name": "recordWeek",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recordMonth",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "recordYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "typeData",
+				"type": "varchar"
+			},
+			{
+				"name": "noTimes",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Acast_Listeners_Watchers"
+		}
+	}
+}

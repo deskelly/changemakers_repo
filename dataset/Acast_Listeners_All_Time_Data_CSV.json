@@ -1,0 +1,33 @@
+{
+	"name": "Acast_Listeners_All_Time_Data_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ChangemakerBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "export.csv",
+				"container": "acast-listeners-daily"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Listeners",
+				"type": "String"
+			}
+		]
+	}
+}

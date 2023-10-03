@@ -1,35 +1,36 @@
 {
-	"name": "Master_Pipeline",
+	"name": "Acast Master Pipeline",
 	"properties": {
+		"description": "Pipeline to run Acast data flows",
 		"activities": [
 			{
-				"name": "Call Pipeline1",
+				"name": "Execute Pipeline1",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "pipeline1",
+						"referenceName": "Acast Data Listeners",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
 				}
 			},
 			{
-				"name": "Call Pipeline2",
+				"name": "Execute Pipeline2",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Call Pipeline1",
+						"activity": "Execute Pipeline1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "pipeline2",
+						"referenceName": "pipeline3",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
@@ -37,10 +38,8 @@
 			}
 		],
 		"folder": {
-			"name": "Test"
+			"name": "Acast"
 		},
-		"annotations": [],
-		"lastPublishTime": "2023-09-15T10:07:23Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }

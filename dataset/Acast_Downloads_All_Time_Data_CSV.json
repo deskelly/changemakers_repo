@@ -1,0 +1,31 @@
+{
+	"name": "Acast_Downloads_All_Time_Data_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ChangemakerBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "acast-downloads-daily"
+			},
+			"columnDelimiter": ";",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Downloads",
+				"type": "String"
+			}
+		]
+	}
+}

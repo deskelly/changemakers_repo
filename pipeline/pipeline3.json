@@ -1,5 +1,5 @@
 {
-	"name": "pipeline2",
+	"name": "pipeline3",
 	"properties": {
 		"activities": [
 			{
@@ -28,10 +28,8 @@
 			}
 		],
 		"folder": {
-			"name": "DataIntegration/Test"
+			"name": "DataIntegration/Acast"
 		},
-		"annotations": [],
-		"lastPublishTime": "2023-09-15T10:07:22Z"
-	},
-	"type": "Microsoft.DataFactory/factories/pipelines"
+		"annotations": []
+	}
 }
