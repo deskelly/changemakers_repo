@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"modifiedDatetimeStart": "2023-09-30T23:59:59.000Z",
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
