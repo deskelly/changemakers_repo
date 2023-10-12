@@ -1,0 +1,70 @@
+{
+	"name": "batch_pool_python",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('values')",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Custom1",
+							"type": "Custom",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"command": {
+									"value": "@concat('python cube.py ', item())\n",
+									"type": "Expression"
+								},
+								"resourceLinkedService": {
+									"referenceName": "ChangemakerBlobStorage",
+									"type": "LinkedServiceReference"
+								},
+								"folderPath": "python-scripts",
+								"referenceObjects": {
+									"linkedServices": [],
+									"datasets": []
+								}
+							},
+							"linkedServiceName": {
+								"referenceName": "pythonbatch",
+								"type": "LinkedServiceReference"
+							}
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"values": {
+				"type": "Array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": []
+	}
+}
