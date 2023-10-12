@@ -1,0 +1,21 @@
+{
+	"name": "batch_pool_python",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"isSequential": false,
+					"batchCount": 3
+				}
+			}
+		],
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": []
+	}
+}
