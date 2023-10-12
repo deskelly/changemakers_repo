@@ -1,0 +1,43 @@
+{
+	"name": "Test_Python_1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Custom1",
+				"type": "Custom",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": {
+						"value": "python cube.py",
+						"type": "Expression"
+					},
+					"resourceLinkedService": {
+						"referenceName": "ChangemakerBlobStorage",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "python-scripts",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "pythonbatch",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"folder": {
+			"name": "Test"
+		},
+		"annotations": []
+	}
+}
