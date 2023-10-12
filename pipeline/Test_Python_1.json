@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"command": {
-						"value": "python cube.py",
+						"value": "/bin/bash -c 'python3 cube.py'",
 						"type": "Expression"
 					},
 					"resourceLinkedService": {
