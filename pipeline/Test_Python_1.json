@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"command": {
-						"value": "'python3 cube.py'",
+						"value": "cmd /c python3 cube.py",
 						"type": "Expression"
 					},
 					"resourceLinkedService": {
