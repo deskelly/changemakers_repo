@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinFollowers_GetFiles",
+						"referenceName": "LinkedinVisitors_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -67,7 +67,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "LinkedinFollowers_DataFlow",
+									"referenceName": "LinkedinVisitors_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -80,6 +80,8 @@
 						{
 							"name": "Delete1",
 							"type": "Delete",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Data flow1",
@@ -98,7 +100,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "LinkedinFollowers_GetFiles",
+									"referenceName": "LinkedinVisitors_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {
