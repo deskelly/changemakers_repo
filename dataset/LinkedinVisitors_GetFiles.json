@@ -1,0 +1,42 @@
+{
+	"name": "LinkedinVisitors_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedinFollowers_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Linkedin"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "New followers",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "followers",
+				"container": "linkedin"
+			},
+			"range": "",
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Sponsored followers",
+				"type": "String"
+			},
+			{
+				"name": "Organic followers",
+				"type": "String"
+			},
+			{
+				"name": "Total followers",
+				"type": "String"
+			}
+		]
+	}
+}
