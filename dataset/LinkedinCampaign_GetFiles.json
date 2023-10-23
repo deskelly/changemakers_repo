@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "account_510477538_campaign_performance_report.csv",
 				"folderPath": "campaign",
 				"container": "linkedin"
 			},
