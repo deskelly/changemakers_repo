@@ -6,14 +6,14 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Linkedin"
+			"name": "Absorb"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Temp_Raw_LinkedinVisitors"
+			"table": "Temp_Raw_Absorb"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
