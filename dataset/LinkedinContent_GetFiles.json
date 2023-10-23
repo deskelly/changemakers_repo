@@ -8,10 +8,8 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Metrics",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "jcdecaux-uk_content_1697817268605.xls",
 				"folderPath": "input",
 				"container": "linkedin"
 			},
