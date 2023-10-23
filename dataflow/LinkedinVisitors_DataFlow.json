@@ -1,0 +1,59 @@
+{
+	"name": "LinkedinVisitors_DataFlow",
+	"properties": {
+		"folder": {
+			"name": "Linkedin"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "LinkedinFollowers_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "LinkedinFollowers_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Date as date 'MM/dd/yyyy',",
+				"          {Sponsored followers} as integer,",
+				"          {Organic followers} as integer,",
+				"          {Total followers} as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     postSQLs:['delete from Raw_LinkedinFollowers where \\ndate in (select distinct date from Temp_Raw_LinkedinFollowers where date is not null)','insert into Raw_LinkedinFollowers\\nselect * from Temp_Raw_LinkedinFollowers','drop table if exists Temp_Raw_LinkedinFollowers'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          date = Date,",
+				"          sponsored_followers = {Sponsored followers},",
+				"          organic_followers = {Organic followers},",
+				"          total_followers = {Total followers}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
