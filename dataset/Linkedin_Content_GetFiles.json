@@ -1,12 +1,21 @@
 {
 	"name": "Linkedin_Content_GetFiles",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Linkedin_Content_GetFiles",
+			"type": "LinkedServiceReference"
+		},
 		"folder": {
 			"name": "Linkedin"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "input",
+				"container": "linkedin"
+			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
