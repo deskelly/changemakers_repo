@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Twitter_AzureSqlTable",
+						"referenceName": "Linkedin_Content_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -59,7 +59,6 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     postSQLs:['delete from Raw_Twitter where \\ndate in (select distinct date from Temp_Raw_Twitter where date is not null)','insert Raw_Twitter\\nselect * from Temp_Raw_Twitter','drop table if exists Temp_Raw_Twitter'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
