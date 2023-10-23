@@ -27,7 +27,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          {Start Date (in UTC)} as string,",
+				"          {Start Date (in UTC)} as date,",
 				"          {Account Name} as string,",
 				"          Currency as string,",
 				"          {Campaign Group ID} as string,",
@@ -113,6 +113,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     limit: 100,",
 				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
 				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
