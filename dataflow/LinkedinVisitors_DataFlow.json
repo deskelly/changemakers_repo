@@ -64,6 +64,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
+				"     postSQLs:['delete from Raw_LinkedinVisitors where \\ndate in (select distinct date from Temp_Raw_LinkedinVisitors where date is not null)','insert into Raw_LinkedinVisitors\\nselect * from Temp_Raw_LinkedinVisitors where date is not null','drop table if exists Temp_Raw_LinkedinVisitors'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
