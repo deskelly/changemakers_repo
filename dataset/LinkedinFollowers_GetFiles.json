@@ -2,7 +2,7 @@
 	"name": "LinkedinFollowers_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LinkedinContent_GetFiles",
+			"referenceName": "LinkedinFollowers_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,12 +11,14 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "New followers",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "content",
+				"fileName": "jcdecaux-uk_followers_1697817279183.xls",
+				"folderPath": "followers",
 				"container": "linkedin"
 			},
-			"range": "A2:T10000",
+			"range": "",
 			"firstRowAsHeader": true
 		},
 		"schema": [
@@ -25,79 +27,15 @@
 				"type": "String"
 			},
 			{
-				"name": "Impressions (organic)",
+				"name": "Sponsored followers",
 				"type": "String"
 			},
 			{
-				"name": "Impressions (sponsored)",
+				"name": "Organic followers",
 				"type": "String"
 			},
 			{
-				"name": "Impressions (total)",
-				"type": "String"
-			},
-			{
-				"name": "Unique impressions (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Clicks (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Clicks (sponsored)",
-				"type": "String"
-			},
-			{
-				"name": "Clicks (total)",
-				"type": "String"
-			},
-			{
-				"name": "Reactions (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Reactions (sponsored)",
-				"type": "String"
-			},
-			{
-				"name": "Reactions (total)",
-				"type": "String"
-			},
-			{
-				"name": "Comments (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Comments (sponsored)",
-				"type": "String"
-			},
-			{
-				"name": "Comments (total)",
-				"type": "String"
-			},
-			{
-				"name": "Reposts (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Reposts (sponsored)",
-				"type": "String"
-			},
-			{
-				"name": "Reposts (total)",
-				"type": "String"
-			},
-			{
-				"name": "Engagement rate (organic)",
-				"type": "String"
-			},
-			{
-				"name": "Engagement rate (sponsored)",
-				"type": "String"
-			},
-			{
-				"name": "Engagement rate (total)",
+				"name": "Total followers",
 				"type": "String"
 			}
 		]
