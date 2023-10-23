@@ -5,6 +5,9 @@
 			"referenceName": "Twitter_GetFiles",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Twitter"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

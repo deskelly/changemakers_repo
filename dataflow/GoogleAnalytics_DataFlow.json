@@ -2,7 +2,7 @@
 	"name": "GoogleAnalytics_DataFlow",
 	"properties": {
 		"folder": {
-			"name": "Old"
+			"name": "z_Old"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {

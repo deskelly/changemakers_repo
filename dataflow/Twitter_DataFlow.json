@@ -1,6 +1,9 @@
 {
 	"name": "Twitter_DataFlow",
 	"properties": {
+		"folder": {
+			"name": "Twitter"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

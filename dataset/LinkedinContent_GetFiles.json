@@ -5,6 +5,9 @@
 			"referenceName": "LinkedinContent_GetFiles",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Linkedin"
+		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
