@@ -2,7 +2,7 @@
 	"name": "LinkedinVisitors_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LinkedinFollowers_GetFiles",
+			"referenceName": "LinkedinVisitors_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,10 +11,10 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "New followers",
+			"sheetName": "Visitor metrics",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "followers",
+				"folderPath": "visitors",
 				"container": "linkedin"
 			},
 			"range": "",
@@ -26,15 +26,99 @@
 				"type": "String"
 			},
 			{
-				"name": "Sponsored followers",
+				"name": "Overview page views (desktop)",
 				"type": "String"
 			},
 			{
-				"name": "Organic followers",
+				"name": "Overview page views (mobile)",
 				"type": "String"
 			},
 			{
-				"name": "Total followers",
+				"name": "Overview page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (total)",
 				"type": "String"
 			}
 		]
