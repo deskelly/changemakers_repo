@@ -5,6 +5,9 @@
 			"referenceName": "AzureSqlDatabase_Changemakers",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Old"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

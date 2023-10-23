@@ -1,6 +1,9 @@
 {
 	"name": "GoogleAnalytics_DataFlow",
 	"properties": {
+		"folder": {
+			"name": "Old"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

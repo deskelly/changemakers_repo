@@ -2,7 +2,7 @@
 	"name": "import csv data downloads",
 	"properties": {
 		"folder": {
-			"name": "Acast File Imports"
+			"name": "Old/Acast File Imports"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
