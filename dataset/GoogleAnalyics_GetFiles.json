@@ -1,0 +1,61 @@
+{
+	"name": "GoogleAnalyics_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "GoogleAnalytics_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csvdumps",
+				"container": "googleanalytics"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "date",
+				"type": "String"
+			},
+			{
+				"name": "datetime",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "eventName",
+				"type": "String"
+			},
+			{
+				"name": "deviceCategory",
+				"type": "String"
+			},
+			{
+				"name": "unifiedScreenName",
+				"type": "String"
+			},
+			{
+				"name": "activeUsers",
+				"type": "String"
+			},
+			{
+				"name": "eventCount",
+				"type": "String"
+			},
+			{
+				"name": "screenPageViews",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

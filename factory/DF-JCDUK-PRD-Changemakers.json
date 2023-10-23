@@ -1,0 +1,9 @@
+{
+	"name": "DF-JCDUK-PRD-Changemakers",
+	"location": "uksouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "600718a3-4057-4fb0-8799-9c6870e2d09b",
+		"tenantId": "f2782d7d-d11b-4aba-a26a-bc8782409cb5"
+	}
+}

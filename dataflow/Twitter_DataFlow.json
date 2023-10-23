@@ -1,0 +1,106 @@
+{
+	"name": "Twitter_DataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Twitter_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Twitter_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          Date as date 'yyyy-MM-dd',",
+				"          {Tweets published} as integer '000',",
+				"          impressions as integer '000',",
+				"          engagements as integer '000',",
+				"          {engagement rate} as double '###,###,000.###',",
+				"          retweets as integer '000',",
+				"          replies as integer '000',",
+				"          likes as integer '000',",
+				"          {user profile clicks} as integer '000',",
+				"          {url clicks} as integer '0',",
+				"          {hashtag clicks} as integer '0',",
+				"          {detail expands} as integer '0',",
+				"          {permalink clicks} as integer '0',",
+				"          {app opens} as integer '0',",
+				"          {app installs} as integer '0',",
+				"          follows as integer '0',",
+				"          {email tweet} as integer '000',",
+				"          {dial phone} as integer '000',",
+				"          {media views} as integer '000',",
+				"          {media engagements} as integer '000',",
+				"          {promoted impressions} as integer '000',",
+				"          {promoted engagements} as integer '000',",
+				"          {promoted engagement rate} as integer '000',",
+				"          {promoted retweets} as integer '000',",
+				"          {promoted replies} as integer '000',",
+				"          {promoted likes} as integer '000',",
+				"          {promoted user profile clicks} as integer '000',",
+				"          {promoted url clicks} as integer '000',",
+				"          {promoted hashtag clicks} as integer '000',",
+				"          {promoted detail expands} as integer '000',",
+				"          {promoted permalink clicks} as integer '000',",
+				"          {promoted app opens} as integer '000',",
+				"          {promoted app installs} as integer '000',",
+				"          {promoted follows} as integer '000',",
+				"          {promoted email tweet} as integer '000',",
+				"          {promoted dial phone} as integer '000',",
+				"          {promoted media views} as integer '000',",
+				"          {promoted media engagements} as integer '000'",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     postSQLs:['delete from Raw_Twitter where \\ndate in (select distinct date from Temp_Raw_Twitter where date is not null)','insert Raw_Twitter\\nselect * from Temp_Raw_Twitter','drop table if exists Temp_Raw_Twitter'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          date = Date,",
+				"          tweets_published = {Tweets published},",
+				"          impressions,",
+				"          engagements,",
+				"          engagement_rate = {engagement rate},",
+				"          retweets,",
+				"          replies,",
+				"          likes,",
+				"          {user_profile_ clicks} = {user profile clicks},",
+				"          url_clicks = {url clicks},",
+				"          hashtag_clicks = {hashtag clicks},",
+				"          detail_expands = {detail expands},",
+				"          permalink_clicks = {permalink clicks},",
+				"          app_opens = {app opens},",
+				"          app_installs = {app installs},",
+				"          follows,",
+				"          email_tweet = {email tweet},",
+				"          dial_phone = {dial phone},",
+				"          media_views = {media views},",
+				"          media_engagements = {media engagements}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

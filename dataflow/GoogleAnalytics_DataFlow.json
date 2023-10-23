@@ -1,0 +1,67 @@
+{
+	"name": "GoogleAnalytics_DataFlow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GoogleAnalyics_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "GoogleAnalytics_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          date as string,",
+				"          datetime as string,",
+				"          country as string,",
+				"          eventName as string,",
+				"          deviceCategory as string,",
+				"          unifiedScreenName as string,",
+				"          activeUsers as string,",
+				"          eventCount as string,",
+				"          screenPageViews as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
+				"SourceProcessFiles derive(date = toDate(date, 'dd/MM/yyyy'),",
+				"          datetime = toTimestamp(datetime, 'dd/MM/yyyy HH:mm'),",
+				"          country = country,",
+				"          eventName = eventName,",
+				"          deviceCategory = deviceCategory,",
+				"          unifiedScreenName = unifiedScreenName,",
+				"          activeUsers = toInteger(activeUsers),",
+				"          eventCount = toInteger(eventCount),",
+				"          screenPageViews = toInteger(screenPageViews)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}

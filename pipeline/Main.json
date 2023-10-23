@@ -1,0 +1,235 @@
+{
+	"name": "Main",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"description": "",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "GoogleAnalyics_GetFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"modifiedDatetimeStart": {
+							"value": "@addDays(utcNow(), -20)",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Data flow1",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "GoogleAnalytics_DataFlow",
+									"type": "DataFlowReference"
+								},
+								"compute": {
+									"coreCount": 16,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						},
+						{
+							"name": "Delete1",
+							"type": "Delete",
+							"dependsOn": [
+								{
+									"activity": "Script3",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "GoogleAnalyics_GetFiles",
+									"type": "DatasetReference"
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "GoogleAnalytics_GetFiles",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": {
+										"value": "@{item().name}",
+										"type": "Expression"
+									},
+									"enablePartitionDiscovery": false
+								}
+							}
+						},
+						{
+							"name": "Script1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Data flow1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete rg \nfrom Raw_GoogleAnalytics rg\ninner join Temp_Raw_GoogleAnalytics trg\non rg.date = trg.date and rg.country = trg.country and rg.eventName = trg.eventName and rg.deviceCategory = trg.deviceCategory and rg.unifiedScreenName = trg.unifiedScreenName;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script2",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\n    select \n        country\n        ,eventName\n        ,deviceCategory\n        ,unifiedScreenName\n        ,sum(activeUsers) as activeUsers\n        ,sum(eventCount) as eventCount\n        ,sum(screenPageViews) as screenPageViews \n    from Raw_GoogleAnalytics\n    group by country,eventName,deviceCategory,unifiedScreenName\n)\n, tmp_raw_data as (\n    select\n        date\n        , datetime\n        , country\n        , eventName\n        , deviceCategory\n        , unifiedScreenName\n        , activeUsers\n        , eventCount\n        , screenPageViews\n    from Temp_Raw_GoogleAnalytics\n)\n, diff_calc as (\n    select \n        trg.date\n        , trg.datetime\n        , trg.country\n        , trg.eventName\n        , trg.deviceCategory\n        , trg.unifiedScreenName\n        , case when rg.activeUsers is null then trg.activeUsers else (trg.activeUsers - rg.activeUsers) end as activeUsers\n        , case when rg.eventCount is null then trg.eventCount else (trg.eventCount - rg.eventCount) end as eventCount\n        , case when rg.screenPageViews is null then trg.screenPageViews else (trg.screenPageViews - rg.screenPageViews) end as screenPageViews\n    from tmp_raw_data trg\n    left outer join raw_data rg\n    on trg.country = rg.country and trg.eventName = rg.eventName and trg.deviceCategory = rg.deviceCategory and trg.unifiedScreenName = rg.unifiedScreenName\n)\ninsert into Raw_GoogleAnalytics\n    select\n        date\n        , datetime\n        , country\n        , eventName\n        , deviceCategory\n        , unifiedScreenName\n        , activeUsers\n        , eventCount\n        , screenPageViews\n    from diff_calc\n    where activeUsers > 0 or eventCount > 0 or screenPageViews > 0;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script3",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script2",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_GoogleAnalytics;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "GoogleAnalytics_API"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-10-23T11:09:51Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
