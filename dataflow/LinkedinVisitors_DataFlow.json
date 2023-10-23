@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinFollowers_AzureSqlTable",
+						"referenceName": "LinkedinVisitors_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -64,15 +64,35 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     postSQLs:['delete from Raw_LinkedinFollowers where \\ndate in (select distinct date from Temp_Raw_LinkedinFollowers where date is not null)','insert into Raw_LinkedinFollowers\\nselect * from Temp_Raw_LinkedinFollowers','drop table if exists Temp_Raw_LinkedinFollowers'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          sponsored_followers = {Sponsored followers},",
-				"          organic_followers = {Organic followers},",
-				"          total_followers = {Total followers}",
+				"          overview_page_views_desktop = {Overview page views (desktop)},",
+				"          overview_page_views_mobile = {Overview page views (mobile)},",
+				"          overview_page_views_total = {Overview page views (total)},",
+				"          overview_unique_visitors_desktop = {Overview unique visitors (desktop)},",
+				"          overview_unique_visitors_mobile = {Overview unique visitors (mobile)},",
+				"          overview_unique_visitors_total = {Overview unique visitors (total)},",
+				"          life_page_views_desktop = {Life page views (desktop)},",
+				"          life_page_views_mobile = {Life page views (mobile)},",
+				"          life_page_views_total = {Life page views (total)},",
+				"          life_unique_visitors_desktop = {Life unique visitors (desktop)},",
+				"          life_unique_visitors_mobile = {Life unique visitors (mobile)},",
+				"          life_unique_visitors_total = {Life unique visitors (total)},",
+				"          jobs_page_views_desktop = {Jobs page views (desktop)},",
+				"          jobs_page_views_mobile = {Jobs page views (mobile)},",
+				"          jobs_page_views_total = {Jobs page views (total)},",
+				"          {jobs_unique_ visitors_desktop} = {Jobs unique visitors (desktop)},",
+				"          jobs_unique_visitors_mobile = {Jobs unique visitors (mobile)},",
+				"          jobs_unique_visitors_total = {Jobs unique visitors (total)},",
+				"          total_page_views_desktop = {Total page views (desktop)},",
+				"          total_page_views_mobile = {Total page views (mobile)},",
+				"          total_page_views_total = {Total page views (total)},",
+				"          total_unique_visitors_desktop = {Total unique visitors (desktop)},",
+				"          total_unique_visitors_mobile = {Total unique visitors (mobile)},",
+				"          total_unique_visitors_total = {Total unique visitors (total)}",
 				"     )) ~> sink1"
 			]
 		}
