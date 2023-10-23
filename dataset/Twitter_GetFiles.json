@@ -2,7 +2,7 @@
 	"name": "Twitter_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "GoogleAnalytics_GetFiles",
+			"referenceName": "Twitter_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
