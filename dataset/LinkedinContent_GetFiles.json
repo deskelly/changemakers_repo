@@ -8,6 +8,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "Metrics",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": "input",
