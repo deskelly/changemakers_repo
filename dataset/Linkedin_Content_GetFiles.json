@@ -1,17 +1,12 @@
 {
 	"name": "Linkedin_Content_GetFiles",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "GoogleAnalytics_GetFiles",
-			"type": "LinkedServiceReference"
+		"folder": {
+			"name": "Linkedin"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
-			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "twitter"
-			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,

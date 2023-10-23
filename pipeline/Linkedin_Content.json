@@ -22,21 +22,10 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Twitter_GetFiles",
+						"referenceName": "Linkedin_Content_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"modifiedDatetimeStart": {
-							"value": "@addDays(utcNow(), -20)",
-							"type": "Expression"
-						},
-						"enablePartitionDiscovery": false
-					},
+					"fieldList": [],
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
