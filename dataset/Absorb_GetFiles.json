@@ -2,123 +2,75 @@
 	"name": "Absorb_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LinkedinVisitors_GetFiles",
+			"referenceName": "Absorb_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Linkedin"
+			"name": "Absorb"
 		},
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Visitor metrics",
+			"sheetName": "Data",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "visitors",
-				"container": "linkedin"
+				"fileName": "Absorb.xlsx",
+				"container": "absorb"
 			},
 			"range": "",
 			"firstRowAsHeader": true
 		},
 		"schema": [
 			{
-				"name": "Date",
+				"name": "Last Name",
 				"type": "String"
 			},
 			{
-				"name": "Overview page views (desktop)",
+				"name": "First Name",
 				"type": "String"
 			},
 			{
-				"name": "Overview page views (mobile)",
+				"name": "Department",
 				"type": "String"
 			},
 			{
-				"name": "Overview page views (total)",
+				"name": "Date Completed",
 				"type": "String"
 			},
 			{
-				"name": "Overview unique visitors (desktop)",
+				"name": "Attained Certificate",
 				"type": "String"
 			},
 			{
-				"name": "Overview unique visitors (mobile)",
+				"name": "Certificate Date",
 				"type": "String"
 			},
 			{
-				"name": "Overview unique visitors (total)",
+				"name": "Status",
 				"type": "String"
 			},
 			{
-				"name": "Life page views (desktop)",
+				"name": "Progress",
 				"type": "String"
 			},
 			{
-				"name": "Life page views (mobile)",
+				"name": "Job Title",
 				"type": "String"
 			},
 			{
-				"name": "Life page views (total)",
+				"name": "Time Spent (min)",
 				"type": "String"
 			},
 			{
-				"name": "Life unique visitors (desktop)",
+				"name": "Date Enrolled",
 				"type": "String"
 			},
 			{
-				"name": "Life unique visitors (mobile)",
+				"name": "Last Logged In",
 				"type": "String"
 			},
 			{
-				"name": "Life unique visitors (total)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs page views (desktop)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs page views (mobile)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs page views (total)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs unique visitors (desktop)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs unique visitors (mobile)",
-				"type": "String"
-			},
-			{
-				"name": "Jobs unique visitors (total)",
-				"type": "String"
-			},
-			{
-				"name": "Total page views (desktop)",
-				"type": "String"
-			},
-			{
-				"name": "Total page views (mobile)",
-				"type": "String"
-			},
-			{
-				"name": "Total page views (total)",
-				"type": "String"
-			},
-			{
-				"name": "Total unique visitors (desktop)",
-				"type": "String"
-			},
-			{
-				"name": "Total unique visitors (mobile)",
-				"type": "String"
-			},
-			{
-				"name": "Total unique visitors (total)",
+				"name": "Email Address",
 				"type": "String"
 			}
 		]
