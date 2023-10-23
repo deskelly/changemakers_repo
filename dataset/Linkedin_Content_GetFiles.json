@@ -13,12 +13,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "jcdecaux-uk_content_1697817268605.xls",
 				"folderPath": "input",
 				"container": "linkedin"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\u0000",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
-			"firstRowAsHeader": true,
+			"firstRowAsHeader": false,
 			"quoteChar": "\""
 		},
 		"schema": [
