@@ -5,6 +5,9 @@
 			"referenceName": "ChangemakerBlobStorage",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Old"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

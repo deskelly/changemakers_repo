@@ -5,6 +5,9 @@
 			"referenceName": "Get365FilesFromMarketingInsights",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Old"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
