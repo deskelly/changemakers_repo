@@ -11,10 +11,9 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Metrics",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "input",
+				"folderPath": "content",
 				"container": "linkedin"
 			},
 			"range": "A2:T10000",
