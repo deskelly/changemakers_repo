@@ -10,11 +10,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "campaign_headers.csv",
 				"folderPath": "campaign",
 				"container": "linkedin"
 			},
 			"columnDelimiter": "\t",
-			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
