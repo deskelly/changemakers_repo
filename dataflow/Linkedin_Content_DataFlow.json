@@ -1,6 +1,9 @@
 {
 	"name": "Linkedin_Content_DataFlow",
 	"properties": {
+		"folder": {
+			"name": "Linkedin"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
