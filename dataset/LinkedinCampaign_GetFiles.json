@@ -5,6 +5,9 @@
 			"referenceName": "LinkedinCampaign_GetFiles",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Linkedin"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
@@ -15,6 +18,7 @@
 				"container": "linkedin"
 			},
 			"columnDelimiter": "\t",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
