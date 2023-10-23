@@ -43,6 +43,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
+				"     postSQLs:['delete from Raw_LinkedinFollowers where \\ndate in (select distinct date from Temp_Raw_LinkedinFollowers where date is not null)','insert into Raw_LinkedinFollowers\\nselect * from Temp_Raw_LinkedinFollowers','drop table if exists Temp_Raw_LinkedinFollowers'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
