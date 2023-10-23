@@ -100,7 +100,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "Twitter_GetFiles",
+									"referenceName": "LinkedinContent_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {
