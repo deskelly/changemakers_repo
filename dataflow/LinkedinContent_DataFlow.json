@@ -1,5 +1,5 @@
 {
-	"name": "Linkedin_Content_DataFlow",
+	"name": "LinkedinContent_DataFlow",
 	"properties": {
 		"folder": {
 			"name": "Linkedin"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Linkedin_Content_AzureSqlTable",
+						"referenceName": "LinkedinContent_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"

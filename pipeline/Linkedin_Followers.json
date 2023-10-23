@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinContent_GetFiles",
+						"referenceName": "LinkedinFollowers_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -67,7 +67,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Linkedin_Content_DataFlow",
+									"referenceName": "LinkedinContent_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
