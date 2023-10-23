@@ -22,16 +22,15 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Linkedin_Content_GetFiles",
+						"referenceName": "LinkedinContent_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
