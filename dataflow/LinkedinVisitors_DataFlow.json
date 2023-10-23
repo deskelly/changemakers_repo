@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinFollowers_GetFiles",
+						"referenceName": "LinkedinVisitors_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -28,9 +28,30 @@
 			"scriptLines": [
 				"source(output(",
 				"          Date as date 'MM/dd/yyyy',",
-				"          {Sponsored followers} as integer,",
-				"          {Organic followers} as integer,",
-				"          {Total followers} as integer",
+				"          {Overview page views (desktop)} as integer,",
+				"          {Overview page views (mobile)} as integer,",
+				"          {Overview page views (total)} as integer,",
+				"          {Overview unique visitors (desktop)} as integer,",
+				"          {Overview unique visitors (mobile)} as integer,",
+				"          {Overview unique visitors (total)} as integer,",
+				"          {Life page views (desktop)} as integer,",
+				"          {Life page views (mobile)} as integer,",
+				"          {Life page views (total)} as integer,",
+				"          {Life unique visitors (desktop)} as integer,",
+				"          {Life unique visitors (mobile)} as integer,",
+				"          {Life unique visitors (total)} as integer,",
+				"          {Jobs page views (desktop)} as integer,",
+				"          {Jobs page views (mobile)} as integer,",
+				"          {Jobs page views (total)} as integer,",
+				"          {Jobs unique visitors (desktop)} as integer,",
+				"          {Jobs unique visitors (mobile)} as integer,",
+				"          {Jobs unique visitors (total)} as integer,",
+				"          {Total page views (desktop)} as integer,",
+				"          {Total page views (mobile)} as integer,",
+				"          {Total page views (total)} as integer,",
+				"          {Total unique visitors (desktop)} as integer,",
+				"          {Total unique visitors (mobile)} as integer,",
+				"          {Total unique visitors (total)} as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
