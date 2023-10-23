@@ -1,0 +1,19 @@
+{
+	"name": "Test_Binary1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedinCampaign_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "campaign_headers.csv",
+				"folderPath": "campaign",
+				"container": "linkedin"
+			}
+		}
+	}
+}
