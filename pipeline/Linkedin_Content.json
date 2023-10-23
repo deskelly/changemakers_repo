@@ -67,7 +67,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Twitter_DataFlow",
+									"referenceName": "Linkedin_Content_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
