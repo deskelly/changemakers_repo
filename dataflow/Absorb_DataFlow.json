@@ -52,6 +52,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
+				"     postSQLs:['delete rb \\nfrom Raw_Absorb rb\\ninner join Temp_Raw_Absorb tra\\non rb.date_enrolled = tra.date_enrolled and rb.last_name = tra.last_name and rb.first_Name = tra.first_name','insert into Raw_Absorb\\nselect * from Temp_Raw_Absorb','drop table if exists Temp_Raw_Absorb'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
