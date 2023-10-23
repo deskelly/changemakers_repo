@@ -27,7 +27,7 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Date as date 'MM-dd-yyyy',",
+				"          Date as date 'MM/dd/yyyy',",
 				"          {Impressions (organic)} as integer,",
 				"          {Impressions (sponsored)} as integer,",
 				"          {Impressions (total)} as integer,",
