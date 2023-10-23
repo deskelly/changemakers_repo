@@ -1,0 +1,30 @@
+{
+	"name": "LinkedinCampaign_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedinCampaign_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "account_510477538_campaign_performance_report.csv",
+				"folderPath": "campaign",
+				"container": "linkedin"
+			},
+			"columnDelimiter": "\t",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Campaign Performance Report (in UTC)",
+				"type": "String"
+			}
+		]
+	}
+}
