@@ -17,8 +17,7 @@
 				"folderPath": "campaign",
 				"container": "linkedin"
 			},
-			"columnDelimiter": "\t",
-			"rowDelimiter": "",
+			"columnDelimiter": "\u0001",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
