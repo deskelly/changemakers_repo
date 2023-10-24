@@ -18,6 +18,7 @@
 				"container": "linkedin"
 			},
 			"columnDelimiter": "\t",
+			"rowDelimiter": "",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
