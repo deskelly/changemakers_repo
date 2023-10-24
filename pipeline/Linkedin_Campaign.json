@@ -299,7 +299,7 @@
 							"type": "Delete",
 							"dependsOn": [
 								{
-									"activity": "Script3",
+									"activity": "Script5",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -397,6 +397,72 @@
 									{
 										"type": "Query",
 										"text": "insert into Raw_LinkedinCampaign \n    select \n        cast(date as date) as date\n        , cast(impressions as int) as impressions\n        , cast(reactions as int) as reactions\n        , cast(shares as int) as shares\n        , cast(comments as int) as comments\n        , cast(follows as int) as follows\n        , cast(clicks as int) as clicks\n        , cast(replace(click_through_rate, '%','') as decimal(38,8)) as click_through_rate\n        , isnull(cast(replace(video_view_rate,'%','') as decimal(38,8)),0) as video_view_rate\n        , isnull(cast(video_views_25 as int),0) as video_views_25\n        , isnull(cast(video_completions as int),0) as video_completions\n        , isnull(cast(replace(video_completion_rate,'%','') as decimal(38,8)),0) as video_completion_rate\n        , cast(total_spend as decimal(38,8)) as total_spend\n        , cast(average_cpm as decimal(38,8)) as average_cpm\n        , cast(average_cpc as decimal(38,8)) as average_cpc\n    from Temp_Raw_LinkedinCampaign"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script4",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script3",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete from Changemakers_Combined_Overview where media_type = 'Linkedin Paid'"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "insert into Changemakers_Combined_Overview (media_type, date, timestamp, impression_by_date, users_by_date,event_occurence_by_date,likes_consid_engage_by_date,shares_by_date,comments_by_date,follows_by_date,total_engagements,conversion_total_clicks,click_through_rate,conversion_listened_watched,listened_watched_full_podcast_episode,video_view_rate,video_completion_rate,activity_cost,cost_per_impression_cpm,cost_per_click_cpc)\n    SELECT \n        'Linkedin Paid' as media_type\n        , date\n        , date as timestamp\n        , impressions as impression_by_date\n        , impressions as users_by_date\n        , date as event_occurence_by_date\n        , reactions as likes_consid_engage_by_date\n        , shares as shares_by_date\n        , comments as comments_by_date\n        , follows as follows_by_date\n        , (reactions + shares + comments + clicks) as total_engagements\n        , clicks as conversion_total_clicks\n        , click_through_rate as click_through_rate\n        , video_views_25 as conversion_listened_watched\n        , video_completions as listened_watched_full_podcast_episode\n        , video_view_rate\n        , video_completion_rate\n        , total_spend as activity_cost\n        , average_cpm as cost_per_impression_cpm\n        , average_cpc as cost_per_click_cpc\n    FROM Raw_LinkedinCampaign"
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
