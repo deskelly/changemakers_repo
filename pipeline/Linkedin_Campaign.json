@@ -308,7 +308,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinContent_GetFiles",
+						"referenceName": "LinkedinCampaign_GetFiles",
 						"type": "DatasetReference"
 					},
 					"logStorageSettings": {
@@ -321,6 +321,10 @@
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
+						"wildcardFileName": {
+							"value": "@{item().name}",
+							"type": "Expression"
+						},
 						"enablePartitionDiscovery": false
 					}
 				}
