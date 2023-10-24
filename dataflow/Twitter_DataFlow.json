@@ -90,7 +90,7 @@
 				"          retweets,",
 				"          replies,",
 				"          likes,",
-				"          {user_profile_ clicks} = {user profile clicks},",
+				"          user_profile_clicks = {user profile clicks},",
 				"          url_clicks = {url clicks},",
 				"          hashtag_clicks = {hashtag clicks},",
 				"          detail_expands = {detail expands},",
