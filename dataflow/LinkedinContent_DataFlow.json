@@ -59,7 +59,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     postSQLs:['delete from Raw_LinkedinContent where \\ndate in (select distinct date from Temp_Raw_LinkedinContent where date is not null)','insert Raw_LinkedinContent\\nselect * from Temp_Raw_LinkedinContent','drop table if exists Temp_Raw_LinkedinContent'],",
+				"     postSQLs:['delete from Raw_LinkedinContent where \\ndate in (select distinct date from Temp_Raw_LinkedinContent where date is not null)','insert Raw_LinkedinContent\\nselect * from Temp_Raw_LinkedinContent'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
