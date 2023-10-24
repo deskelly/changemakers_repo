@@ -37,10 +37,10 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "Start Date (in UTC)"
+									"name": "Account Name"
 								},
 								"sink": {
-									"name": "date"
+									"name": "date123"
 								}
 							}
 						],
