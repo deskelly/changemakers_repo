@@ -13,12 +13,12 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "campaign_headers.csv",
+				"fileName": "account_510477538_campaign_performance_report.csv",
 				"folderPath": "campaign",
 				"container": "linkedin"
 			},
 			"columnDelimiter": "\t",
-			"escapeChar": "\"",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
