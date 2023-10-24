@@ -20,7 +20,9 @@
 						"referenceName": "LinkedinCampaign_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -72,7 +74,7 @@
 									},
 									"formatSettings": {
 										"type": "DelimitedTextReadSettings",
-										"skipLineCount": 5
+										"skipLineCount": 4
 									}
 								},
 								"sink": {
@@ -85,16 +87,6 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "Start Date (in UTC)"
-											},
-											"sink": {
-												"name": "date123"
-											}
-										}
-									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
