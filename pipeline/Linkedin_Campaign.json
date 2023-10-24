@@ -70,6 +70,8 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": false,
+										"wildcardFolderPath": "campaign",
+										"wildcardFileName": "@item().name",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
