@@ -87,6 +87,148 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Start Date (in UTC)",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "date"
+											}
+										},
+										{
+											"source": {
+												"name": "Impressions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "impressions"
+											}
+										},
+										{
+											"source": {
+												"name": "Reactions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "reactions"
+											}
+										},
+										{
+											"source": {
+												"name": "Shares",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "shares"
+											}
+										},
+										{
+											"source": {
+												"name": "Comments",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "comments"
+											}
+										},
+										{
+											"source": {
+												"name": "Follows",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "follows"
+											}
+										},
+										{
+											"source": {
+												"name": "Clicks",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "clicks"
+											}
+										},
+										{
+											"source": {
+												"name": "Click Through Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "click_through_rate"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Views at 25%",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_views_25"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Completions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_completions"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Completion Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_completion_rate"
+											}
+										},
+										{
+											"source": {
+												"name": "Total Spent",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "total_spend"
+											}
+										},
+										{
+											"source": {
+												"name": "Average CPM",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "average_cpm"
+											}
+										},
+										{
+											"source": {
+												"name": "Average CPC",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "average_cpc"
+											}
+										}
+									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
