@@ -297,8 +297,6 @@
 						{
 							"name": "Delete1",
 							"type": "Delete",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Script3",
@@ -341,8 +339,6 @@
 						{
 							"name": "Script2",
 							"type": "Script",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Copy data1",
@@ -376,8 +372,6 @@
 						{
 							"name": "Script3",
 							"type": "Script",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Script2",
@@ -402,7 +396,7 @@
 								"scripts": [
 									{
 										"type": "Query",
-										"text": "insert into Raw_LinkedinCampaign \n    select \n        cast(date as date) as date\n        , cast(impressions as int) as impressions\n        , cast(reactions as int) as reactions\n        , cast(shares as int) as shares\n        , cast(comments as int) as comments\n        , cast(follows as int) as follows\n        , cast(clicks as int) as clicks\n        , cast(replace(click_through_rate, '%','') as decimal(38,8)) as click_through_rate\n        , isnull(cast(video_views_25 as int),0) as video_views_25\n        , isnull(cast(video_completions as int),0) as video_completions\n        , isnull(cast(replace(video_completion_rate,'%','') as decimal(38,8)),0) as video_completion_rate\n        , cast(total_spend as decimal(38,8)) as total_spend\n        , cast(average_cpm as decimal(38,8)) as average_cpm\n        , cast(average_cpc as decimal(38,8)) as average_cpc\n    from Temp_Raw_LinkedinCampaign"
+										"text": "insert into Raw_LinkedinCampaign \n    select \n        cast(date as date) as date\n        , cast(impressions as int) as impressions\n        , cast(reactions as int) as reactions\n        , cast(shares as int) as shares\n        , cast(comments as int) as comments\n        , cast(follows as int) as follows\n        , cast(clicks as int) as clicks\n        , cast(replace(click_through_rate, '%','') as decimal(38,8)) as click_through_rate\n        , isnull(cast(replace(video_view_rate,'%','') as decimal(38,8)),0) as video_view_rate\n        , isnull(cast(video_views_25 as int),0) as video_views_25\n        , isnull(cast(video_completions as int),0) as video_completions\n        , isnull(cast(replace(video_completion_rate,'%','') as decimal(38,8)),0) as video_completion_rate\n        , cast(total_spend as decimal(38,8)) as total_spend\n        , cast(average_cpm as decimal(38,8)) as average_cpm\n        , cast(average_cpc as decimal(38,8)) as average_cpc\n    from Temp_Raw_LinkedinCampaign"
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
