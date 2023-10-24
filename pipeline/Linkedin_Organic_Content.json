@@ -1,5 +1,5 @@
 {
-	"name": "Linkedin_Content",
+	"name": "Linkedin_Organic_Content",
 	"properties": {
 		"activities": [
 			{
@@ -30,6 +30,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
 				}
