@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ACastDownloads_GetFiles",
+						"referenceName": "ACastListeners_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -71,7 +71,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "ACastDownloads_DataFlow",
+									"referenceName": "ACastListeners_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -104,7 +104,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "ACastDownloads_GetFiles",
+									"referenceName": "ACastListeners_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {
