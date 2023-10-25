@@ -13,7 +13,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Raw_ACastDownloads"
+			"table": "Raw_ACastListeners"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
