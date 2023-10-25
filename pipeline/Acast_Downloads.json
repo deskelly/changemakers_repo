@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinFollowers_GetFiles",
+						"referenceName": "ACastDownloads_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -30,8 +30,10 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
 						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
@@ -68,7 +70,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "LinkedinFollowers_DataFlow",
+									"referenceName": "ACastDownloads_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
