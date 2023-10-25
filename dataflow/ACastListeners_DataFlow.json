@@ -52,7 +52,7 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          downloads = Listeners",
+				"          listeners = Listeners",
 				"     )) ~> sink1"
 			]
 		}
