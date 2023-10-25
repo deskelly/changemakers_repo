@@ -69,7 +69,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Linkedin_Organic_Content",
+						"referenceName": "Linkedin_Organic_ContentMetrics",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
