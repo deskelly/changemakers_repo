@@ -1,5 +1,5 @@
 {
-	"name": "LinkedinContent_GetFiles",
+	"name": "LinkedinContentMetrics_GetFiles",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LinkedinContent_GetFiles",

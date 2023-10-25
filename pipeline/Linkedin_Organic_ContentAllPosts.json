@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinContent_GetFiles",
+						"referenceName": "LinkedinContentMetrics_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -68,7 +68,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "LinkedinContent_DataFlow",
+									"referenceName": "LinkedinContentMetrics_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -99,7 +99,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "LinkedinContent_GetFiles",
+									"referenceName": "LinkedinContentMetrics_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {

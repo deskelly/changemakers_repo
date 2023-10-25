@@ -1,5 +1,5 @@
 {
-	"name": "LinkedinContent_AzureSqlTable",
+	"name": "LinkedinContentMetrics_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase_Changemakers",
