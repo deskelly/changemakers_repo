@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinContent_GetFiles",
+						"referenceName": "LinkedinContentMetrics_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinContent_AzureSqlTable",
+						"referenceName": "LinkedinContentMetrics_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
