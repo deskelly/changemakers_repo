@@ -2,7 +2,7 @@
 	"name": "LinkedinContentAllPosts_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LinkedinContent_GetFiles",
+			"referenceName": "LinkedinContentAllPosts_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,7 +11,6 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Metrics",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": "content",
@@ -22,83 +21,83 @@
 		},
 		"schema": [
 			{
-				"name": "Date",
+				"name": "Post title",
 				"type": "String"
 			},
 			{
-				"name": "Impressions (organic)",
+				"name": "Post link",
 				"type": "String"
 			},
 			{
-				"name": "Impressions (sponsored)",
+				"name": "Post type",
 				"type": "String"
 			},
 			{
-				"name": "Impressions (total)",
+				"name": "Campaign name",
 				"type": "String"
 			},
 			{
-				"name": "Unique impressions (organic)",
+				"name": "Posted by",
 				"type": "String"
 			},
 			{
-				"name": "Clicks (organic)",
+				"name": "Created date",
 				"type": "String"
 			},
 			{
-				"name": "Clicks (sponsored)",
+				"name": "Campaign start date",
 				"type": "String"
 			},
 			{
-				"name": "Clicks (total)",
+				"name": "Campaign end date",
 				"type": "String"
 			},
 			{
-				"name": "Reactions (organic)",
+				"name": "Audience",
 				"type": "String"
 			},
 			{
-				"name": "Reactions (sponsored)",
+				"name": "Impressions",
 				"type": "String"
 			},
 			{
-				"name": "Reactions (total)",
+				"name": "Views (Excluding offsite video views)",
 				"type": "String"
 			},
 			{
-				"name": "Comments (organic)",
+				"name": "Offsite Views",
 				"type": "String"
 			},
 			{
-				"name": "Comments (sponsored)",
+				"name": "Clicks",
 				"type": "String"
 			},
 			{
-				"name": "Comments (total)",
+				"name": "Click through rate (CTR)",
 				"type": "String"
 			},
 			{
-				"name": "Reposts (organic)",
+				"name": "Likes",
 				"type": "String"
 			},
 			{
-				"name": "Reposts (sponsored)",
+				"name": "Comments",
 				"type": "String"
 			},
 			{
-				"name": "Reposts (total)",
+				"name": "Reposts",
 				"type": "String"
 			},
 			{
-				"name": "Engagement rate (organic)",
+				"name": "Follows",
 				"type": "String"
 			},
 			{
-				"name": "Engagement rate (sponsored)",
+				"name": "Engagement rate",
 				"type": "String"
 			},
 			{
-				"name": "Engagement rate (total)",
+				"name": "Content Type",
 				"type": "String"
 			}
 		]
