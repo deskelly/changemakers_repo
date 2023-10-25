@@ -2,14 +2,14 @@
 	"name": "ACastDownloads_DataFlow",
 	"properties": {
 		"folder": {
-			"name": "Linkedin"
+			"name": "ACast"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinVisitors_GetFiles",
+						"referenceName": "ACastDownloads_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -18,45 +18,28 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "LinkedinVisitors_AzureSqlTable",
+						"referenceName": "ACastDownloads_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
-				"          Date as date 'MM/dd/yyyy',",
-				"          {Overview page views (desktop)} as integer,",
-				"          {Overview page views (mobile)} as integer,",
-				"          {Overview page views (total)} as integer,",
-				"          {Overview unique visitors (desktop)} as integer,",
-				"          {Overview unique visitors (mobile)} as integer,",
-				"          {Overview unique visitors (total)} as integer,",
-				"          {Life page views (desktop)} as integer,",
-				"          {Life page views (mobile)} as integer,",
-				"          {Life page views (total)} as integer,",
-				"          {Life unique visitors (desktop)} as integer,",
-				"          {Life unique visitors (mobile)} as integer,",
-				"          {Life unique visitors (total)} as integer,",
-				"          {Jobs page views (desktop)} as integer,",
-				"          {Jobs page views (mobile)} as integer,",
-				"          {Jobs page views (total)} as integer,",
-				"          {Jobs unique visitors (desktop)} as integer,",
-				"          {Jobs unique visitors (mobile)} as integer,",
-				"          {Jobs unique visitors (total)} as integer,",
-				"          {Total page views (desktop)} as integer,",
-				"          {Total page views (mobile)} as integer,",
-				"          {Total page views (total)} as integer,",
-				"          {Total unique visitors (desktop)} as integer,",
-				"          {Total unique visitors (mobile)} as integer,",
-				"          {Total unique visitors (total)} as integer",
+				"          Date as string,",
+				"          Downloads as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
-				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
+				"          Downloads = toInteger(Downloads)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -69,31 +52,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          date = Date,",
-				"          overview_page_views_desktop = {Overview page views (desktop)},",
-				"          overview_page_views_mobile = {Overview page views (mobile)},",
-				"          overview_page_views_total = {Overview page views (total)},",
-				"          overview_unique_visitors_desktop = {Overview unique visitors (desktop)},",
-				"          overview_unique_visitors_mobile = {Overview unique visitors (mobile)},",
-				"          overview_unique_visitors_total = {Overview unique visitors (total)},",
-				"          life_page_views_desktop = {Life page views (desktop)},",
-				"          life_page_views_mobile = {Life page views (mobile)},",
-				"          life_page_views_total = {Life page views (total)},",
-				"          life_unique_visitors_desktop = {Life unique visitors (desktop)},",
-				"          life_unique_visitors_mobile = {Life unique visitors (mobile)},",
-				"          life_unique_visitors_total = {Life unique visitors (total)},",
-				"          jobs_page_views_desktop = {Jobs page views (desktop)},",
-				"          jobs_page_views_mobile = {Jobs page views (mobile)},",
-				"          jobs_page_views_total = {Jobs page views (total)},",
-				"          {jobs_unique_ visitors_desktop} = {Jobs unique visitors (desktop)},",
-				"          jobs_unique_visitors_mobile = {Jobs unique visitors (mobile)},",
-				"          jobs_unique_visitors_total = {Jobs unique visitors (total)},",
-				"          total_page_views_desktop = {Total page views (desktop)},",
-				"          total_page_views_mobile = {Total page views (mobile)},",
-				"          total_page_views_total = {Total page views (total)},",
-				"          total_unique_visitors_desktop = {Total unique visitors (desktop)},",
-				"          total_unique_visitors_mobile = {Total unique visitors (mobile)},",
-				"          total_unique_visitors_total = {Total unique visitors (total)}",
+				"          Date,",
+				"          Downloads",
 				"     )) ~> sink1"
 			]
 		}

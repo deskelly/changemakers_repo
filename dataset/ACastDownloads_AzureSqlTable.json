@@ -1,5 +1,5 @@
 {
-	"name": "ACastDownloads_AzureSqlTable_copy1",
+	"name": "ACastDownloads_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase_Changemakers",
