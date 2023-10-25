@@ -6,7 +6,7 @@
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "Linkedin"
+			"name": "ACast"
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
