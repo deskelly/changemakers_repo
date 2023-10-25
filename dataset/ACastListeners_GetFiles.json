@@ -2,7 +2,7 @@
 	"name": "ACastListeners_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ACastDownloads_GetFiles",
+			"referenceName": "ACastListeners_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
