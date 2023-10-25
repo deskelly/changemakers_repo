@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinContentMetrics_GetFiles",
+						"referenceName": "LinkedinContentAllPosts_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -68,7 +68,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "LinkedinContentMetrics_DataFlow",
+									"referenceName": "LinkedinContentAllPosts_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -81,6 +81,8 @@
 						{
 							"name": "Delete1",
 							"type": "Delete",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Data flow1",
@@ -99,7 +101,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "LinkedinContentMetrics_GetFiles",
+									"referenceName": "LinkedinContentAllPosts_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {
