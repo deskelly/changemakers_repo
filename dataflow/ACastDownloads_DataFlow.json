@@ -51,8 +51,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          Date,",
-				"          Downloads",
+				"          date = Date,",
+				"          downloads = Downloads",
 				"     )) ~> sink1"
 			]
 		}
