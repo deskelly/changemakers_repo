@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "episode",
+				"folderPath": "epi",
 				"container": "acast"
 			},
 			"columnDelimiter": ";",
