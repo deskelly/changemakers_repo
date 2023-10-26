@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ACastListeners_GetFiles",
+						"referenceName": "ACastListenersPerEpisode_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -71,7 +71,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "ACastListeners_DataFlow",
+									"referenceName": "ACastListenersPerEpisode_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -84,6 +84,8 @@
 						{
 							"name": "Delete1",
 							"type": "Delete",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Data flow1",
@@ -102,7 +104,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataset": {
-									"referenceName": "ACastListeners_GetFiles",
+									"referenceName": "ACastListenersPerEpisode_GetFiles",
 									"type": "DatasetReference"
 								},
 								"logStorageSettings": {
