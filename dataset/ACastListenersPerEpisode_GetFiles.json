@@ -1,0 +1,36 @@
+{
+	"name": "ACastListenersPerEpisode_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ACastListeners_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ACast"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "listeners",
+				"container": "acast"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Downloads",
+				"type": "String"
+			}
+		]
+	}
+}
