@@ -150,12 +150,13 @@
 									"additionalColumns": [
 										{
 											"name": "episodeName",
-											"value": "$$FILEPATH"
+											"value": "$$FILENAME"
 										}
 									],
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
+										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
 									"formatSettings": {
