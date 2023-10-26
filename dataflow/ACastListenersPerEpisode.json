@@ -29,7 +29,6 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: false,",
 				"     purgeFiles: true) ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
