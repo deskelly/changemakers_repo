@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastListeners_GetFiles",
+						"referenceName": "ACastListenersPerEpisode_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -52,7 +52,9 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          listeners = Listeners",
+				"          listeners = Listeners,",
+				"          each(match(ERROR_FUNCTION(' @dataset().SourceFileName')),",
+				"               episode_name = $$)",
 				"     )) ~> sink1"
 			]
 		}
