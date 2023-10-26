@@ -39,7 +39,7 @@
 				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
 				"          Listeners = toInteger(Listeners),",
-				"          episode_name = ERROR_FUNCTION('@activity(__SINGLE_QUOTE__Metadata1__SINGLE_QUOTE__).output.itemName')) ~> derivedColumn1",
+				"          episode_name = ERROR_FUNCTION('@variables(__SINGLE_QUOTE__episodeName__SINGLE_QUOTE__)')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
