@@ -6,14 +6,7 @@
 				"name": "Get Metadata1",
 				"description": "",
 				"type": "GetMetadata",
-				"dependsOn": [
-					{
-						"activity": "Script2",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -94,6 +87,8 @@
 			{
 				"name": "Script1",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -120,6 +115,8 @@
 			{
 				"name": "Script2",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script1",
