@@ -36,7 +36,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false,",
+				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true,",
 				"     rowUrlColumn: 'episodeName') ~> SourceProcessFiles",
 				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
