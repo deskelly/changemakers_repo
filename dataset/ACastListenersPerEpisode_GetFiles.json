@@ -17,7 +17,7 @@
 				"container": "acast"
 			},
 			"columnDelimiter": ";",
-			"escapeChar": "\"",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
