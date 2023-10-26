@@ -67,8 +67,6 @@
 						{
 							"name": "Data flow1",
 							"type": "ExecuteDataFlow",
-							"state": "Inactive",
-							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -95,7 +93,7 @@
 							"type": "Delete",
 							"dependsOn": [
 								{
-									"activity": "Copy data1",
+									"activity": "Data flow1",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -131,105 +129,6 @@
 									"enablePartitionDiscovery": false
 								}
 							}
-						},
-						{
-							"name": "Copy data1",
-							"type": "Copy",
-							"dependsOn": [],
-							"policy": {
-								"timeout": "0.12:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"additionalColumns": [
-										{
-											"name": "episodeName",
-											"value": "$$FILENAME"
-										}
-									],
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
-										"wildcardFileName": {
-											"value": "@item().itemName",
-											"type": "Expression"
-										},
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
-								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false
-								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "Date",
-												"type": "String",
-												"physicalType": "String"
-											},
-											"sink": {
-												"name": "date",
-												"type": "DateTime",
-												"physicalType": "date"
-											}
-										},
-										{
-											"source": {
-												"name": "Listeners",
-												"type": "String",
-												"physicalType": "String"
-											},
-											"sink": {
-												"name": "listeners",
-												"type": "Int32",
-												"physicalType": "int"
-											}
-										},
-										{
-											"source": {
-												"name": "episodeName",
-												"type": "String"
-											},
-											"sink": {
-												"name": "episodeName",
-												"type": "String",
-												"physicalType": "nvarchar"
-											}
-										}
-									],
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "ACastListenersPerEpisode_GetFiles",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "ACastListenersPerEpisode_AzureSqlTable",
-									"type": "DatasetReference"
-								}
-							]
 						}
 					]
 				}
