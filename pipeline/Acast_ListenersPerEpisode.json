@@ -146,7 +146,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "episodeName",
-					"value": "@activity('Get Metadata1').output.childItems"
+					"value": {
+						"value": "@activity('Get Metadata1').output.itemName",
+						"type": "Expression"
+					}
 				}
 			}
 		],
