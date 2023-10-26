@@ -38,7 +38,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
-				"          Listeners = toInteger(Listeners)) ~> derivedColumn1",
+				"          Listeners = toInteger(Listeners),",
+				"          episode_name = ERROR_FUNCTION('@activity(__SINGLE_QUOTE__Metadata1__SINGLE_QUOTE__).output.itemName')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -51,10 +52,8 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          date = Date,",
-				"          listeners = Listeners,",
-				"          each(match(ERROR_FUNCTION(' @dataset().SourceFileName')),",
-				"               episode_name = $$)",
+				"          Date,",
+				"          Listeners",
 				"     )) ~> sink1"
 			]
 		}
