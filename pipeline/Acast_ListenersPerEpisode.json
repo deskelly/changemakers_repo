@@ -43,7 +43,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1",
+						"activity": "Set variable1",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -127,8 +127,34 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "episodeName",
+					"value": "@activity('Get Metadata1').output.childItems"
+				}
 			}
 		],
+		"variables": {
+			"episodeName": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "ACast"
 		},
