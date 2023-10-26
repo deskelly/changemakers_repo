@@ -1,0 +1,20 @@
+{
+	"name": "ACastListenersPerEpisode_AzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_Changemakers",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ACast"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Raw_ACastListeners"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
