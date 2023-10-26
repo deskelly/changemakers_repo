@@ -2,7 +2,7 @@
 	"name": "ACastListenersPerEpisode_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ACastListeners_GetFiles",
+			"referenceName": "ACastListenersPerEpisode_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "listeners",
+				"folderPath": "episode",
 				"container": "acast"
 			},
 			"columnDelimiter": ";",
@@ -28,7 +28,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Downloads",
+				"name": "Listeners",
 				"type": "String"
 			}
 		]
