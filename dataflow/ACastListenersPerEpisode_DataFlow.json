@@ -24,11 +24,7 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Date as string,",
@@ -37,12 +33,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true,",
-				"     rowUrlColumn: 'episodeName') ~> SourceProcessFiles",
-				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
-				"          Listeners = toInteger(Listeners),",
-				"          episodeName = replace(replace(replace(episodeName, '/episode/',''),'%20',' '),'.csv','')) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     purgeFiles: true) ~> SourceProcessFiles",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
@@ -54,8 +46,7 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          listeners = Listeners,",
-				"          episodeName",
+				"          listeners = Listeners",
 				"     )) ~> sink1"
 			]
 		}
