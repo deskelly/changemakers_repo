@@ -53,7 +53,8 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          Date,",
-				"          Listeners",
+				"          Listeners,",
+				"          episodeName",
 				"     )) ~> sink1"
 			]
 		}
