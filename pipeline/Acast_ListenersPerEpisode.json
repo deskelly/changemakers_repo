@@ -148,7 +148,14 @@
 			{
 				"name": "Script3",
 				"type": "Script",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -166,6 +173,65 @@
 						{
 							"type": "Query",
 							"text": "insert into Raw_ACastListenersPerEpisode\n  select\n      a.date\n      , a.listeners\n      , a.episode_name\n  from Temp_Raw_ACastListenersPerEpisode a\n  left outer join Raw_ACastListenersPerEpisode b on a.date = b.date and a.episode_name = b.episode_name\n  where b.date is null"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script4",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script3",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete from Changemakers_Combined_Overview where sub_channel = 'Acast' and impression_by_date is not null;"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script5",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "insert into Changemakers_Combined_Overview (channel, sub_channel, date, timestamp, month, week, impression_by_date, users_by_date, activity_calendar_events, event_occurence_by_date, event_occurence_by_time, activity_implemented_by)\n    select\n        'Podcast/Vodcast' as 'channel'\n        ,'Acast' as 'sub_channel'\n        , date \n        , date as timestamp\n        , cast(format(date, 'yyyyMM') as int) as month\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\n        , listeners as impression_by_date\n        , listeners as users_by_date\n        , episode_name as activity_calendar_events    --using listerners here until more clarity\n        , date as event_occurence_by_date    --using listerners here until more clarity \n        , date as event_occurence_by_time    --using listerners here until more clarity\n        , 'Russell Gower' as activity_implemented_by\n    from Raw_ACastListenersPerEpisode"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
