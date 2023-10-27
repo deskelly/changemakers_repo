@@ -2,7 +2,7 @@
 	"name": "Vimeo_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage2",
+			"referenceName": "Vimeo_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -13,7 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "twitter"
+				"fileName": "Vimeo.csv",
+				"container": "vimeo"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -22,31 +23,19 @@
 		},
 		"schema": [
 			{
-				"name": "Date",
+				"name": "plays",
 				"type": "String"
 			},
 			{
-				"name": "Tweets published",
+				"name": "loads",
 				"type": "String"
 			},
 			{
-				"name": "impressions",
+				"name": "downloads",
 				"type": "String"
 			},
 			{
-				"name": "engagements",
-				"type": "String"
-			},
-			{
-				"name": "engagement rate",
-				"type": "String"
-			},
-			{
-				"name": "retweets",
-				"type": "String"
-			},
-			{
-				"name": "replies",
+				"name": "finishes",
 				"type": "String"
 			},
 			{
@@ -54,123 +43,43 @@
 				"type": "String"
 			},
 			{
-				"name": "user profile clicks",
+				"name": "comments",
 				"type": "String"
 			},
 			{
-				"name": "url clicks",
+				"name": "uri",
 				"type": "String"
 			},
 			{
-				"name": "hashtag clicks",
+				"name": "name",
 				"type": "String"
 			},
 			{
-				"name": "detail expands",
+				"name": "created_time",
 				"type": "String"
 			},
 			{
-				"name": "permalink clicks",
+				"name": "sizes",
 				"type": "String"
 			},
 			{
-				"name": "app opens",
+				"name": "unique_viewers",
 				"type": "String"
 			},
 			{
-				"name": "app installs",
+				"name": "mean_percent",
 				"type": "String"
 			},
 			{
-				"name": "follows",
+				"name": "sum_seconds",
 				"type": "String"
 			},
 			{
-				"name": "email tweet",
+				"name": "mean_seconds",
 				"type": "String"
 			},
 			{
-				"name": "dial phone",
-				"type": "String"
-			},
-			{
-				"name": "media views",
-				"type": "String"
-			},
-			{
-				"name": "media engagements",
-				"type": "String"
-			},
-			{
-				"name": "promoted impressions",
-				"type": "String"
-			},
-			{
-				"name": "promoted engagements",
-				"type": "String"
-			},
-			{
-				"name": "promoted engagement rate",
-				"type": "String"
-			},
-			{
-				"name": "promoted retweets",
-				"type": "String"
-			},
-			{
-				"name": "promoted replies",
-				"type": "String"
-			},
-			{
-				"name": "promoted likes",
-				"type": "String"
-			},
-			{
-				"name": "promoted user profile clicks",
-				"type": "String"
-			},
-			{
-				"name": "promoted url clicks",
-				"type": "String"
-			},
-			{
-				"name": "promoted hashtag clicks",
-				"type": "String"
-			},
-			{
-				"name": "promoted detail expands",
-				"type": "String"
-			},
-			{
-				"name": "promoted permalink clicks",
-				"type": "String"
-			},
-			{
-				"name": "promoted app opens",
-				"type": "String"
-			},
-			{
-				"name": "promoted app installs",
-				"type": "String"
-			},
-			{
-				"name": "promoted follows",
-				"type": "String"
-			},
-			{
-				"name": "promoted email tweet",
-				"type": "String"
-			},
-			{
-				"name": "promoted dial phone",
-				"type": "String"
-			},
-			{
-				"name": "promoted media views",
-				"type": "String"
-			},
-			{
-				"name": "promoted media engagements",
+				"name": "unique_loads",
 				"type": "String"
 			}
 		]
