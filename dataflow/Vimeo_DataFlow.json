@@ -2,7 +2,7 @@
 	"name": "Vimeo_DataFlow",
 	"properties": {
 		"folder": {
-			"name": "Twitter"
+			"name": "Vimeo"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {

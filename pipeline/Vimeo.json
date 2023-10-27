@@ -22,12 +22,10 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Twitter_GetFiles",
+						"referenceName": "Vimeo_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -75,7 +73,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Twitter_DataFlow",
+									"referenceName": "Vimeo_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -90,7 +88,7 @@
 			}
 		],
 		"folder": {
-			"name": "Twitter"
+			"name": "Vimeo"
 		},
 		"annotations": [],
 		"lastPublishTime": "2023-10-23T11:09:52Z"
