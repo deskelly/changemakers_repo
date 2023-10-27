@@ -2,7 +2,7 @@
 	"name": "Vimeo_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Twitter_GetFiles",
+			"referenceName": "AzureBlobStorage2",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
