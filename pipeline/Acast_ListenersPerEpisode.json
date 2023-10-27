@@ -139,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_ACastListenersPerEpisode(\n\tdate date NULL\n\t, listeners int NULL\n\t, episodeName nvarchar(200) NULL\n);"
+							"text": "CREATE TABLE Temp_Raw_ACastListenersPerEpisode(\n\tdate date NULL\n\t, listeners int NULL\n\t, episode_name nvarchar(200) NULL\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
