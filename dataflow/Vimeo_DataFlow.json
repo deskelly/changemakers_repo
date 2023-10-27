@@ -24,7 +24,11 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          plays as integer,",
@@ -35,7 +39,7 @@
 				"          comments as integer,",
 				"          uri as string,",
 				"          name as string,",
-				"          created_time as date 'yyyy-MM-dd',",
+				"          created_time as string,",
 				"          sizes as string,",
 				"          unique_viewers as integer,",
 				"          mean_percent as integer,",
@@ -46,7 +50,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
-				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"SourceProcessFiles derive(created_time = toTimestamp(created_time, \"yyyy-MM-dd'T'HH:mm:ss\")) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
