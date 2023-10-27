@@ -34,8 +34,11 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true) ~> source1",
-				"source1 derive() ~> derivedColumn1",
+				"     purgeFiles: true,",
+				"     rowUrlColumn: 'episode_name') ~> source1",
+				"source1 derive(Date = toDate(Date, 'yyyy-MM-dd'),",
+				"          Listeners = toInteger(Listeners),",
+				"          episode_name = replace(replace(replace(episode_name, '/episode/',''),'%20',' '),'.csv','')) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
@@ -48,7 +51,8 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          listeners = Listeners",
+				"          listeners = Listeners,",
+				"          episode_name",
 				"     )) ~> sink1"
 			]
 		}
