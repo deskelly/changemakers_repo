@@ -42,6 +42,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(order_id = 1) ~> derivedColumn1",
 				"derivedColumn1 window(over(order_id),",
