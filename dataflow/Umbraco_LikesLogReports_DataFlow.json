@@ -1,0 +1,78 @@
+{
+	"name": "Umbraco_LikesLogReports_DataFlow",
+	"properties": {
+		"folder": {
+			"name": "Absorb"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Absorb_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Absorb_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          {Last Name} as string,",
+				"          {First Name} as string,",
+				"          Department as string,",
+				"          {Date Completed} as date 'dd/MM/yyyy',",
+				"          {Attained Certificate} as string,",
+				"          {Certificate Date} as string,",
+				"          Status as string,",
+				"          Progress as integer,",
+				"          {Job Title} as string,",
+				"          {Time Spent (min)} as integer,",
+				"          {Date Enrolled} as date 'dd/MM/yyyy',",
+				"          {Last Logged In} as date 'dd/MM/yyyy',",
+				"          {Email Address} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true) ~> SourceProcessFiles",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     postSQLs:['delete rb \\nfrom Raw_Absorb rb\\ninner join Temp_Raw_Absorb tra\\non rb.date_enrolled = tra.date_enrolled and rb.last_name = tra.last_name and rb.first_Name = tra.first_name','insert into Raw_Absorb\\nselect * from Temp_Raw_Absorb','delete from Changemakers_Combined_Overview where sub_channel = \\'Absorb\\'','with run_tot as (\\n    select\\n    count(1) over (order by date_enrolled) as noByDate\\n--    , last_name\\n--    , first_name\\n--    , department\\n--    , date_completed\\n--    , attained_certificate\\n--    , certificate_date\\n--    , status\\n--    , progress\\n    , job_title\\n    , time_spent_min\\n    , date_enrolled\\n    --, last_logged_in\\n    --, email_address\\n    from Raw_Absorb\\n)\\ninsert into Changemakers_Combined_Overview (channel,sub_channel,date,timestamp,month,week, impression_by_date, users_by_date, day_week, marketer_job_titles_by_date,time_spent_on_site_page_podcast_vodcast)\\nselect\\n    \\'eLearning\\' as \\'channel\\'\\n    ,\\'Absorb\\' as \\'sub_channel\\'\\n    , date_enrolled \\n    , date_enrolled as timestamp\\n    , cast(format(date_enrolled, \\'yyyyMM\\') as int) as month\\n    , cast(concat(left(date_enrolled,4),  right(datepart(ww, date_enrolled) + 100, 2)) as int) as week\\n    , noByDate as impression_by_date\\n    , noByDate as users_by_date\\n    , datepart(dw, date_enrolled) as day_week\\n    , job_title as marketer_job_titles_by_date\\n    , time_spent_min as time_spent_on_site_page_podcast_vodcast\\nfrom run_tot\\norder by date_enrolled','drop table if exists Temp_Raw_Absorb'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          last_name = {Last Name},",
+				"          first_name = {First Name},",
+				"          department = Department,",
+				"          date_completed = {Date Completed},",
+				"          attained_certificate = {Attained Certificate},",
+				"          certificate_date = {Certificate Date},",
+				"          status = Status,",
+				"          progress = Progress,",
+				"          job_title = {Job Title},",
+				"          time_spent_min = {Time Spent (min)},",
+				"          date_enrolled = {Date Enrolled},",
+				"          last_logged_in = {Last Logged In},",
+				"          email_address = {Email Address}",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
