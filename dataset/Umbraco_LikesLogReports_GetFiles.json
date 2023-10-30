@@ -1,0 +1,77 @@
+{
+	"name": "Umbraco_LikesLogReports_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Absorb_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Absorb"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Data",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "absorb"
+			},
+			"range": "",
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Last Name",
+				"type": "String"
+			},
+			{
+				"name": "First Name",
+				"type": "String"
+			},
+			{
+				"name": "Department",
+				"type": "String"
+			},
+			{
+				"name": "Date Completed",
+				"type": "String"
+			},
+			{
+				"name": "Attained Certificate",
+				"type": "String"
+			},
+			{
+				"name": "Certificate Date",
+				"type": "String"
+			},
+			{
+				"name": "Status",
+				"type": "String"
+			},
+			{
+				"name": "Progress",
+				"type": "String"
+			},
+			{
+				"name": "Job Title",
+				"type": "String"
+			},
+			{
+				"name": "Time Spent (min)",
+				"type": "String"
+			},
+			{
+				"name": "Date Enrolled",
+				"type": "String"
+			},
+			{
+				"name": "Last Logged In",
+				"type": "String"
+			},
+			{
+				"name": "Email Address",
+				"type": "String"
+			}
+		]
+	}
+}
