@@ -2,7 +2,7 @@
 	"name": "GA_Snapshot_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "GA_GetFiles",
+			"referenceName": "GA_Snapshot_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "overview",
+				"folderPath": "snapshot",
 				"container": "googleanalytics"
 			},
 			"columnDelimiter": ",",
