@@ -1,5 +1,5 @@
 {
-	"name": "GoogleAnalytics",
+	"name": "GoogleAnalytics_Engagment_Overview",
 	"properties": {
 		"activities": [
 			{
@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "GA_GetFiles",
+						"referenceName": "GA_Engagement_Overview_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -75,7 +75,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "GA_DataFlow",
+									"referenceName": "GA_Engagement_Overview_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
