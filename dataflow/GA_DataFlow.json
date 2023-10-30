@@ -1,6 +1,7 @@
 {
 	"name": "GA_DataFlow",
 	"properties": {
+		"description": "The derived column and window components have been added to calculated the unique row index i.e rowNumber()",
 		"folder": {
 			"name": "Vimeo"
 		},
