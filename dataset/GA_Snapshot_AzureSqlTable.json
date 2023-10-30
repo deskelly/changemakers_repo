@@ -1,5 +1,5 @@
 {
-	"name": "GA_Snapshot",
+	"name": "GA_Snapshot_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase_Changemakers",
@@ -13,7 +13,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Temp_Raw_GA_Engagement_Overview"
+			"table": "Temp_Raw_GA_Snapshot"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
