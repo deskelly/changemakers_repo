@@ -1,5 +1,5 @@
 {
-	"name": "GA_SnapshotGetFiles",
+	"name": "GA_Snapshot_GetFiles",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "GA_GetFiles",
