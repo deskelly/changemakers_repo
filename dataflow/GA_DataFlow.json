@@ -24,11 +24,7 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Column_1 as string,",
@@ -39,8 +35,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
-				"SourceProcessFiles derive() ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
