@@ -1,0 +1,20 @@
+{
+	"name": "GA_Snapshot",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_Changemakers",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GoogleAnalytics"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Temp_Raw_GA_Engagement_Overview"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
