@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Vimeo_GetFiles",
+						"referenceName": "GA_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -75,7 +75,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Vimeo_DataFlow",
+									"referenceName": "GA_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
