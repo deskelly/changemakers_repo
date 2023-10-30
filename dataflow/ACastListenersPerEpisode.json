@@ -1,0 +1,63 @@
+{
+	"name": "ACastListenersPerEpisode",
+	"properties": {
+		"folder": {
+			"name": "ACast"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ACastListenersPerEpisode_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ACastListenersPerEpisode_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Date as string,",
+				"          Listeners as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true,",
+				"     rowUrlColumn: 'episode_name') ~> source1",
+				"source1 derive(Date = toDate(Date, 'yyyy-MM-dd'),",
+				"          Listeners = toInteger(Listeners),",
+				"          episode_name = replace(replace(replace(episode_name, '/episode/',''),'%20',' '),'.csv','')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          date = Date,",
+				"          listeners = Listeners,",
+				"          episode_name",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

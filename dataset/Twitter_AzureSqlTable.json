@@ -5,6 +5,9 @@
 			"referenceName": "AzureSqlDatabase_Changemakers",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Twitter"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

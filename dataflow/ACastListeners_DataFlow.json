@@ -1,0 +1,60 @@
+{
+	"name": "ACastListeners_DataFlow",
+	"properties": {
+		"folder": {
+			"name": "ACast"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ACastListeners_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ACastListeners_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Date as string,",
+				"          Listeners as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
+				"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
+				"          Listeners = toInteger(Listeners)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     truncate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          date = Date,",
+				"          listeners = Listeners",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

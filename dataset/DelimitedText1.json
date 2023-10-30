@@ -1,12 +1,8 @@
 {
 	"name": "DelimitedText1",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
-			"type": "LinkedServiceReference"
-		},
 		"folder": {
-			"name": "Old"
+			"name": "z_Old"
 		},
 		"annotations": [],
 		"type": "DelimitedText",

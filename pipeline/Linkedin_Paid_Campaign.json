@@ -1,0 +1,485 @@
+{
+	"name": "Linkedin_Paid_Campaign",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"description": "",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "LinkedinCampaign_GetFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "Script1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": false,
+										"wildcardFolderPath": "campaign",
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings",
+										"skipLineCount": 4
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Start Date (in UTC)",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "date"
+											}
+										},
+										{
+											"source": {
+												"name": "Impressions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "impressions"
+											}
+										},
+										{
+											"source": {
+												"name": "Reactions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "reactions"
+											}
+										},
+										{
+											"source": {
+												"name": "Shares",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "shares"
+											}
+										},
+										{
+											"source": {
+												"name": "Comments",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "comments"
+											}
+										},
+										{
+											"source": {
+												"name": "Follows",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "follows"
+											}
+										},
+										{
+											"source": {
+												"name": "Clicks",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "clicks"
+											}
+										},
+										{
+											"source": {
+												"name": "Click Through Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "click_through_rate"
+											}
+										},
+										{
+											"source": {
+												"name": "Video View Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_view_rate"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Views at 25%",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_views_25"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Completions",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_completions"
+											}
+										},
+										{
+											"source": {
+												"name": "Video Completion Rate",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "video_completion_rate"
+											}
+										},
+										{
+											"source": {
+												"name": "Total Spent",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "total_spend"
+											}
+										},
+										{
+											"source": {
+												"name": "Average CPM",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "average_cpm"
+											}
+										},
+										{
+											"source": {
+												"name": "Average CPC",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "average_cpc"
+											}
+										}
+									],
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "LinkedinCampaign_GetFiles",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "LinkedinCampaign_AzureSqlTable",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Script1",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_LinkedinCampaign"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Delete1",
+							"type": "Delete",
+							"dependsOn": [
+								{
+									"activity": "Script5",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "LinkedinCampaign_GetFiles",
+									"type": "DatasetReference"
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "logging",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"wildcardFileName": {
+										"value": "@{item().name}",
+										"type": "Expression"
+									},
+									"enablePartitionDiscovery": false
+								}
+							}
+						},
+						{
+							"name": "Script2",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete from Raw_LinkedinCampaign\nwhere date in (select distinct cast(date as date) from Temp_Raw_LinkedinCampaign)"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script3",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script2",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "insert into Raw_LinkedinCampaign \n    select \n        cast(date as date) as date\n        , cast(impressions as int) as impressions\n        , cast(reactions as int) as reactions\n        , cast(shares as int) as shares\n        , cast(comments as int) as comments\n        , cast(follows as int) as follows\n        , cast(clicks as int) as clicks\n        , cast(replace(click_through_rate, '%','') as decimal(38,8)) as click_through_rate\n        , isnull(cast(replace(video_view_rate,'%','') as decimal(38,8)),0) as video_view_rate\n        , isnull(cast(video_views_25 as int),0) as video_views_25\n        , isnull(cast(video_completions as int),0) as video_completions\n        , isnull(cast(replace(video_completion_rate,'%','') as decimal(38,8)),0) as video_completion_rate\n        , cast(total_spend as decimal(38,8)) as total_spend\n        , cast(average_cpm as decimal(38,8)) as average_cpm\n        , cast(average_cpc as decimal(38,8)) as average_cpc\n    from Temp_Raw_LinkedinCampaign"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script4",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script3",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete from Changemakers_Combined_Overview where sub_channel= 'Linkedin Paid'"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "insert into Changemakers_Combined_Overview (channel,sub_channel , date, timestamp,month,week, impression_by_date, users_by_date,event_occurence_by_date,likes_consid_engage_by_date,shares_by_date,comments_by_date,follows_by_date,total_engagements,conversion_total_clicks,click_through_rate,conversion_listened_watched,listened_watched_full_podcast_episode,video_view_rate,video_completion_rate,activity_cost,cost_per_impression_cpm,cost_per_click_cpc)\n    SELECT \n        'Social Media' as 'channel'\n        ,'Linkedin Paid' as 'sub_channel'\n        , date \n        , date as timestamp\n        , cast(format(date, 'yyyyMM') as int) as month\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\n        , impressions as impression_by_date\n        , impressions as users_by_date\n        , date as event_occurence_by_date\n        , reactions as likes_consid_engage_by_date\n        , shares as shares_by_date\n        , comments as comments_by_date\n        , follows as follows_by_date\n        , (reactions + shares + comments + clicks) as total_engagements\n        , clicks as conversion_total_clicks\n        , click_through_rate as click_through_rate\n        , video_views_25 as conversion_listened_watched\n        , video_completions as listened_watched_full_podcast_episode\n        , video_view_rate\n        , video_completion_rate\n        , total_spend as activity_cost\n        , average_cpm as cost_per_impression_cpm\n        , average_cpc as cost_per_click_cpc\n    FROM Raw_LinkedinCampaign"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "Linkedin"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-10-23T11:09:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

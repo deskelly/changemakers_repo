@@ -1,0 +1,126 @@
+{
+	"name": "LinkedinVisitors_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedinVisitors_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Linkedin"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Visitor metrics",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "visitors",
+				"container": "linkedin"
+			},
+			"range": "",
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Overview page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Overview page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Overview page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Overview unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Life page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Life unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Jobs unique visitors (total)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Total page views (total)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (desktop)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (mobile)",
+				"type": "String"
+			},
+			{
+				"name": "Total unique visitors (total)",
+				"type": "String"
+			}
+		]
+	}
+}

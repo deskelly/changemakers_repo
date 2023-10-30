@@ -1,0 +1,20 @@
+{
+	"name": "Absorb_AzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_Changemakers",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Absorb"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Temp_Raw_Absorb"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

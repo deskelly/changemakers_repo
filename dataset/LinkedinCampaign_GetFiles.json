@@ -1,0 +1,359 @@
+{
+	"name": "LinkedinCampaign_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LinkedinCampaign_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Linkedin"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "campaign",
+				"container": "linkedin"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Start Date (in UTC)",
+				"type": "String"
+			},
+			{
+				"name": "Account Name",
+				"type": "String"
+			},
+			{
+				"name": "Currency",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group ID",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group Name",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group Status",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group Start Date",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group End Date",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Group Total Budget",
+				"type": "String"
+			},
+			{
+				"name": "Campaign ID",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Name",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Objective",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Type",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Status",
+				"type": "String"
+			},
+			{
+				"name": "Cost Type",
+				"type": "String"
+			},
+			{
+				"name": "Total Budget",
+				"type": "String"
+			},
+			{
+				"name": "Campaign Start Date",
+				"type": "String"
+			},
+			{
+				"name": "Campaign End Date",
+				"type": "String"
+			},
+			{
+				"name": "Total Spent",
+				"type": "String"
+			},
+			{
+				"name": "Impressions",
+				"type": "String"
+			},
+			{
+				"name": "Clicks",
+				"type": "String"
+			},
+			{
+				"name": "Click Through Rate",
+				"type": "String"
+			},
+			{
+				"name": "Average CPM",
+				"type": "String"
+			},
+			{
+				"name": "Average CPC",
+				"type": "String"
+			},
+			{
+				"name": "Reactions",
+				"type": "String"
+			},
+			{
+				"name": "Comments",
+				"type": "String"
+			},
+			{
+				"name": "Shares",
+				"type": "String"
+			},
+			{
+				"name": "Follows",
+				"type": "String"
+			},
+			{
+				"name": "Other Clicks",
+				"type": "String"
+			},
+			{
+				"name": "Total Social Actions",
+				"type": "String"
+			},
+			{
+				"name": "Total Engagements",
+				"type": "String"
+			},
+			{
+				"name": "Engagement Rate",
+				"type": "String"
+			},
+			{
+				"name": "Viral Impressions",
+				"type": "String"
+			},
+			{
+				"name": "Viral Clicks",
+				"type": "String"
+			},
+			{
+				"name": "Viral Reactions",
+				"type": "String"
+			},
+			{
+				"name": "Viral Comments",
+				"type": "String"
+			},
+			{
+				"name": "Viral Shares",
+				"type": "String"
+			},
+			{
+				"name": "Viral Follows",
+				"type": "String"
+			},
+			{
+				"name": "Viral Other Clicks",
+				"type": "String"
+			},
+			{
+				"name": "Conversions",
+				"type": "String"
+			},
+			{
+				"name": "Post-Click Conversions",
+				"type": "String"
+			},
+			{
+				"name": "View-Through Conversions",
+				"type": "String"
+			},
+			{
+				"name": "Conversion Rate",
+				"type": "String"
+			},
+			{
+				"name": "Cost per Conversion",
+				"type": "String"
+			},
+			{
+				"name": "Total Conversion Value",
+				"type": "String"
+			},
+			{
+				"name": "Return on Ad Spend",
+				"type": "String"
+			},
+			{
+				"name": "Viral Conversions",
+				"type": "String"
+			},
+			{
+				"name": "Viral Post-Click Conversions",
+				"type": "String"
+			},
+			{
+				"name": "Viral View-Through Conversions",
+				"type": "String"
+			},
+			{
+				"name": "Leads",
+				"type": "String"
+			},
+			{
+				"name": "Lead Forms Opened",
+				"type": "String"
+			},
+			{
+				"name": "Lead Form Completion Rate",
+				"type": "String"
+			},
+			{
+				"name": "Cost per Lead",
+				"type": "String"
+			},
+			{
+				"name": "Video Plays",
+				"type": "String"
+			},
+			{
+				"name": "Video Views",
+				"type": "String"
+			},
+			{
+				"name": "Video View Rate",
+				"type": "String"
+			},
+			{
+				"name": "Video Views at 25%",
+				"type": "String"
+			},
+			{
+				"name": "Video Views at 50%",
+				"type": "String"
+			},
+			{
+				"name": "Video Views at 75%",
+				"type": "String"
+			},
+			{
+				"name": "Video Completions",
+				"type": "String"
+			},
+			{
+				"name": "Video Completion Rate",
+				"type": "String"
+			},
+			{
+				"name": "Full Screen Plays",
+				"type": "String"
+			},
+			{
+				"name": "eCPV",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Plays",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Views",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Views at 25%",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Views at 50%",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Views at 75%",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Completions",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Completion Rate",
+				"type": "String"
+			},
+			{
+				"name": "Viral Video Full Screen Plays",
+				"type": "String"
+			},
+			{
+				"name": "Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "Click Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "View Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "Viral Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "Viral Click Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "Viral View Event Registrations",
+				"type": "String"
+			},
+			{
+				"name": "Average Daily Spend",
+				"type": "String"
+			},
+			{
+				"name": "Clicks to Landing Page",
+				"type": "String"
+			},
+			{
+				"name": "Clicks to LinkedIn Page",
+				"type": "String"
+			},
+			{
+				"name": "Leads (Work Email)",
+				"type": "String"
+			},
+			{
+				"name": "Lead Form Completion Rate (Work Email)",
+				"type": "String"
+			},
+			{
+				"name": "Cost Per Lead (Work Email)",
+				"type": "String"
+			}
+		]
+	}
+}
