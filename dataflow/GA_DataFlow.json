@@ -29,10 +29,10 @@
 					"name": "derivedColumn1"
 				},
 				{
-					"name": "window1"
+					"name": "sort1"
 				},
 				{
-					"name": "sort1"
+					"name": "window1"
 				}
 			],
 			"scriptLines": [
@@ -47,9 +47,9 @@
 				"     ignoreNoFilesFound: true,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(id = 1) ~> derivedColumn1",
-				"derivedColumn1 window(over(id),",
-				"     id123 = rowNumber()) ~> window1",
 				"window1 sort(asc(id123, true)) ~> sort1",
+				"derivedColumn1 window(over(id),",
+				"     test123 = rowNumber()) ~> window1",
 				"sort1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
