@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Vimeo_GetFiles",
+						"referenceName": "GA_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Vimeo_AzureSqlTable",
+						"referenceName": "GA_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -31,27 +31,16 @@
 			],
 			"scriptLines": [
 				"source(output(",
-				"          plays as integer,",
-				"          loads as integer,",
-				"          downloads as integer,",
-				"          finishes as integer,",
-				"          likes as integer,",
-				"          comments as integer,",
-				"          uri as string,",
-				"          name as string,",
-				"          created_time as string,",
-				"          sizes as string,",
-				"          unique_viewers as integer,",
-				"          mean_percent as integer,",
-				"          sum_seconds as integer,",
-				"          mean_seconds as integer,",
-				"          unique_loads as integer",
+				"          Column_1 as string,",
+				"          Column_2 as string,",
+				"          Column_3 as string,",
+				"          Column_4 as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
-				"SourceProcessFiles derive(created_time = toTimestamp(created_time, \"yyyy-MM-dd'T'HH:mm:ss\")) ~> derivedColumn1",
+				"SourceProcessFiles derive() ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
