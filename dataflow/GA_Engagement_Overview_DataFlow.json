@@ -1,16 +1,16 @@
 {
-	"name": "GA_DataFlow",
+	"name": "GA_Engagement_Overview_DataFlow",
 	"properties": {
 		"description": "The derived column and window components have been added to calculated the unique row index i.e rowNumber()",
 		"folder": {
-			"name": "Vimeo"
+			"name": "GoogleAnalytics"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "GA_GetFiles",
+						"referenceName": "GA_Engagement_Overview_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -19,7 +19,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "GA_AzureSqlTable",
+						"referenceName": "GA_Engagement_Overview_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"

@@ -1,5 +1,5 @@
 {
-	"name": "GA_AzureSqlTable",
+	"name": "GA_Engagement_Overview_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabase_Changemakers",

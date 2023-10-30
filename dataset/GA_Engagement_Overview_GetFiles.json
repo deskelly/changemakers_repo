@@ -1,5 +1,5 @@
 {
-	"name": "GA_GetFiles",
+	"name": "GA_Engagement_Overview_GetFiles",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "GA_GetFiles",
