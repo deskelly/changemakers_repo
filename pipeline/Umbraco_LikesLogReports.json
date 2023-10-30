@@ -145,7 +145,7 @@
 								"scripts": [
 									{
 										"type": "Query",
-										"text": "with raw_data as (\n    SELECT \n        date\n        , sum(votes) as votes\n    FROM Raw_Umbraco_LikesReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n    ON a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.likes_consid_engage_by_date = b.votes\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,likes_consid_engage_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.votes\n        );"
+										"text": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );"
 									}
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
@@ -157,6 +157,39 @@
 							"dependsOn": [
 								{
 									"activity": "Script2",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\n    SELECT \n        date\n        , sum(votes) as votes\n    FROM Raw_Umbraco_LikesReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n    ON a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.likes_consid_engage_by_date = b.votes\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,likes_consid_engage_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.votes\n        );"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4",
 									"dependencyConditions": [
 										"Completed"
 									]
