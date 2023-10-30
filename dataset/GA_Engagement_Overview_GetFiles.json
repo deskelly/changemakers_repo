@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "snapshot",
+				"folderPath": "overview",
 				"container": "googleanalytics"
 			},
 			"columnDelimiter": ",",
@@ -22,15 +22,6 @@
 			"quoteChar": "\""
 		},
 		"schema": [
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
 			{
 				"type": "String"
 			},
