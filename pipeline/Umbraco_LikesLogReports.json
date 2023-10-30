@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Absorb_GetFiles",
+						"referenceName": "Umbraco_LikesLogReports_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -68,7 +68,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Absorb_DataFlow",
+									"referenceName": "Umbraco_LikesLogReports_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -83,7 +83,7 @@
 			}
 		],
 		"folder": {
-			"name": "Absorb"
+			"name": "Umbraco"
 		},
 		"annotations": [],
 		"lastPublishTime": "2023-10-23T11:09:52Z"
