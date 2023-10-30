@@ -1,6 +1,9 @@
 {
 	"name": "ACastListenersPerEpisode",
 	"properties": {
+		"folder": {
+			"name": "ACast"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [

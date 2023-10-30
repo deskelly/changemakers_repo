@@ -1,0 +1,87 @@
+{
+	"name": "GA_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Vimeo_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "GoogleAnalytics"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "vimeo"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "plays",
+				"type": "String"
+			},
+			{
+				"name": "loads",
+				"type": "String"
+			},
+			{
+				"name": "downloads",
+				"type": "String"
+			},
+			{
+				"name": "finishes",
+				"type": "String"
+			},
+			{
+				"name": "likes",
+				"type": "String"
+			},
+			{
+				"name": "comments",
+				"type": "String"
+			},
+			{
+				"name": "uri",
+				"type": "String"
+			},
+			{
+				"name": "name",
+				"type": "String"
+			},
+			{
+				"name": "created_time",
+				"type": "String"
+			},
+			{
+				"name": "sizes",
+				"type": "String"
+			},
+			{
+				"name": "unique_viewers",
+				"type": "String"
+			},
+			{
+				"name": "mean_percent",
+				"type": "String"
+			},
+			{
+				"name": "sum_seconds",
+				"type": "String"
+			},
+			{
+				"name": "mean_seconds",
+				"type": "String"
+			},
+			{
+				"name": "unique_loads",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
