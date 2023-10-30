@@ -62,7 +62,9 @@
 				"          Column_1,",
 				"          Column_2,",
 				"          Column_3,",
-				"          Column_4",
+				"          Column_4,",
+				"          id,",
+				"          test123",
 				"     ),",
 				"     partitionBy('hash', 1)) ~> sink1"
 			]
