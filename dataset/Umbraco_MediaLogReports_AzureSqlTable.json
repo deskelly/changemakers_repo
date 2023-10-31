@@ -13,7 +13,7 @@
 		"schema": [],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Temp_Raw_Umbraco_LikesReport"
+			"table": "Temp_Raw_Umbraco_MediaReport"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
