@@ -2,7 +2,7 @@
 	"name": "Umbraco_MediaLogReports_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Umbraco_LikesLogReports_GetFiles",
+			"referenceName": "Umbraco_MediaLogReports_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -11,10 +11,9 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "Like_Content_Full_Details",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "likes",
+				"folderPath": "media",
 				"container": "umbraco"
 			},
 			"range": "",
@@ -22,11 +21,15 @@
 		},
 		"schema": [
 			{
-				"name": "ContentId",
+				"name": "Url Asset",
 				"type": "String"
 			},
 			{
-				"name": "ContentName",
+				"name": "Content Id",
+				"type": "String"
+			},
+			{
+				"name": "MemberPlayed",
 				"type": "String"
 			},
 			{
@@ -34,15 +37,7 @@
 				"type": "String"
 			},
 			{
-				"name": "DownVotes",
-				"type": "String"
-			},
-			{
-				"name": "Votes",
-				"type": "String"
-			},
-			{
-				"name": "Name",
+				"name": "MemberKey",
 				"type": "String"
 			},
 			{
