@@ -77,7 +77,6 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": false,
-										"wildcardFolderPath": "campaign",
 										"wildcardFileName": {
 											"value": "@item().name",
 											"type": "Expression"
