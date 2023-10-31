@@ -79,11 +79,6 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "media",
-										"wildcardFileName": {
-											"value": "@item().name",
-											"type": "Expression"
-										},
 										"enablePartitionDiscovery": false
 									}
 								},
@@ -97,6 +92,74 @@
 								"enableStaging": false,
 								"translator": {
 									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Url Asset",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "url_asset",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Content Id",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "content_id",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MemberPlayed",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "member_played",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "DateSubmitted",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "date_submitted",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MemberKey",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "member_key",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Email",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "email",
+												"physicalType": "String"
+											}
+										}
+									],
 									"typeConversion": true,
 									"typeConversionSettings": {
 										"allowDataTruncation": true,
