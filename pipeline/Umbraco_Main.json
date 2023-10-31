@@ -14,8 +14,17 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
 				"typeProperties": {
-					"scripts": [],
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "select 'Des'"
+						}
+					],
 					"scriptBlockExecutionTimeout": "02:00:00"
 				}
 			}
