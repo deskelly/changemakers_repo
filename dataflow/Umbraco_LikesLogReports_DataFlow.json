@@ -1,0 +1,65 @@
+{
+	"name": "Umbraco_LikesLogReports_DataFlow",
+	"properties": {
+		"folder": {
+			"name": "Umbraco"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Umbraco_LikesLogReports_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Umbraco_LikesLogReports_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"scriptLines": [
+				"source(output(",
+				"          ContentId as string,",
+				"          ContentName as string,",
+				"          DateSubmitted as string,",
+				"          DownVotes as string,",
+				"          Votes as string,",
+				"          Name as string,",
+				"          Email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true) ~> SourceProcessFiles",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          ContentId,",
+				"          ContentName,",
+				"          DateSubmitted,",
+				"          DownVotes,",
+				"          Votes,",
+				"          Name,",
+				"          Email",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}

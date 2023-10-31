@@ -1,0 +1,363 @@
+{
+	"name": "Umbraco_MediaLogReports",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"description": "",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "des",
+						"value": "dsad"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Umbraco_MediaLogReports_GetFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFolderPath": "media",
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"mappings": [
+										{
+											"source": {
+												"name": "Url Asset",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "url_asset",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Content Id",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "content_id",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MemberPlayed",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "member_played",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "DateSubmitted",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "date_submitted",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "MemberKey",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "member_key",
+												"physicalType": "String"
+											}
+										},
+										{
+											"source": {
+												"name": "Email",
+												"type": "String",
+												"physicalType": "String"
+											},
+											"sink": {
+												"name": "email",
+												"physicalType": "String"
+											}
+										}
+									],
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Umbraco_MediaLogReports_GetFiles",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Umbraco_MediaLogReports_AzureSqlTable",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Script2",
+							"description": "",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\nSELECT \n    url_asset\n    , cast(content_id as int) as content_id\n    , cast(member_played as int) as member_played\n    , cast(cast(date_submitted -2e as datetime) as date) as date\n    , cast(date_submitted -2e as datetime) as timestamp\n    , member_key\n    , email\n  FROM Temp_Raw_Umbraco_MediaReport\n)\n--insert into Raw_Umbraco_MediaReport\n-- select * from raw_data\nMERGE INTO Raw_Umbraco_MediaReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET \n            a.url_asset = b.url_asset\n            , a.member_played = b.member_played\n            , a.member_key = b.member_key\n            , a.email = b.email\nWHEN NOT MATCHED THEN\n  INSERT (url_asset,content_id,member_played,date,timestamp,member_key,email)\n  VALUES (\n    b.url_asset\n    , b.content_id\n    , b.member_played\n    , b.date\n    , b.timestamp\n    , b.member_key\n    , b.email\n  );"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script4",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script2",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\n    SELECT \n        date\n        , sum(member_played) as member_played\n    FROM Raw_Umbraco_MediaReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n        ON a.channel = 'Website' \n        and a.sub_channel = 'Digital Changemakers Hub'\n        and a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.downloads_by_date = b.member_played\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,downloads_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.member_played\n        );"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_Umbraco_MediaReport"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Delete1",
+							"type": "Delete",
+							"dependsOn": [
+								{
+									"activity": "Script5",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "Umbraco_MediaLogReports_GetFiles",
+									"type": "DatasetReference"
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "logging",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "drop table if exists Temp_Raw_Umbraco_MediaReport"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Umbraco"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-10-23T11:09:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,295 @@
+{
+	"name": "Umbraco_LikesLogReport",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"description": "",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "des",
+						"value": "dsad"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Umbraco_LikesLogReports_GetFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "ExcelSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFolderPath": "likes",
+										"wildcardFileName": {
+											"value": "@item().name",
+											"type": "Expression"
+										},
+										"enablePartitionDiscovery": false
+									}
+								},
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
+									"disableMetricsCollection": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "Umbraco_LikesLogReports_GetFiles",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Umbraco_LikesLogReports_AzureSqlTable",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "Script2",
+							"description": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Copy data1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script4",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script2",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "with raw_data as (\n    SELECT \n        date\n        , sum(votes) as votes\n    FROM Raw_Umbraco_LikesReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n        ON a.channel = 'Website' \n        and a.sub_channel = 'Digital Changemakers Hub'\n        and a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.likes_consid_engage_by_date = b.votes\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,likes_consid_engage_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.votes\n        );"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_Umbraco_LikesReport"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Delete1",
+							"type": "Delete",
+							"dependsOn": [
+								{
+									"activity": "Script5",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "Umbraco_LikesLogReports_GetFiles",
+									"type": "DatasetReference"
+								},
+								"logStorageSettings": {
+									"linkedServiceName": {
+										"referenceName": "logging",
+										"type": "LinkedServiceReference"
+									}
+								},
+								"enableLogging": true,
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"enablePartitionDiscovery": false
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "drop table if exists Temp_Raw_Umbraco_LikesReport"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "Umbraco"
+		},
+		"annotations": [],
+		"lastPublishTime": "2023-10-23T11:09:52Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

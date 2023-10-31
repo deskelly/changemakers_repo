@@ -75,7 +75,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "GA_Engagement_Overview_DataFlow",
+									"referenceName": "GA_Snapshot_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {

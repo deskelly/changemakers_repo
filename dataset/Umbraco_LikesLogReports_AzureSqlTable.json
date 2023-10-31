@@ -1,0 +1,20 @@
+{
+	"name": "Umbraco_LikesLogReports_AzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase_Changemakers",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Umbraco"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Temp_Raw_Umbraco_LikesReport"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
