@@ -34,7 +34,7 @@
 				"          {Attained Certificate} as string,",
 				"          {Certificate Date} as string,",
 				"          Status as string,",
-				"          Progress as string,",
+				"          Progress as integer,",
 				"          {Job Title} as string,",
 				"          {Time Spent (min)} as string,",
 				"          {Date Enrolled} as string,",
