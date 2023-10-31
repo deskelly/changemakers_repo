@@ -1,0 +1,54 @@
+{
+	"name": "Umbraco_MediaLogReports_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Umbraco_LikesLogReports_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Umbraco"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Like_Content_Full_Details",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "likes",
+				"container": "umbraco"
+			},
+			"range": "",
+			"firstRowAsHeader": true
+		},
+		"schema": [
+			{
+				"name": "ContentId",
+				"type": "String"
+			},
+			{
+				"name": "ContentName",
+				"type": "String"
+			},
+			{
+				"name": "DateSubmitted",
+				"type": "String"
+			},
+			{
+				"name": "DownVotes",
+				"type": "String"
+			},
+			{
+				"name": "Votes",
+				"type": "String"
+			},
+			{
+				"name": "Name",
+				"type": "String"
+			},
+			{
+				"name": "Email",
+				"type": "String"
+			}
+		]
+	}
+}
