@@ -5,7 +5,14 @@
 			{
 				"name": "Script1",
 				"type": "Script",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -22,10 +29,43 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "select 'Des'"
+							"text": "update Changemakers_Combined_Overview\nset total_engagements = isnull(downloads_by_date, 0) + isnull(likes_consid_engage_by_date, 0) \nfrom Changemakers_Combined_Overview\nwhere sub_channel = 'Digital Changemakers Hub'\nand (downloads_by_date is not null or likes_consid_engage_by_date is not null)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Execute Pipeline1",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Umbraco_LikesLogReport",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute Pipeline2",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Umbraco_MediaLogReports",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
 				}
 			}
 		],
