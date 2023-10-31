@@ -29,7 +29,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Umbraco_LikesLogReports_GetFiles",
+						"referenceName": "Umbraco_MediaLogReports_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -79,7 +79,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "likes",
+										"wildcardFolderPath": "media",
 										"wildcardFileName": {
 											"value": "@item().name",
 											"type": "Expression"
@@ -106,13 +106,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Umbraco_LikesLogReports_GetFiles",
+									"referenceName": "Umbraco_MediaLogReports_GetFiles",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "Umbraco_LikesLogReports_AzureSqlTable",
+									"referenceName": "Umbraco_MediaLogReports_AzureSqlTable",
 									"type": "DatasetReference"
 								}
 							]
@@ -121,6 +121,8 @@
 							"name": "Script2",
 							"description": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );",
 							"type": "Script",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Copy data1",
@@ -154,6 +156,8 @@
 						{
 							"name": "Script4",
 							"type": "Script",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Script2",
@@ -187,6 +191,8 @@
 						{
 							"name": "Script5",
 							"type": "Script",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Script4",
@@ -220,6 +226,8 @@
 						{
 							"name": "Delete1",
 							"type": "Delete",
+							"state": "Inactive",
+							"onInactiveMarkAs": "Succeeded",
 							"dependsOn": [
 								{
 									"activity": "Script5",
@@ -278,7 +286,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Umbraco_LikesReport"
+							"text": "drop table if exists Temp_Raw_Umbraco_MediaReport"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
