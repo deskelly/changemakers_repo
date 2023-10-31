@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Umbraco_LikesLogReports_GetFiles",
+						"referenceName": "Absorb_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -27,17 +27,24 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          ContentId as string,",
-				"          ContentName as string,",
-				"          DateSubmitted as string,",
-				"          DownVotes as string,",
-				"          Votes as string,",
-				"          Name as string,",
-				"          Email as string",
+				"          {Last Name} as string,",
+				"          {First Name} as string,",
+				"          Department as string,",
+				"          {Date Completed} as string,",
+				"          {Attained Certificate} as string,",
+				"          {Certificate Date} as string,",
+				"          Status as string,",
+				"          Progress as string,",
+				"          {Job Title} as string,",
+				"          {Time Spent (min)} as string,",
+				"          {Date Enrolled} as string,",
+				"          {Last Logged In} as string,",
+				"          {Email Address} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
+				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true) ~> SourceProcessFiles",
 				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
