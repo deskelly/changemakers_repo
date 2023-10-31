@@ -11,8 +11,10 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "Media_Content_Full_Details",
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "MediaLogReport.xlsx",
 				"folderPath": "media",
 				"container": "umbraco"
 			},
