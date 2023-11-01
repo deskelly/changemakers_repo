@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Acast_GetFiles",
+						"referenceName": "ACastDownloads_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -27,8 +27,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Date as date 'yyyy-MM-dd',",
-				"          Downloads as integer",
+				"          Date as string,",
+				"          Downloads as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
