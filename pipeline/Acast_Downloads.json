@@ -98,8 +98,8 @@
 				}
 			},
 			{
-				"name": "Script1",
-				"type": "Script",
+				"name": "Delete1",
+				"type": "Delete",
 				"dependsOn": [
 					{
 						"activity": "Filter1",
@@ -116,18 +116,17 @@
 					"secureInput": false
 				},
 				"userProperties": [],
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase_Changemakers",
-					"type": "LinkedServiceReference"
-				},
 				"typeProperties": {
-					"scripts": [
-						{
-							"type": "Query",
-							"text": "select * from Raw_Absorb"
-						}
-					],
-					"scriptBlockExecutionTimeout": "02:00:00"
+					"dataset": {
+						"referenceName": "ACastDownloads_GetFiles",
+						"type": "DatasetReference"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
 				}
 			}
 		],
