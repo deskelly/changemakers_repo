@@ -1,0 +1,22 @@
+{
+	"name": "Acast_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Acast_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "acast"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
