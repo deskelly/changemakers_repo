@@ -27,8 +27,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Date as string,",
-				"          Listeners as string",
+				"          Date as date,",
+				"          Listeners as integer",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
