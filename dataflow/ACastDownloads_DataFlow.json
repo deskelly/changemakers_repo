@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastDownloads_GetFiles",
+						"referenceName": "Acast_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -30,11 +30,7 @@
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          Date as string,",
-				"          Downloads as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
