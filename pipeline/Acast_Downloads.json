@@ -45,14 +45,14 @@
 					{
 						"activity": "Filter1",
 						"dependencyConditions": [
-							"Succeeded"
+							"Completed"
 						]
 					}
 				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
+						"value": "@activity('Filter1').output",
 						"type": "Expression"
 					},
 					"isSequential": true,
