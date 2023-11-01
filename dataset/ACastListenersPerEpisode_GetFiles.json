@@ -13,7 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "5 Megatrends Curious Marketers Should Know.csv",
 				"container": "acast-listeners-per-episode"
 			},
 			"columnDelimiter": ";",
