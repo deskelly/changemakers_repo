@@ -72,7 +72,15 @@
 							"typeProperties": {
 								"dataflow": {
 									"referenceName": "ACastDownloads_DataFlow",
-									"type": "DataFlowReference"
+									"type": "DataFlowReference",
+									"datasetParameters": {
+										"SourceProcessFiles": {
+											"FileName": {
+												"value": "@item().name",
+												"type": "Expression"
+											}
+										}
+									}
 								},
 								"compute": {
 									"coreCount": 16,
