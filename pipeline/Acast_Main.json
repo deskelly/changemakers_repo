@@ -1,5 +1,5 @@
 {
-	"name": "test_pipeline4",
+	"name": "Acast_Main",
 	"properties": {
 		"activities": [
 			{
@@ -53,10 +53,33 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Filter2",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@contains(item().name, 'Listeners')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"folder": {
-			"name": "z_Old"
+			"name": "ACast"
 		},
 		"annotations": []
 	}
