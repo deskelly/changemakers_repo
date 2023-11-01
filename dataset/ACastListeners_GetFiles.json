@@ -13,7 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "listeners",
 				"container": "acast"
 			},
 			"columnDelimiter": ";",
@@ -28,7 +27,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Downloads",
+				"name": "Listeners",
 				"type": "String"
 			}
 		]
