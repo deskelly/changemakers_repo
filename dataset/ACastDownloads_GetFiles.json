@@ -5,11 +5,6 @@
 			"referenceName": "ACastDownloads_GetFiles",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"FileName": {
-				"type": "string"
-			}
-		},
 		"folder": {
 			"name": "ACast"
 		},
