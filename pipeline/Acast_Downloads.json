@@ -14,12 +14,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "des",
-						"value": "dsad"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ACastDownloads_GetFiles",
@@ -72,15 +67,7 @@
 							"typeProperties": {
 								"dataflow": {
 									"referenceName": "ACastDownloads_DataFlow",
-									"type": "DataFlowReference",
-									"datasetParameters": {
-										"SourceProcessFiles": {
-											"FileName": {
-												"value": "@item().name",
-												"type": "Expression"
-											}
-										}
-									}
+									"type": "DataFlowReference"
 								},
 								"compute": {
 									"coreCount": 16,
