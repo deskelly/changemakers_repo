@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastListenersPerEpisode_GetFiles",
+						"referenceName": "Acast_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -30,11 +30,7 @@
 				}
 			],
 			"scriptLines": [
-				"source(output(",
-				"          Date as string,",
-				"          Listeners as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
+				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true,",
