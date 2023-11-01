@@ -24,18 +24,17 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          Date as date 'yyyy-MM-dd',",
+				"          Downloads as integer",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
-				"SourceProcessFiles derive() ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
