@@ -17,6 +17,15 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Downloads",
+				"type": "String"
+			}
+		]
 	}
 }
