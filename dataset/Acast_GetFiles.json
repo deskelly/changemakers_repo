@@ -1,10 +1,6 @@
 {
 	"name": "Acast_GetFiles",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "Acast_GetFiles",
-			"type": "LinkedServiceReference"
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
