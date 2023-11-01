@@ -119,7 +119,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ACastDownloads_GetFiles",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"FileName": {
+								"value": "@activity('Filter1').output",
+								"type": "Expression"
+							}
+						}
 					},
 					"logStorageSettings": {
 						"linkedServiceName": {
