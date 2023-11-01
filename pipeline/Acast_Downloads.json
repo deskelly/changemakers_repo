@@ -124,7 +124,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "select 'des'"
+							"text": "select * from Raw_Absorb"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
