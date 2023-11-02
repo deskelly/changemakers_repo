@@ -42,7 +42,7 @@
 				"     upsertable:false,",
 				"     truncate:true,",
 				"     format: 'table',",
-				"     postSQLs:['delete from Changemakers_Combined_Overview where sub_channel = \\'Acast\\' and impression_by_date is null;','insert into Changemakers_Combined_Overview (channel, sub_channel, date, timestamp, month, week, downloads_by_date)\\n    select\\n\\n        \\'Podcast/Vodcast\\' as channel\\n        ,\\'Acast\\' as sub_channel\\n        , date \\n        , date as timestamp\\n        , cast(format(date, \\'yyyyMM\\') as int) as month\\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\\n        , downloads as downloads_by_date\\n    from Raw_ACastDownloads'],",
+				"     postSQLs:['delete from Changemakers_Combined_Overview where sub_channel = \\'Acast\\' and impression_by_date is null;','insert into Changemakers_Combined_Overview (channel, sub_channel, date, timestamp, month, week, downloads_by_date, total_engagements)\\n    select\\n\\n        \\'Podcast/Vodcast\\' as channel\\n        ,\\'Acast\\' as sub_channel\\n        , date \\n        , date as timestamp\\n        , cast(format(date, \\'yyyyMM\\') as int) as month\\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\\n        , downloads as downloads_by_date\\n        , downloads as total_engagements\\n    from Raw_ACastDownloads'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
