@@ -18,10 +18,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ACastDownloads_GetFiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": "None"
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
@@ -39,9 +36,14 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
@@ -75,73 +77,6 @@
 							}
 						}
 					]
-				}
-			},
-			{
-				"name": "Filter1",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "Get Metadata1",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@contains(activity('Get Metadata1').output.childItems, 'Downloads.csv')\n\n\n",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Delete1",
-				"type": "Delete",
-				"dependsOn": [
-					{
-						"activity": "Filter1",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "ACastDownloads_GetFiles",
-						"type": "DatasetReference",
-						"parameters": {
-							"FileName": {
-								"value": "@activity('Filter1').output",
-								"type": "Expression"
-							}
-						}
-					},
-					"logStorageSettings": {
-						"linkedServiceName": {
-							"referenceName": "logging",
-							"type": "LinkedServiceReference"
-						}
-					},
-					"enableLogging": true,
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					}
 				}
 			}
 		],
