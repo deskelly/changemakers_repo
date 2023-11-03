@@ -29,7 +29,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Linkedin_Followers",
+						"referenceName": "Linkedin_Organic_Followers",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
@@ -49,7 +49,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
-						"referenceName": "Linkedin_Visitors",
+						"referenceName": "Linkedin_Organic_Visitors",
 						"type": "PipelineReference"
 					},
 					"waitOnCompletion": true
