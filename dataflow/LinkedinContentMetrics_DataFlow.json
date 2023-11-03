@@ -12,7 +12,8 @@
 						"referenceName": "LinkedinContentMetrics_GetFiles",
 						"type": "DatasetReference"
 					},
-					"name": "SourceProcessFiles"
+					"name": "SourceProcessFiles",
+					"description": "Import data from LinkedinContentMetrics_GetFiles. Important file is not deleted here"
 				}
 			],
 			"sinks": [
@@ -50,8 +51,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true) ~> SourceProcessFiles",
+				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
 				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
