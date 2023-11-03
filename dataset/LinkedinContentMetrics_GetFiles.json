@@ -2,7 +2,7 @@
 	"name": "LinkedinContentMetrics_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "LinkedinContent_GetFiles",
+			"referenceName": "LinkedinContentMetrics_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
