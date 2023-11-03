@@ -69,6 +69,26 @@
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
+						"referenceName": "Linkedin_Organic_ContentAllPosts",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Execute Pipeline5",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline4",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
 						"referenceName": "Linkedin_Organic_ContentMetrics",
 						"type": "PipelineReference"
 					},
