@@ -13,7 +13,7 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles",
-					"description": "Import data from LinkedinContentMetrics_GetFiles. Important file IS deleted here"
+					"description": "Import data from LinkedinContentMetrics_GetFiles"
 				}
 			],
 			"sinks": [
