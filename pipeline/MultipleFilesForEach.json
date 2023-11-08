@@ -94,25 +94,11 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
+								"enableStaging": false
 							},
 							"inputs": [
 								{
 									"referenceName": "Get365FilesMarketingInsights",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "Acast_Downloads_All_Time_Data_CSV",
 									"type": "DatasetReference"
 								}
 							]

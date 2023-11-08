@@ -72,89 +72,66 @@
 							{
 								"source": {
 									"name": "recordDate",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "recordDate",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
 									"name": "recordWeek",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordWeek",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "recordMonth",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordMonth",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "recordYear",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordYear",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "typeData",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "String"
 								},
 								"sink": {
 									"name": "typeData",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "noTimes",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "noTimes",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						]
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "ChangeMakers_Staging",
-						"type": "DatasetReference"
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "changemakersuat",
@@ -239,89 +216,66 @@
 							{
 								"source": {
 									"name": "recordDate",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "DateTime"
 								},
 								"sink": {
 									"name": "recordDate",
-									"type": "DateTime",
-									"physicalType": "date"
+									"type": "DateTime"
 								}
 							},
 							{
 								"source": {
 									"name": "recordWeek",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordWeek",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "recordMonth",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordMonth",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "recordYear",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "recordYear",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
 									"name": "typeData",
-									"type": "String",
-									"physicalType": "nvarchar"
+									"type": "String"
 								},
 								"sink": {
 									"name": "typeData",
-									"type": "String",
-									"physicalType": "varchar"
+									"type": "String"
 								}
 							},
 							{
 								"source": {
 									"name": "noTimes",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								},
 								"sink": {
 									"name": "noTimes",
-									"type": "Int32",
-									"physicalType": "int"
+									"type": "Int32"
 								}
 							}
-						],
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
+						]
 					}
 				},
-				"inputs": [
-					{
-						"referenceName": "ChangeMakers_Staging",
-						"type": "DatasetReference"
-					}
-				],
 				"outputs": [
 					{
 						"referenceName": "changemakersuat",
@@ -349,10 +303,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "DeleteAcastListenersCSV",
-						"type": "DatasetReference"
-					},
 					"logStorageSettings": {
 						"linkedServiceName": {
 							"referenceName": "ChangemakerBlobStorage",
@@ -388,10 +338,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "DeleteAcastDownloadsCSV",
-						"type": "DatasetReference"
-					},
 					"logStorageSettings": {
 						"linkedServiceName": {
 							"referenceName": "ChangemakerBlobStorage",
