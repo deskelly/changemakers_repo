@@ -1,0 +1,2179 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF-JCDUK-PRD-Changemakers"
+		},
+		"pythonbatch_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'pythonbatch'"
+		},
+		"pythonbatch_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://batchchangemakers.uksouth.batch.azure.com"
+		},
+		"pythonbatch_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "poolcm"
+		},
+		"pythonbatch_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "batchchangemakers"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinFollowers_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_LinkedinFollowers"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinFollowers_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedinFollowers_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "New followers",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "followers",
+						"container": "linkedin"
+					},
+					"range": "",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Sponsored followers",
+						"type": "String"
+					},
+					{
+						"name": "Organic followers",
+						"type": "String"
+					},
+					{
+						"name": "Total followers",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinVisitors_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_LinkedinVisitors"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinVisitors_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedinVisitors_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Visitor metrics",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "visitors",
+						"container": "linkedin"
+					},
+					"range": "",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Overview page views (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Overview page views (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Overview page views (total)",
+						"type": "String"
+					},
+					{
+						"name": "Overview unique visitors (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Overview unique visitors (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Overview unique visitors (total)",
+						"type": "String"
+					},
+					{
+						"name": "Life page views (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Life page views (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Life page views (total)",
+						"type": "String"
+					},
+					{
+						"name": "Life unique visitors (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Life unique visitors (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Life unique visitors (total)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs page views (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs page views (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs page views (total)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs unique visitors (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs unique visitors (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Jobs unique visitors (total)",
+						"type": "String"
+					},
+					{
+						"name": "Total page views (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Total page views (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Total page views (total)",
+						"type": "String"
+					},
+					{
+						"name": "Total unique visitors (desktop)",
+						"type": "String"
+					},
+					{
+						"name": "Total unique visitors (mobile)",
+						"type": "String"
+					},
+					{
+						"name": "Total unique visitors (total)",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Twitter_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Twitter"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_Twitter"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Twitter_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Twitter_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Twitter"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "twitter"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Tweets published",
+						"type": "String"
+					},
+					{
+						"name": "impressions",
+						"type": "String"
+					},
+					{
+						"name": "engagements",
+						"type": "String"
+					},
+					{
+						"name": "engagement rate",
+						"type": "String"
+					},
+					{
+						"name": "retweets",
+						"type": "String"
+					},
+					{
+						"name": "replies",
+						"type": "String"
+					},
+					{
+						"name": "likes",
+						"type": "String"
+					},
+					{
+						"name": "user profile clicks",
+						"type": "String"
+					},
+					{
+						"name": "url clicks",
+						"type": "String"
+					},
+					{
+						"name": "hashtag clicks",
+						"type": "String"
+					},
+					{
+						"name": "detail expands",
+						"type": "String"
+					},
+					{
+						"name": "permalink clicks",
+						"type": "String"
+					},
+					{
+						"name": "app opens",
+						"type": "String"
+					},
+					{
+						"name": "app installs",
+						"type": "String"
+					},
+					{
+						"name": "follows",
+						"type": "String"
+					},
+					{
+						"name": "email tweet",
+						"type": "String"
+					},
+					{
+						"name": "dial phone",
+						"type": "String"
+					},
+					{
+						"name": "media views",
+						"type": "String"
+					},
+					{
+						"name": "media engagements",
+						"type": "String"
+					},
+					{
+						"name": "promoted impressions",
+						"type": "String"
+					},
+					{
+						"name": "promoted engagements",
+						"type": "String"
+					},
+					{
+						"name": "promoted engagement rate",
+						"type": "String"
+					},
+					{
+						"name": "promoted retweets",
+						"type": "String"
+					},
+					{
+						"name": "promoted replies",
+						"type": "String"
+					},
+					{
+						"name": "promoted likes",
+						"type": "String"
+					},
+					{
+						"name": "promoted user profile clicks",
+						"type": "String"
+					},
+					{
+						"name": "promoted url clicks",
+						"type": "String"
+					},
+					{
+						"name": "promoted hashtag clicks",
+						"type": "String"
+					},
+					{
+						"name": "promoted detail expands",
+						"type": "String"
+					},
+					{
+						"name": "promoted permalink clicks",
+						"type": "String"
+					},
+					{
+						"name": "promoted app opens",
+						"type": "String"
+					},
+					{
+						"name": "promoted app installs",
+						"type": "String"
+					},
+					{
+						"name": "promoted follows",
+						"type": "String"
+					},
+					{
+						"name": "promoted email tweet",
+						"type": "String"
+					},
+					{
+						"name": "promoted dial phone",
+						"type": "String"
+					},
+					{
+						"name": "promoted media views",
+						"type": "String"
+					},
+					{
+						"name": "promoted media engagements",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_LikesLogReports_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Umbraco"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_Umbraco_LikesReport"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_LikesLogReports_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Umbraco_LikesLogReports_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Umbraco"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Like_Content_Full_Details",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "likes",
+						"container": "umbraco"
+					},
+					"range": "",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "ContentId",
+						"type": "String"
+					},
+					{
+						"name": "ContentName",
+						"type": "String"
+					},
+					{
+						"name": "DateSubmitted",
+						"type": "String"
+					},
+					{
+						"name": "DownVotes",
+						"type": "String"
+					},
+					{
+						"name": "Votes",
+						"type": "String"
+					},
+					{
+						"name": "Name",
+						"type": "String"
+					},
+					{
+						"name": "Email",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_MediaLogReports_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Umbraco"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_Umbraco_MediaReport"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_MediaLogReports_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Umbraco_MediaLogReports_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Umbraco"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Media_Content_Full_Details",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "media",
+						"container": "umbraco"
+					},
+					"range": "",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Url Asset",
+						"type": "String"
+					},
+					{
+						"name": "Content Id",
+						"type": "String"
+					},
+					{
+						"name": "MemberPlayed",
+						"type": "String"
+					},
+					{
+						"name": "DateSubmitted",
+						"type": "String"
+					},
+					{
+						"name": "MemberKey",
+						"type": "String"
+					},
+					{
+						"name": "Email",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Vimeo_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Vimeo"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_Vimeo"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Vimeo_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Vimeo_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Vimeo"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "vimeo"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "plays",
+						"type": "String"
+					},
+					{
+						"name": "loads",
+						"type": "String"
+					},
+					{
+						"name": "downloads",
+						"type": "String"
+					},
+					{
+						"name": "finishes",
+						"type": "String"
+					},
+					{
+						"name": "likes",
+						"type": "String"
+					},
+					{
+						"name": "comments",
+						"type": "String"
+					},
+					{
+						"name": "uri",
+						"type": "String"
+					},
+					{
+						"name": "name",
+						"type": "String"
+					},
+					{
+						"name": "created_time",
+						"type": "String"
+					},
+					{
+						"name": "sizes",
+						"type": "String"
+					},
+					{
+						"name": "unique_viewers",
+						"type": "String"
+					},
+					{
+						"name": "mean_percent",
+						"type": "String"
+					},
+					{
+						"name": "sum_seconds",
+						"type": "String"
+					},
+					{
+						"name": "mean_seconds",
+						"type": "String"
+					},
+					{
+						"name": "unique_loads",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pythonbatch')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBatch",
+				"typeProperties": {
+					"batchUri": "[parameters('pythonbatch_properties_typeProperties_batchUri')]",
+					"poolName": "[parameters('pythonbatch_properties_typeProperties_poolName')]",
+					"accountName": "[parameters('pythonbatch_properties_typeProperties_accountName')]",
+					"linkedServiceName": {
+						"referenceName": "ChangemakerBlobStorage",
+						"type": "LinkedServiceReference"
+					},
+					"accessKey": {
+						"type": "SecureString",
+						"value": "[parameters('pythonbatch_accessKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Linkedin_Paid_Campaign')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Metadata1",
+						"description": "",
+						"type": "GetMetadata",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "LinkedinCampaign_GetFiles",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							},
+							"formatSettings": {
+								"type": "DelimitedTextReadSettings"
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Metadata1').output.childItems",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [
+										{
+											"activity": "Script1",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "DelimitedTextSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": false,
+												"wildcardFolderPath": "campaign",
+												"wildcardFileName": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"enablePartitionDiscovery": false
+											},
+											"formatSettings": {
+												"type": "DelimitedTextReadSettings",
+												"skipLineCount": 4
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false,
+											"tableOption": "autoCreate",
+											"disableMetricsCollection": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"mappings": [
+												{
+													"source": {
+														"name": "Start Date (in UTC)",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "date"
+													}
+												},
+												{
+													"source": {
+														"name": "Impressions",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "impressions"
+													}
+												},
+												{
+													"source": {
+														"name": "Reactions",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "reactions"
+													}
+												},
+												{
+													"source": {
+														"name": "Shares",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "shares"
+													}
+												},
+												{
+													"source": {
+														"name": "Comments",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "comments"
+													}
+												},
+												{
+													"source": {
+														"name": "Follows",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "follows"
+													}
+												},
+												{
+													"source": {
+														"name": "Clicks",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "clicks"
+													}
+												},
+												{
+													"source": {
+														"name": "Click Through Rate",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "click_through_rate"
+													}
+												},
+												{
+													"source": {
+														"name": "Video View Rate",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "video_view_rate"
+													}
+												},
+												{
+													"source": {
+														"name": "Video Views at 25%",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "video_views_25"
+													}
+												},
+												{
+													"source": {
+														"name": "Video Completions",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "video_completions"
+													}
+												},
+												{
+													"source": {
+														"name": "Video Completion Rate",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "video_completion_rate"
+													}
+												},
+												{
+													"source": {
+														"name": "Total Spent",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "total_spend"
+													}
+												},
+												{
+													"source": {
+														"name": "Average CPM",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "average_cpm"
+													}
+												},
+												{
+													"source": {
+														"name": "Average CPC",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "average_cpc"
+													}
+												}
+											],
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "LinkedinCampaign_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "LinkedinCampaign_AzureSqlTable",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "Script1",
+									"type": "Script",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "drop table if exists Temp_Raw_LinkedinCampaign"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Delete1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Script5",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "LinkedinCampaign_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "logging",
+												"type": "LinkedServiceReference"
+											}
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"wildcardFileName": {
+												"value": "@{item().name}",
+												"type": "Expression"
+											},
+											"enablePartitionDiscovery": false
+										}
+									}
+								},
+								{
+									"name": "Script2",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "delete from Raw_LinkedinCampaign\nwhere date in (select distinct cast(date as date) from Temp_Raw_LinkedinCampaign)"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script3",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script2",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "insert into Raw_LinkedinCampaign \n    select \n        cast(date as date) as date\n        , cast(impressions as int) as impressions\n        , cast(reactions as int) as reactions\n        , cast(shares as int) as shares\n        , cast(comments as int) as comments\n        , cast(follows as int) as follows\n        , cast(clicks as int) as clicks\n        , cast(replace(click_through_rate, '%','') as decimal(38,8)) as click_through_rate\n        , isnull(cast(replace(video_view_rate,'%','') as decimal(38,8)),0) as video_view_rate\n        , isnull(cast(video_views_25 as int),0) as video_views_25\n        , isnull(cast(video_completions as int),0) as video_completions\n        , isnull(cast(replace(video_completion_rate,'%','') as decimal(38,8)),0) as video_completion_rate\n        , cast(total_spend as decimal(38,8)) as total_spend\n        , cast(average_cpm as decimal(38,8)) as average_cpm\n        , cast(average_cpc as decimal(38,8)) as average_cpc\n    from Temp_Raw_LinkedinCampaign"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script4",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script3",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "delete from Changemakers_Combined_Overview where sub_channel= 'Linkedin Paid'"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script5",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script4",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "insert into Changemakers_Combined_Overview (channel,sub_channel , date, timestamp,month,week, impression_by_date, users_by_date,event_occurence_by_date,likes_consid_engage_by_date,shares_by_date,comments_by_date,follows_by_date,total_engagements,conversion_total_clicks,click_through_rate,conversion_listened_watched,listened_watched_full_podcast_episode,video_view_rate,video_completion_rate,activity_cost,cost_per_impression_cpm,cost_per_click_cpc)\n    SELECT \n        'Social Media' as 'channel'\n        ,'Linkedin Paid' as 'sub_channel'\n        , date \n        , date as timestamp\n        , cast(format(date, 'yyyyMM') as int) as month\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\n        , impressions as impression_by_date\n        , impressions as users_by_date\n        , date as event_occurence_by_date\n        , reactions as likes_consid_engage_by_date\n        , shares as shares_by_date\n        , comments as comments_by_date\n        , follows as follows_by_date\n        , (reactions + shares + comments + clicks) as total_engagements\n        , clicks as conversion_total_clicks\n        , click_through_rate as click_through_rate\n        , video_views_25 as conversion_listened_watched\n        , video_completions as listened_watched_full_podcast_episode\n        , video_view_rate\n        , video_completion_rate\n        , total_spend as activity_cost\n        , average_cpm as cost_per_impression_cpm\n        , average_cpc as cost_per_click_cpc\n    FROM Raw_LinkedinCampaign"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								}
+							]
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-10-23T11:09:52Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_LikesLogReport')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Metadata1",
+						"description": "",
+						"type": "GetMetadata",
+						"dependsOn": [
+							{
+								"activity": "Script1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "des",
+								"value": "dsad"
+							}
+						],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "Umbraco_LikesLogReports_GetFiles",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Metadata1').output.childItems",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ExcelSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"wildcardFolderPath": "likes",
+												"wildcardFileName": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"enablePartitionDiscovery": false
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false,
+											"tableOption": "autoCreate",
+											"disableMetricsCollection": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "Umbraco_LikesLogReports_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "Umbraco_LikesLogReports_AzureSqlTable",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "Script2",
+									"description": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "with raw_data as (\nSELECT \n    cast(ContentId as int) as content_id\n    , ContentName as content_name\n    , cast(cast(DateSubmitted -2e as datetime) as date) as date\n    , cast(DateSubmitted -2e as datetime) as timestamp\n    , cast(Votes as int) as votes\n    , Name as name\n    , Email as email\n  FROM Temp_Raw_Umbraco_LikesReport\n)\n\nMERGE INTO Raw_Umbraco_LikesReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET a.votes = b.votes\n            , a.content_name = b.content_name\n            , a.email = b.email\n\nWHEN NOT MATCHED THEN\n  INSERT (content_id, content_name,date,timestamp,votes,name,email)\n  VALUES (\n    b.content_id\n    , b.content_name\n    , b.date\n    , b.timestamp\n    , b.votes\n    , b.name\n    , b.email\n        );"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script4",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script2",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "with raw_data as (\n    SELECT \n        date\n        , sum(votes) as votes\n    FROM Raw_Umbraco_LikesReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n        ON a.channel = 'Website' \n        and a.sub_channel = 'Digital Changemakers Hub'\n        and a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.likes_consid_engage_by_date = b.votes\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,likes_consid_engage_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.votes\n        );"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script5",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script4",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "drop table if exists Temp_Raw_Umbraco_LikesReport"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Delete1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Script5",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "Umbraco_LikesLogReports_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "logging",
+												"type": "LinkedServiceReference"
+											}
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Script1",
+						"type": "Script",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase_Changemakers",
+							"type": "LinkedServiceReference"
+						},
+						"typeProperties": {
+							"scripts": [
+								{
+									"type": "Query",
+									"text": "drop table if exists Temp_Raw_Umbraco_LikesReport"
+								}
+							],
+							"scriptBlockExecutionTimeout": "02:00:00"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Umbraco and GA Queries"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-10-23T11:09:52Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Umbraco_LikesLogReports_GetFiles')]",
+				"[concat(variables('factoryId'), '/datasets/Umbraco_LikesLogReports_AzureSqlTable')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Umbraco_MediaLogReports')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get Metadata1",
+						"description": "",
+						"type": "GetMetadata",
+						"dependsOn": [
+							{
+								"activity": "Script1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [
+							{
+								"name": "des",
+								"value": "dsad"
+							}
+						],
+						"typeProperties": {
+							"dataset": {
+								"referenceName": "Umbraco_MediaLogReports_GetFiles",
+								"type": "DatasetReference",
+								"parameters": {}
+							},
+							"fieldList": [
+								"childItems"
+							],
+							"storeSettings": {
+								"type": "AzureBlobStorageReadSettings",
+								"recursive": true,
+								"enablePartitionDiscovery": false
+							}
+						}
+					},
+					{
+						"name": "ForEach1",
+						"type": "ForEach",
+						"dependsOn": [
+							{
+								"activity": "Get Metadata1",
+								"dependencyConditions": [
+									"Completed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"items": {
+								"value": "@activity('Get Metadata1').output.childItems",
+								"type": "Expression"
+							},
+							"isSequential": true,
+							"activities": [
+								{
+									"name": "Copy data1",
+									"type": "Copy",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"source": {
+											"type": "ExcelSource",
+											"storeSettings": {
+												"type": "AzureBlobStorageReadSettings",
+												"recursive": true,
+												"wildcardFolderPath": "media",
+												"wildcardFileName": {
+													"value": "@item().name",
+													"type": "Expression"
+												},
+												"enablePartitionDiscovery": false
+											}
+										},
+										"sink": {
+											"type": "AzureSqlSink",
+											"writeBehavior": "insert",
+											"sqlWriterUseTableLock": false,
+											"tableOption": "autoCreate",
+											"disableMetricsCollection": false
+										},
+										"enableStaging": false,
+										"translator": {
+											"type": "TabularTranslator",
+											"mappings": [
+												{
+													"source": {
+														"name": "Url Asset",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "url_asset",
+														"physicalType": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Content Id",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "content_id",
+														"physicalType": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "MemberPlayed",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "member_played",
+														"physicalType": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "DateSubmitted",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "date_submitted",
+														"physicalType": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "MemberKey",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "member_key",
+														"physicalType": "String"
+													}
+												},
+												{
+													"source": {
+														"name": "Email",
+														"type": "String",
+														"physicalType": "String"
+													},
+													"sink": {
+														"name": "email",
+														"physicalType": "String"
+													}
+												}
+											],
+											"typeConversion": true,
+											"typeConversionSettings": {
+												"allowDataTruncation": true,
+												"treatBooleanAsNumber": false
+											}
+										}
+									},
+									"inputs": [
+										{
+											"referenceName": "Umbraco_MediaLogReports_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									],
+									"outputs": [
+										{
+											"referenceName": "Umbraco_MediaLogReports_AzureSqlTable",
+											"type": "DatasetReference",
+											"parameters": {}
+										}
+									]
+								},
+								{
+									"name": "Script2",
+									"description": "",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Copy data1",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "with raw_data as (\nSELECT \n    url_asset\n    , cast(content_id as int) as content_id\n    , cast(member_played as int) as member_played\n    , cast(cast(date_submitted -2e as datetime) as date) as date\n    , cast(date_submitted -2e as datetime) as timestamp\n    , member_key\n    , email\n  FROM Temp_Raw_Umbraco_MediaReport\n)\n--insert into Raw_Umbraco_MediaReport\n-- select * from raw_data\nMERGE INTO Raw_Umbraco_MediaReport a\nUSING raw_data b\n    ON a.content_id = b.content_id\n    and a.timestamp = b.timestamp \nWHEN MATCHED THEN\n  UPDATE SET \n            a.url_asset = b.url_asset\n            , a.member_played = b.member_played\n            , a.member_key = b.member_key\n            , a.email = b.email\nWHEN NOT MATCHED THEN\n  INSERT (url_asset,content_id,member_played,date,timestamp,member_key,email)\n  VALUES (\n    b.url_asset\n    , b.content_id\n    , b.member_played\n    , b.date\n    , b.timestamp\n    , b.member_key\n    , b.email\n  );"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script4",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script2",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "with raw_data as (\n    SELECT \n        date\n        , sum(member_played) as member_played\n    FROM Raw_Umbraco_MediaReport\n    group by date\n)\n--select * from raw_data\nMERGE INTO Changemakers_Combined_Overview a\nUSING raw_data b\n        ON a.channel = 'Website' \n        and a.sub_channel = 'Digital Changemakers Hub'\n        and a.date = b.date\nWHEN MATCHED THEN\n  UPDATE SET a.downloads_by_date = b.member_played\n\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,downloads_by_date)\n  VALUES (\n        'Website'\n        , 'Digital Changemakers Hub'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.member_played\n        );"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Script5",
+									"type": "Script",
+									"dependsOn": [
+										{
+											"activity": "Script4",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"linkedServiceName": {
+										"referenceName": "AzureSqlDatabase_Changemakers",
+										"type": "LinkedServiceReference"
+									},
+									"typeProperties": {
+										"scripts": [
+											{
+												"type": "Query",
+												"text": "drop table if exists Temp_Raw_Umbraco_MediaReport"
+											}
+										],
+										"scriptBlockExecutionTimeout": "02:00:00"
+									}
+								},
+								{
+									"name": "Delete1",
+									"type": "Delete",
+									"dependsOn": [
+										{
+											"activity": "Script5",
+											"dependencyConditions": [
+												"Completed"
+											]
+										}
+									],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"dataset": {
+											"referenceName": "Umbraco_MediaLogReports_GetFiles",
+											"type": "DatasetReference",
+											"parameters": {}
+										},
+										"logStorageSettings": {
+											"linkedServiceName": {
+												"referenceName": "logging",
+												"type": "LinkedServiceReference"
+											}
+										},
+										"enableLogging": true,
+										"storeSettings": {
+											"type": "AzureBlobStorageReadSettings",
+											"recursive": true,
+											"enablePartitionDiscovery": false
+										}
+									}
+								}
+							]
+						}
+					},
+					{
+						"name": "Script1",
+						"type": "Script",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase_Changemakers",
+							"type": "LinkedServiceReference"
+						},
+						"typeProperties": {
+							"scripts": [
+								{
+									"type": "Query",
+									"text": "drop table if exists Temp_Raw_Umbraco_MediaReport"
+								}
+							],
+							"scriptBlockExecutionTimeout": "02:00:00"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {}
+				},
+				"folder": {
+					"name": "Umbraco and GA Queries"
+				},
+				"annotations": [],
+				"lastPublishTime": "2023-10-23T11:09:52Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/Umbraco_MediaLogReports_GetFiles')]",
+				"[concat(variables('factoryId'), '/datasets/Umbraco_MediaLogReports_AzureSqlTable')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastDownloads_DataFlow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "ACast"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ACastDownloads_GetFiles",
+								"type": "DatasetReference"
+							},
+							"name": "SourceProcessFiles"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ACastDownloads_AzureSqlTable",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          Date as string,",
+						"          Downloads as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: true,",
+						"     purgeFiles: true) ~> SourceProcessFiles",
+						"SourceProcessFiles sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     postSQLs:['with final_table as (\\n    select\\n        \\'Podcast/Vodcast\\' as channel\\n        ,\\'Acast\\' as sub_channel\\n        , date \\n        , date as timestamp\\n        , cast(format(date, \\'yyyyMM\\') as int) as month\\n        , cast(concat(left(date,4),  right(datepart(ww, date) + 100, 2)) as int) as week\\n        , downloads as downloads_by_date\\n        , downloads as total_engagements\\n    from Raw_ACastDownloads\\n)\\n-- select * from final_table   \\n\\nMERGE INTO Changemakers_Combined_Overview a\\nUSING final_table b\\n    ON a.channel = b.channel\\n    and a.sub_channel = b.sub_channel\\n    and a.date = b.date \\nWHEN MATCHED THEN\\n  UPDATE SET \\n        a.downloads_by_date  = b.downloads_by_date \\n        , a.total_engagements  = b.total_engagements \\nWHEN NOT MATCHED THEN\\n  INSERT (channel, sub_channel, date, timestamp, month, week, downloads_by_date, total_engagements)\\n  VALUES (\\n        b.channel\\n        ,b.sub_channel\\n        , b.date \\n        , b.timestamp\\n        , b.month\\n        , b.week\\n        , b.downloads_by_date\\n        , b.total_engagements\\n        );'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          date = Date,",
+						"          downloads = Downloads",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListenersPerEpisode')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "ACast"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ACastListenersPerEpisode_GetFiles",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ACastListenersPerEpisode_AzureSqlTable",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          Date as date,",
+						"          Listeners as integer",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: true,",
+						"     purgeFiles: true,",
+						"     rowUrlColumn: 'episode_name') ~> source1",
+						"source1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          date = Date,",
+						"          listeners = Listeners,",
+						"          episode_name",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListeners_DataFlow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "ACast"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "ACastListeners_GetFiles",
+								"type": "DatasetReference"
+							},
+							"name": "SourceProcessFiles"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "ACastListeners_AzureSqlTable",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "derivedColumn1"
+						}
+					],
+					"scriptLines": [
+						"source(output(",
+						"          Date as string,",
+						"          Listeners as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: false) ~> SourceProcessFiles",
+						"SourceProcessFiles derive(Date = toDate(Date, 'yyyy-MM-dd'),",
+						"          Listeners = toInteger(Listeners)) ~> derivedColumn1",
+						"derivedColumn1 sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     truncate:true,",
+						"     format: 'table',",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          date = Date,",
+						"          listeners = Listeners",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Absorb_DataFlow')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "Absorb"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "Absorb_GetFiles",
+								"type": "DatasetReference"
+							},
+							"name": "SourceProcessFiles"
+						}
+					],
+					"sinks": [
+						{
+							"dataset": {
+								"referenceName": "Absorb_AzureSqlTable",
+								"type": "DatasetReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"scriptLines": [
+						"source(output(",
+						"          {Last Name} as string,",
+						"          {First Name} as string,",
+						"          Department as string,",
+						"          {Date Completed} as string,",
+						"          {Attained Certificate} as string,",
+						"          {Certificate Date} as string,",
+						"          Status as string,",
+						"          Progress as string,",
+						"          {Job Title} as string,",
+						"          {Time Spent (min)} as string,",
+						"          {Date Enrolled} as string,",
+						"          {Last Logged In} as string,",
+						"          {Email Address} as string",
+						"     ),",
+						"     allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     ignoreNoFilesFound: true,",
+						"     purgeFiles: true) ~> SourceProcessFiles",
+						"SourceProcessFiles sink(allowSchemaDrift: true,",
+						"     validateSchema: false,",
+						"     deletable:false,",
+						"     insertable:true,",
+						"     updateable:false,",
+						"     upsertable:false,",
+						"     recreate:true,",
+						"     format: 'table',",
+						"     postSQLs:['truncate table Raw_Absorb','insert into Raw_Absorb\\n    select \\n        last_name\\n        , first_name\\n        , department\\n        , try_convert(datetime, date_completed, 103) as date_completed\\n        , attained_certificate\\n        , certificate_date\\n        , status\\n        , cast(progress as decimal(10,4)) as progress\\n        , job_title\\n        , cast(time_spent_min as int) as time_spent_min\\n        , try_convert(date, date_enrolled, 103) as date_enrolled\\n        , try_convert(datetime, last_logged_in, 103) as last_logged_in\\n        , email_address\\nfrom Temp_Raw_Absorb','delete from Changemakers_Combined_Overview where sub_channel = \\'Absorb\\'','with run_tot as (\\n    select\\n        job_title\\n        , time_spent_min\\n        , date_enrolled\\n    from Raw_Absorb\\n)\\ninsert into Changemakers_Combined_Overview (channel,sub_channel,date,timestamp,month,week, impression_by_date, users_by_date, day_week, marketer_job_titles_by_date,time_spent_on_site_page_podcast_vodcast)\\n    select\\n        \\'eLearning\\' as \\'channel\\'\\n        ,\\'Absorb\\' as \\'sub_channel\\'\\n        , date_enrolled \\n        , date_enrolled as timestamp\\n        , cast(format(date_enrolled, \\'yyyyMM\\') as int) as month\\n        , cast(concat(left(date_enrolled,4),  right(datepart(ww, date_enrolled) + 100, 2)) as int) as week\\n        , 1 as impression_by_date\\n        , 1 as users_by_date\\n        , datepart(dw, date_enrolled) as day_week\\n        , job_title as marketer_job_titles_by_date\\n        , time_spent_min as time_spent_on_site_page_podcast_vodcast\\n    from run_tot\\n    order by date_enrolled','drop table if exists Temp_Raw_Absorb'],",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true,",
+						"     errorHandlingOption: 'stopOnFirstError',",
+						"     mapColumn(",
+						"          last_name = {Last Name},",
+						"          first_name = {First Name},",
+						"          department = Department,",
+						"          date_completed = {Date Completed},",
+						"          attained_certificate = {Attained Certificate},",
+						"          certificate_date = {Certificate Date},",
+						"          status = Status,",
+						"          progress = Progress,",
+						"          job_title = {Job Title},",
+						"          time_spent_min = {Time Spent (min)},",
+						"          date_enrolled = {Date Enrolled},",
+						"          last_logged_in = {Last Logged In},",
+						"          email_address = {Email Address}",
+						"     )) ~> sink1"
+					]
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
