@@ -1,0 +1,32 @@
+{
+	"name": "GoogleAnalytics_Main Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "GoogleAnalytics_Main",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-11-08T11:20:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						20
+					],
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
