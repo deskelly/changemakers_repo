@@ -1,0 +1,32 @@
+{
+	"name": "Vimeo Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Vimeo",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-11-08T11:23:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						40
+					],
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
