@@ -11,6 +11,7 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
+			"sheetName": "All posts",
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": "content_allposts",
