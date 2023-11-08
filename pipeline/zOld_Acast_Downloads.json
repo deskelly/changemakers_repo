@@ -1,5 +1,5 @@
 {
-	"name": "Linkedin_Visitors",
+	"name": "zOld_Acast_Downloads",
 	"properties": {
 		"activities": [
 			{
@@ -14,15 +14,10 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "des",
-						"value": "dsad"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "LinkedinVisitors_GetFiles",
+						"referenceName": "ACastDownloads_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -32,6 +27,9 @@
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
 						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
 					}
 				}
 			},
@@ -49,7 +47,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.childItems",
+						"value": "@activity('Filter1').output",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -68,7 +66,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "LinkedinVisitors_DataFlow",
+									"referenceName": "ACastDownloads_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -83,7 +81,7 @@
 			}
 		],
 		"folder": {
-			"name": "Linkedin"
+			"name": "ACast/Old"
 		},
 		"annotations": [],
 		"lastPublishTime": "2023-10-23T11:09:52Z"

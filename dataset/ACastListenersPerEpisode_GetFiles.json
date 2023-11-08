@@ -13,8 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "episode",
-				"container": "acast"
+				"container": "acast-listeners-per-episode"
 			},
 			"columnDelimiter": ";",
 			"escapeChar": "\\",

@@ -11,10 +11,9 @@
 		"annotations": [],
 		"type": "Excel",
 		"typeProperties": {
-			"sheetName": "All posts",
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "content",
+				"folderPath": "content_allposts",
 				"container": "linkedin"
 			},
 			"range": "A2:T10000",

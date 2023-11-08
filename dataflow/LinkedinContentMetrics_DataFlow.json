@@ -12,7 +12,8 @@
 						"referenceName": "LinkedinContentMetrics_GetFiles",
 						"type": "DatasetReference"
 					},
-					"name": "SourceProcessFiles"
+					"name": "SourceProcessFiles",
+					"description": "Import data from LinkedinContentMetrics_GetFiles"
 				}
 			],
 			"sinks": [

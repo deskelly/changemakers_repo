@@ -1,12 +1,8 @@
 {
-	"name": "ACastListeners_GetFiles",
+	"name": "Test_DelimitedText1",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "ACastListeners_GetFiles",
-			"type": "LinkedServiceReference"
-		},
 		"folder": {
-			"name": "ACast"
+			"name": "z_Old"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
@@ -15,19 +11,14 @@
 				"type": "AzureBlobStorageLocation",
 				"container": "acast"
 			},
-			"columnDelimiter": ";",
-			"rowDelimiter": "\n",
+			"columnDelimiter": ",",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
-				"name": "Date",
-				"type": "String"
-			},
-			{
-				"name": "Listeners",
+				"name": "\"Date\";\"Downloads\"",
 				"type": "String"
 			}
 		]

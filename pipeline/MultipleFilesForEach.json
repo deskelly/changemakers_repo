@@ -24,6 +24,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"modifiedDatetimeStart": {
 							"value": "@addDays(utcNow(), -1)\r\n",
 							"type": "Expression"
@@ -121,7 +122,7 @@
 			}
 		],
 		"folder": {
-			"name": "Test"
+			"name": "z_Old/Test"
 		},
 		"annotations": []
 	}
