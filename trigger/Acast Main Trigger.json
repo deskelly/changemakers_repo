@@ -1,0 +1,32 @@
+{
+	"name": "Acast Main Trigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Acast_Main",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-11-08T11:18:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						10
+					],
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
