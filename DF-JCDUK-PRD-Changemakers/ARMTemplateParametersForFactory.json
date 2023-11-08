@@ -1,0 +1,87 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DF-JCDUK-PRD-Changemakers"
+		},
+		"ACastDownloads_GetFiles_connectionString": {
+			"value": ""
+		},
+		"ACastListenersPerEpisode_GetFiles_connectionString": {
+			"value": ""
+		},
+		"ACastListeners_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Absorb_GetFiles_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_Changemakers_connectionString": {
+			"value": ""
+		},
+		"ChangeMakersMain_connectionString": {
+			"value": ""
+		},
+		"ChangemakerBlobStorage_connectionString": {
+			"value": ""
+		},
+		"GA_GetFiles_connectionString": {
+			"value": ""
+		},
+		"GA_Snapshot_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Get365FilesFromMarketingInsights_connectionString": {
+			"value": ""
+		},
+		"GoogleAnalytics_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinCampaign_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinContentAllPosts_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinContentMetrics_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinContent_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinFollowers_GetFiles_connectionString": {
+			"value": ""
+		},
+		"LinkedinVisitors_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Twitter_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Umbraco_LikesLogReports_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Umbraco_MediaLogReports_GetFiles_connectionString": {
+			"value": ""
+		},
+		"Vimeo_GetFiles_connectionString": {
+			"value": ""
+		},
+		"logging_connectionString": {
+			"value": ""
+		},
+		"pythonbatch_accessKey": {
+			"value": ""
+		},
+		"pythonbatch_properties_typeProperties_batchUri": {
+			"value": "https://batchchangemakers.uksouth.batch.azure.com"
+		},
+		"pythonbatch_properties_typeProperties_poolName": {
+			"value": "poolcm"
+		},
+		"pythonbatch_properties_typeProperties_accountName": {
+			"value": "batchchangemakers"
+		}
+	}
+}

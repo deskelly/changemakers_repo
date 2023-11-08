@@ -1,0 +1,304 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF-JCDUK-PRD-Changemakers"
+		},
+		"ACastDownloads_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ACastDownloads_GetFiles'"
+		},
+		"ACastListenersPerEpisode_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ACastListenersPerEpisode_GetFiles'"
+		},
+		"ACastListeners_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ACastListeners_GetFiles'"
+		},
+		"Absorb_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Absorb_GetFiles'"
+		},
+		"AzureSqlDatabase_Changemakers_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase_Changemakers'"
+		},
+		"ChangeMakersMain_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ChangeMakersMain'"
+		},
+		"ChangemakerBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ChangemakerBlobStorage'"
+		},
+		"GA_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'GA_GetFiles'"
+		},
+		"GA_Snapshot_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'GA_Snapshot_GetFiles'"
+		},
+		"Get365FilesFromMarketingInsights_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Get365FilesFromMarketingInsights'"
+		},
+		"GoogleAnalytics_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'GoogleAnalytics_GetFiles'"
+		},
+		"LinkedinCampaign_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinCampaign_GetFiles'"
+		},
+		"LinkedinContentAllPosts_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinContentAllPosts_GetFiles'"
+		},
+		"LinkedinContentMetrics_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinContentMetrics_GetFiles'"
+		},
+		"LinkedinContent_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinContent_GetFiles'"
+		},
+		"LinkedinFollowers_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinFollowers_GetFiles'"
+		},
+		"LinkedinVisitors_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LinkedinVisitors_GetFiles'"
+		},
+		"Twitter_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Twitter_GetFiles'"
+		},
+		"Umbraco_LikesLogReports_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Umbraco_LikesLogReports_GetFiles'"
+		},
+		"Umbraco_MediaLogReports_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Umbraco_MediaLogReports_GetFiles'"
+		},
+		"Vimeo_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Vimeo_GetFiles'"
+		},
+		"logging_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'logging'"
+		},
+		"pythonbatch_accessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessKey' of 'pythonbatch'"
+		},
+		"pythonbatch_properties_typeProperties_batchUri": {
+			"type": "string",
+			"defaultValue": "https://batchchangemakers.uksouth.batch.azure.com"
+		},
+		"pythonbatch_properties_typeProperties_poolName": {
+			"type": "string",
+			"defaultValue": "poolcm"
+		},
+		"pythonbatch_properties_typeProperties_accountName": {
+			"type": "string",
+			"defaultValue": "batchchangemakers"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DF-JCDUK-PRD-Changemakers_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ACastDownloads_GetFiles_connectionString": {
+						"value": "[parameters('ACastDownloads_GetFiles_connectionString')]"
+					},
+					"ACastListenersPerEpisode_GetFiles_connectionString": {
+						"value": "[parameters('ACastListenersPerEpisode_GetFiles_connectionString')]"
+					},
+					"ACastListeners_GetFiles_connectionString": {
+						"value": "[parameters('ACastListeners_GetFiles_connectionString')]"
+					},
+					"Absorb_GetFiles_connectionString": {
+						"value": "[parameters('Absorb_GetFiles_connectionString')]"
+					},
+					"AzureSqlDatabase_Changemakers_connectionString": {
+						"value": "[parameters('AzureSqlDatabase_Changemakers_connectionString')]"
+					},
+					"ChangeMakersMain_connectionString": {
+						"value": "[parameters('ChangeMakersMain_connectionString')]"
+					},
+					"ChangemakerBlobStorage_connectionString": {
+						"value": "[parameters('ChangemakerBlobStorage_connectionString')]"
+					},
+					"GA_GetFiles_connectionString": {
+						"value": "[parameters('GA_GetFiles_connectionString')]"
+					},
+					"GA_Snapshot_GetFiles_connectionString": {
+						"value": "[parameters('GA_Snapshot_GetFiles_connectionString')]"
+					},
+					"Get365FilesFromMarketingInsights_connectionString": {
+						"value": "[parameters('Get365FilesFromMarketingInsights_connectionString')]"
+					},
+					"GoogleAnalytics_GetFiles_connectionString": {
+						"value": "[parameters('GoogleAnalytics_GetFiles_connectionString')]"
+					},
+					"LinkedinCampaign_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinCampaign_GetFiles_connectionString')]"
+					},
+					"LinkedinContentAllPosts_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinContentAllPosts_GetFiles_connectionString')]"
+					},
+					"LinkedinContentMetrics_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinContentMetrics_GetFiles_connectionString')]"
+					},
+					"LinkedinContent_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinContent_GetFiles_connectionString')]"
+					},
+					"LinkedinFollowers_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinFollowers_GetFiles_connectionString')]"
+					},
+					"LinkedinVisitors_GetFiles_connectionString": {
+						"value": "[parameters('LinkedinVisitors_GetFiles_connectionString')]"
+					},
+					"Twitter_GetFiles_connectionString": {
+						"value": "[parameters('Twitter_GetFiles_connectionString')]"
+					},
+					"Umbraco_LikesLogReports_GetFiles_connectionString": {
+						"value": "[parameters('Umbraco_LikesLogReports_GetFiles_connectionString')]"
+					},
+					"Umbraco_MediaLogReports_GetFiles_connectionString": {
+						"value": "[parameters('Umbraco_MediaLogReports_GetFiles_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DF-JCDUK-PRD-Changemakers_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Vimeo_GetFiles_connectionString": {
+						"value": "[parameters('Vimeo_GetFiles_connectionString')]"
+					},
+					"logging_connectionString": {
+						"value": "[parameters('logging_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-JCDUK-PRD-Changemakers_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "DF-JCDUK-PRD-Changemakers_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"pythonbatch_accessKey": {
+						"value": "[parameters('pythonbatch_accessKey')]"
+					},
+					"pythonbatch_properties_typeProperties_batchUri": {
+						"value": "[parameters('pythonbatch_properties_typeProperties_batchUri')]"
+					},
+					"pythonbatch_properties_typeProperties_poolName": {
+						"value": "[parameters('pythonbatch_properties_typeProperties_poolName')]"
+					},
+					"pythonbatch_properties_typeProperties_accountName": {
+						"value": "[parameters('pythonbatch_properties_typeProperties_accountName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-JCDUK-PRD-Changemakers_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "DF-JCDUK-PRD-Changemakers_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-JCDUK-PRD-Changemakers_ArmTemplate_2')]"
+			]
+		},
+		{
+			"name": "DF-JCDUK-PRD-Changemakers_ArmTemplate_4",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF-JCDUK-PRD-Changemakers_ArmTemplate_3')]"
+			]
+		}
+	]
+}

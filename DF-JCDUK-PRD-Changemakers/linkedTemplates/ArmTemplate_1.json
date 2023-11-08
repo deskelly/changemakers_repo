@@ -1,0 +1,1115 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF-JCDUK-PRD-Changemakers"
+		},
+		"Vimeo_GetFiles_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'Vimeo_GetFiles'"
+		},
+		"logging_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'logging'"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Vimeo_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('Vimeo_GetFiles_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/logging')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobStorage",
+				"typeProperties": {
+					"connectionString": "[parameters('logging_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastDownloads_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Raw_ACastDownloads"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastDownloads_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ACastDownloads_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "Downloads.csv",
+						"container": "acast"
+					},
+					"columnDelimiter": ";",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Downloads",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListenersPerEpisode_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_ACastListenersPerEpisode"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListenersPerEpisode_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ACastListenersPerEpisode_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "acast-listeners-per-episode"
+					},
+					"columnDelimiter": ";",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Listeners",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListeners_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Raw_ACastListenersPerEpisode"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ACastListeners_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ACastListeners_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "ACast"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "acast"
+					},
+					"columnDelimiter": ";",
+					"rowDelimiter": "\n",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Listeners",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Absorb_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Absorb"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_Absorb"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Absorb_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Absorb_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Absorb"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Data",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "absorb"
+					},
+					"range": "",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Last Name",
+						"type": "String"
+					},
+					{
+						"name": "First Name",
+						"type": "String"
+					},
+					{
+						"name": "Department",
+						"type": "String"
+					},
+					{
+						"name": "Date Completed",
+						"type": "String"
+					},
+					{
+						"name": "Attained Certificate",
+						"type": "String"
+					},
+					{
+						"name": "Certificate Date",
+						"type": "String"
+					},
+					{
+						"name": "Status",
+						"type": "String"
+					},
+					{
+						"name": "Progress",
+						"type": "String"
+					},
+					{
+						"name": "Job Title",
+						"type": "String"
+					},
+					{
+						"name": "Time Spent (min)",
+						"type": "String"
+					},
+					{
+						"name": "Date Enrolled",
+						"type": "String"
+					},
+					{
+						"name": "Last Logged In",
+						"type": "String"
+					},
+					{
+						"name": "Email Address",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GA_Engagement_Overview_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "GoogleAnalytics"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_GA_Engagement_Overview"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GA_Engagement_Overview_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "GA_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "GoogleAnalytics"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "overview",
+						"container": "googleanalytics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GA_Snapshot_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "GoogleAnalytics"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_GA_Snapshot"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GA_Snapshot_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "GA_Snapshot_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "GoogleAnalytics"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "snapshot",
+						"container": "googleanalytics"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": false,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					},
+					{
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinCampaign_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_LinkedinCampaign"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinCampaign_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedinCampaign_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "campaign",
+						"container": "linkedin"
+					},
+					"columnDelimiter": "\t",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "Start Date (in UTC)",
+						"type": "String"
+					},
+					{
+						"name": "Account Name",
+						"type": "String"
+					},
+					{
+						"name": "Currency",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group ID",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group Name",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group Status",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group Start Date",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group End Date",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Group Total Budget",
+						"type": "String"
+					},
+					{
+						"name": "Campaign ID",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Name",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Objective",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Type",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Status",
+						"type": "String"
+					},
+					{
+						"name": "Cost Type",
+						"type": "String"
+					},
+					{
+						"name": "Total Budget",
+						"type": "String"
+					},
+					{
+						"name": "Campaign Start Date",
+						"type": "String"
+					},
+					{
+						"name": "Campaign End Date",
+						"type": "String"
+					},
+					{
+						"name": "Total Spent",
+						"type": "String"
+					},
+					{
+						"name": "Impressions",
+						"type": "String"
+					},
+					{
+						"name": "Clicks",
+						"type": "String"
+					},
+					{
+						"name": "Click Through Rate",
+						"type": "String"
+					},
+					{
+						"name": "Average CPM",
+						"type": "String"
+					},
+					{
+						"name": "Average CPC",
+						"type": "String"
+					},
+					{
+						"name": "Reactions",
+						"type": "String"
+					},
+					{
+						"name": "Comments",
+						"type": "String"
+					},
+					{
+						"name": "Shares",
+						"type": "String"
+					},
+					{
+						"name": "Follows",
+						"type": "String"
+					},
+					{
+						"name": "Other Clicks",
+						"type": "String"
+					},
+					{
+						"name": "Total Social Actions",
+						"type": "String"
+					},
+					{
+						"name": "Total Engagements",
+						"type": "String"
+					},
+					{
+						"name": "Engagement Rate",
+						"type": "String"
+					},
+					{
+						"name": "Viral Impressions",
+						"type": "String"
+					},
+					{
+						"name": "Viral Clicks",
+						"type": "String"
+					},
+					{
+						"name": "Viral Reactions",
+						"type": "String"
+					},
+					{
+						"name": "Viral Comments",
+						"type": "String"
+					},
+					{
+						"name": "Viral Shares",
+						"type": "String"
+					},
+					{
+						"name": "Viral Follows",
+						"type": "String"
+					},
+					{
+						"name": "Viral Other Clicks",
+						"type": "String"
+					},
+					{
+						"name": "Conversions",
+						"type": "String"
+					},
+					{
+						"name": "Post-Click Conversions",
+						"type": "String"
+					},
+					{
+						"name": "View-Through Conversions",
+						"type": "String"
+					},
+					{
+						"name": "Conversion Rate",
+						"type": "String"
+					},
+					{
+						"name": "Cost per Conversion",
+						"type": "String"
+					},
+					{
+						"name": "Total Conversion Value",
+						"type": "String"
+					},
+					{
+						"name": "Return on Ad Spend",
+						"type": "String"
+					},
+					{
+						"name": "Viral Conversions",
+						"type": "String"
+					},
+					{
+						"name": "Viral Post-Click Conversions",
+						"type": "String"
+					},
+					{
+						"name": "Viral View-Through Conversions",
+						"type": "String"
+					},
+					{
+						"name": "Leads",
+						"type": "String"
+					},
+					{
+						"name": "Lead Forms Opened",
+						"type": "String"
+					},
+					{
+						"name": "Lead Form Completion Rate",
+						"type": "String"
+					},
+					{
+						"name": "Cost per Lead",
+						"type": "String"
+					},
+					{
+						"name": "Video Plays",
+						"type": "String"
+					},
+					{
+						"name": "Video Views",
+						"type": "String"
+					},
+					{
+						"name": "Video View Rate",
+						"type": "String"
+					},
+					{
+						"name": "Video Views at 25%",
+						"type": "String"
+					},
+					{
+						"name": "Video Views at 50%",
+						"type": "String"
+					},
+					{
+						"name": "Video Views at 75%",
+						"type": "String"
+					},
+					{
+						"name": "Video Completions",
+						"type": "String"
+					},
+					{
+						"name": "Video Completion Rate",
+						"type": "String"
+					},
+					{
+						"name": "Full Screen Plays",
+						"type": "String"
+					},
+					{
+						"name": "eCPV",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Plays",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Views",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Views at 25%",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Views at 50%",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Views at 75%",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Completions",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Completion Rate",
+						"type": "String"
+					},
+					{
+						"name": "Viral Video Full Screen Plays",
+						"type": "String"
+					},
+					{
+						"name": "Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "Click Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "View Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "Viral Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "Viral Click Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "Viral View Event Registrations",
+						"type": "String"
+					},
+					{
+						"name": "Average Daily Spend",
+						"type": "String"
+					},
+					{
+						"name": "Clicks to Landing Page",
+						"type": "String"
+					},
+					{
+						"name": "Clicks to LinkedIn Page",
+						"type": "String"
+					},
+					{
+						"name": "Leads (Work Email)",
+						"type": "String"
+					},
+					{
+						"name": "Lead Form Completion Rate (Work Email)",
+						"type": "String"
+					},
+					{
+						"name": "Cost Per Lead (Work Email)",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinContentAllPosts_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_LinkedinContentAllPosts"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinContentAllPosts_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedinContentAllPosts_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "All posts",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "content_allposts",
+						"container": "linkedin"
+					},
+					"range": "A2:T10000",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Post title",
+						"type": "String"
+					},
+					{
+						"name": "Post link",
+						"type": "String"
+					},
+					{
+						"name": "Post type",
+						"type": "String"
+					},
+					{
+						"name": "Campaign name",
+						"type": "String"
+					},
+					{
+						"name": "Posted by",
+						"type": "String"
+					},
+					{
+						"name": "Created date",
+						"type": "String"
+					},
+					{
+						"name": "Campaign start date",
+						"type": "String"
+					},
+					{
+						"name": "Campaign end date",
+						"type": "String"
+					},
+					{
+						"name": "Audience",
+						"type": "String"
+					},
+					{
+						"name": "Impressions",
+						"type": "String"
+					},
+					{
+						"name": "Views (Excluding offsite video views)",
+						"type": "String"
+					},
+					{
+						"name": "Offsite Views",
+						"type": "String"
+					},
+					{
+						"name": "Clicks",
+						"type": "String"
+					},
+					{
+						"name": "Click through rate (CTR)",
+						"type": "String"
+					},
+					{
+						"name": "Likes",
+						"type": "String"
+					},
+					{
+						"name": "Comments",
+						"type": "String"
+					},
+					{
+						"name": "Reposts",
+						"type": "String"
+					},
+					{
+						"name": "Follows",
+						"type": "String"
+					},
+					{
+						"name": "Engagement rate",
+						"type": "String"
+					},
+					{
+						"name": "Content Type",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinContentMetrics_AzureSqlTable')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "Temp_Raw_LinkedinContent"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LinkedinContentMetrics_GetFiles')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LinkedinContentMetrics_GetFiles",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Linkedin"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Metrics",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "content_metrics",
+						"container": "linkedin"
+					},
+					"range": "A2:T10000",
+					"firstRowAsHeader": true
+				},
+				"schema": [
+					{
+						"name": "Date",
+						"type": "String"
+					},
+					{
+						"name": "Impressions (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Impressions (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Impressions (total)",
+						"type": "String"
+					},
+					{
+						"name": "Unique impressions (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Clicks (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Clicks (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Clicks (total)",
+						"type": "String"
+					},
+					{
+						"name": "Reactions (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Reactions (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Reactions (total)",
+						"type": "String"
+					},
+					{
+						"name": "Comments (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Comments (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Comments (total)",
+						"type": "String"
+					},
+					{
+						"name": "Reposts (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Reposts (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Reposts (total)",
+						"type": "String"
+					},
+					{
+						"name": "Engagement rate (organic)",
+						"type": "String"
+					},
+					{
+						"name": "Engagement rate (sponsored)",
+						"type": "String"
+					},
+					{
+						"name": "Engagement rate (total)",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		}
+	]
+}
