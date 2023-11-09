@@ -22,7 +22,7 @@
 				],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "GA_Snapshot_GetFiles",
+						"referenceName": "GA_PageViews_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
