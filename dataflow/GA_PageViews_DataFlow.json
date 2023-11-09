@@ -10,7 +10,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "GA_Snapshot_GetFiles",
+						"referenceName": "GA_PageViews_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
@@ -19,7 +19,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "GA_Snapshot_AzureSqlTable",
+						"referenceName": "GA_PageViews_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -46,7 +46,6 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(order_id = 1) ~> derivedColumn1",
 				"derivedColumn1 window(over(order_id),",
