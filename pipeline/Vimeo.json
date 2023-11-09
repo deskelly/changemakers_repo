@@ -90,6 +90,7 @@
 			},
 			{
 				"name": "Update Digital Changemakers Hub",
+				"description": "NB!!!!! This is data from Vimeo",
 				"type": "Script",
 				"dependsOn": [
 					{
