@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "snapshot",
+				"folderPath": "page_views",
 				"container": "googleanalytics"
 			},
 			"columnDelimiter": ",",
