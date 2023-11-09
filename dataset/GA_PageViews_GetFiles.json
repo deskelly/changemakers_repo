@@ -13,6 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "GA Page Views.csv",
 				"folderPath": "page_views",
 				"container": "googleanalytics"
 			},
