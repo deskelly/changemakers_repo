@@ -58,7 +58,7 @@
 				"     updateable:false,",
 				"     upsertable:false,",
 				"     format: 'table',",
-				"     preSQLs:['drop table if exists Temp_Raw_GA_PageViews','CREATE TABLE Temp_Raw_GA_PageViews(\\n     Column_1 varchar(128) null\\n     , Column_2 varchar(80) null\\n     , Column_3 varchar(80) null\\n     , Column_4 varchar(80) null\\n     , Column_5 varchar(80) null\\n     , Column_6 varchar(80) null\\n     , Column_7 varchar(80) null\\n)'],",
+				"     preSQLs:['drop table if exists Temp_Raw_GA_PageViews','CREATE TABLE Temp_Raw_GA_PageViews(\\n     Column_1 varchar(128) null\\n     , Column_2 varchar(80) null\\n     , Column_3 varchar(80) null\\n     , Column_4 varchar(80) null\\n     , Column_5 varchar(80) null\\n     , Column_6 varchar(80) null\\n     , Column_7 varchar(80) null\\n     , Column_8 varchar(80) null\\n)'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
