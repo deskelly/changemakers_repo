@@ -25,14 +25,7 @@
 					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				},
-				{
-					"name": "window1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Column_1 as string,",
@@ -46,12 +39,9 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
+				"     skipLines: 10,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
-				"SourceProcessFiles derive(order_id = 1) ~> derivedColumn1",
-				"derivedColumn1 window(over(order_id),",
-				"     asc(order_id, true),",
-				"     id = rowNumber()) ~> window1",
-				"window1 sink(allowSchemaDrift: true,",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
