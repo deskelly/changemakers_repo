@@ -2,7 +2,7 @@
 	"name": "GA_PageViews_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "GA_Snapshot_GetFiles",
+			"referenceName": "GA_PageViews_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
