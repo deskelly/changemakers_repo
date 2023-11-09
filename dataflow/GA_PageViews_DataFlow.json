@@ -48,7 +48,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     skipLines: 10,",
+				"     skipLines: 7,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(Column_1 = left(Column_1, 128)) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
