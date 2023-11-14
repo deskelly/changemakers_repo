@@ -27,7 +27,9 @@
 						"referenceName": "Dynamics365_GetEmailsClicked",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
@@ -74,7 +76,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "csv/EmailSent",
+										"wildcardFolderPath": "csv/EmailClicked",
 										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
@@ -138,13 +140,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Dynamics365_GetEmailsSent",
+									"referenceName": "Dynamics365_GetEmailsClicked",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "Dynamics365_EmailsSent_AzureSqlTable",
+									"referenceName": "Dynamics365_EmailsClicked_AzureSqlTable",
 									"type": "DatasetReference"
 								}
 							]
