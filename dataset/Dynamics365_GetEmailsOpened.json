@@ -2,7 +2,7 @@
 	"name": "Dynamics365_GetEmailsOpened",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Dynamics365_LS_GetEmailsSent",
+			"referenceName": "Dynamics365_LS_GetEmailsOpened",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "csv/EmailSent",
+				"folderPath": "csv/EmailOpened",
 				"container": "d365marketinginsights"
 			},
 			"columnDelimiter": ",",
@@ -22,14 +22,6 @@
 			"quoteChar": "\""
 		},
 		"schema": [
-			{
-				"name": "OrganizationId",
-				"type": "String"
-			},
-			{
-				"name": "SendingId",
-				"type": "String"
-			},
 			{
 				"name": "ContactId",
 				"type": "String"
@@ -43,6 +35,18 @@
 				"type": "String"
 			},
 			{
+				"name": "SendingId",
+				"type": "String"
+			},
+			{
+				"name": "EmailDomain",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddressUsed",
+				"type": "String"
+			},
+			{
 				"name": "CustomerJourneyId",
 				"type": "String"
 			},
@@ -51,19 +55,15 @@
 				"type": "String"
 			},
 			{
-				"name": "UsageType",
-				"type": "String"
-			},
-			{
 				"name": "InteractionType",
 				"type": "String"
 			},
 			{
-				"name": "EmailAddressUsed",
+				"name": "UsageType",
 				"type": "String"
 			},
 			{
-				"name": "EmailDomain",
+				"name": "OrganizationId",
 				"type": "String"
 			},
 			{
@@ -71,7 +71,55 @@
 				"type": "String"
 			},
 			{
+				"name": "VisitorId",
+				"type": "String"
+			},
+			{
+				"name": "SessionId",
+				"type": "String"
+			},
+			{
+				"name": "CountryIsoCode",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "PostalCode",
+				"type": "String"
+			},
+			{
+				"name": "BrowserId",
+				"type": "String"
+			},
+			{
+				"name": "BrowserVersion",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemId",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemVersion",
+				"type": "String"
+			},
+			{
 				"name": "ActivityId",
+				"type": "String"
+			},
+			{
+				"name": "VisitorAnonymousStatus",
+				"type": "String"
+			},
+			{
+				"name": "LeadId",
 				"type": "String"
 			},
 			{
