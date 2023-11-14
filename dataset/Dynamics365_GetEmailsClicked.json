@@ -2,7 +2,7 @@
 	"name": "Dynamics365_GetEmailsClicked",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Dynamics365_LS_GetEmailsSent",
+			"referenceName": "Dynamics365_LS_GetEmailsClicked",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
