@@ -2,7 +2,7 @@
 	"name": "Dynamics365_EmailsClicked_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+			"referenceName": "Dynamics365_LS_EmailsClicked_AzureSqlDatabase",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -74,7 +74,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Temp_Raw_Dynamics365_SentEmails"
+			"table": "Temp_Raw_Dynamics365_EmailsClicked"
 		}
 	}
 }
