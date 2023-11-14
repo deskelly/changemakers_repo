@@ -8,7 +8,7 @@
 				"type": "GetMetadata",
 				"dependsOn": [
 					{
-						"activity": "Script2",
+						"activity": "Script3",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -208,6 +208,39 @@
 						{
 							"type": "Query",
 							"text": "CREATE TABLE Temp_Raw_Dynamics365_SentEmails(\n\tusage_type varchar(80) NULL,\n\tinteraction_type varchar(80) NULL,\n\temail_address_used varchar(120) NULL,\n\ttime_stamp varchar(40) NULL,\n)"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script3",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "CREATE INDEX ts_202311141313 ON Temp_Raw_Dynamics365_SentEmails (time_stamp)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
