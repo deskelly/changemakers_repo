@@ -57,8 +57,8 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Copy data1",
-							"type": "Copy",
+							"name": "Data flow1",
+							"type": "ExecuteDataFlow",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -69,87 +69,16 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"source": {
-									"type": "DelimitedTextSource",
-									"storeSettings": {
-										"type": "AzureBlobStorageReadSettings",
-										"recursive": true,
-										"wildcardFolderPath": "csv/EmailClicked",
-										"wildcardFileName": "*",
-										"enablePartitionDiscovery": false
-									},
-									"formatSettings": {
-										"type": "DelimitedTextReadSettings"
-									}
+								"dataflow": {
+									"referenceName": "Dynamics365_GetEmailsClicked_DataFlow",
+									"type": "DataFlowReference"
 								},
-								"sink": {
-									"type": "AzureSqlSink",
-									"preCopyScript": "drop table if exists Temp_Raw_Dynamics365_EmailsClicked",
-									"writeBehavior": "insert",
-									"sqlWriterUseTableLock": false,
-									"tableOption": "autoCreate",
-									"disableMetricsCollection": false
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"mappings": [
-										{
-											"source": {
-												"name": "UsageType",
-												"type": "String"
-											},
-											"sink": {
-												"name": "usage_type"
-											}
-										},
-										{
-											"source": {
-												"name": "InteractionType",
-												"type": "String"
-											},
-											"sink": {
-												"name": "interaction_type"
-											}
-										},
-										{
-											"source": {
-												"name": "EmailAddressUsed",
-												"type": "String"
-											},
-											"sink": {
-												"name": "email_address_used"
-											}
-										},
-										{
-											"source": {
-												"name": "Timestamp",
-												"type": "String"
-											},
-											"sink": {
-												"name": "time_stamp"
-											}
-										}
-									],
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "Dynamics365_GetEmailsClicked",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "Dynamics365_EmailsClicked_AzureSqlTable",
-									"type": "DatasetReference"
-								}
-							]
+								"traceLevel": "Fine"
+							}
 						}
 					]
 				}

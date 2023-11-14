@@ -1,6 +1,9 @@
 {
 	"name": "Dynamics365_GetEmailsClicked_DataFlow",
 	"properties": {
+		"folder": {
+			"name": "Dynamics365"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
