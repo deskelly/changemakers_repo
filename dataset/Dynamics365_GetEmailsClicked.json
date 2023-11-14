@@ -13,7 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "csv/EmailSent",
+				"fileName": "0-ffffffffffffffff",
+				"folderPath": "csv/EmailClicked",
 				"container": "d365marketinginsights"
 			},
 			"columnDelimiter": ",",
@@ -23,11 +24,7 @@
 		},
 		"schema": [
 			{
-				"name": "OrganizationId",
-				"type": "String"
-			},
-			{
-				"name": "SendingId",
+				"name": "LinkId",
 				"type": "String"
 			},
 			{
@@ -39,7 +36,83 @@
 				"type": "String"
 			},
 			{
+				"name": "LinkFriendlyName",
+				"type": "String"
+			},
+			{
+				"name": "OriginalLink",
+				"type": "String"
+			},
+			{
+				"name": "OriginalUrl",
+				"type": "String"
+			},
+			{
 				"name": "MessageId",
+				"type": "String"
+			},
+			{
+				"name": "SendingId",
+				"type": "String"
+			},
+			{
+				"name": "EmailDomain",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddressUsed",
+				"type": "String"
+			},
+			{
+				"name": "InteractionType",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationId",
+				"type": "String"
+			},
+			{
+				"name": "Timestamp",
+				"type": "String"
+			},
+			{
+				"name": "VisitorId",
+				"type": "String"
+			},
+			{
+				"name": "SessionId",
+				"type": "String"
+			},
+			{
+				"name": "CountryIsoCode",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "PostalCode",
+				"type": "String"
+			},
+			{
+				"name": "BrowserId",
+				"type": "String"
+			},
+			{
+				"name": "BrowserVersion",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemId",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemVersion",
 				"type": "String"
 			},
 			{
@@ -55,23 +128,15 @@
 				"type": "String"
 			},
 			{
-				"name": "InteractionType",
-				"type": "String"
-			},
-			{
-				"name": "EmailAddressUsed",
-				"type": "String"
-			},
-			{
-				"name": "EmailDomain",
-				"type": "String"
-			},
-			{
-				"name": "Timestamp",
-				"type": "String"
-			},
-			{
 				"name": "ActivityId",
+				"type": "String"
+			},
+			{
+				"name": "VisitorAnonymousStatus",
+				"type": "String"
+			},
+			{
+				"name": "LeadId",
 				"type": "String"
 			},
 			{
