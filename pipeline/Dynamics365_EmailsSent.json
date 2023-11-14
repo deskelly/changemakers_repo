@@ -76,7 +76,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "csv",
+										"wildcardFolderPath": "csv/EmailSent",
 										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
