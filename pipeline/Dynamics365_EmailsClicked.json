@@ -27,9 +27,7 @@
 						"referenceName": "Dynamics365_GetEmailsClicked",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
@@ -86,8 +84,10 @@
 								},
 								"sink": {
 									"type": "AzureSqlSink",
+									"preCopyScript": "drop table if exists Temp_Raw_Dynamics365_EmailsClicked",
 									"writeBehavior": "insert",
 									"sqlWriterUseTableLock": false,
+									"tableOption": "autoCreate",
 									"disableMetricsCollection": false
 								},
 								"enableStaging": false,
@@ -157,6 +157,8 @@
 			{
 				"name": "Delete Temp table if exists",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -183,6 +185,8 @@
 			{
 				"name": "Create table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Delete Temp table if exists",
@@ -216,6 +220,8 @@
 			{
 				"name": "Create index",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Create table",
