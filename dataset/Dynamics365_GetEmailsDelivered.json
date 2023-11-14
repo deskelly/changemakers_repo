@@ -13,7 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "csv/EmailSent",
+				"fileName": "0-ffffffffffffffff",
+				"folderPath": "csv/EmailDelivered",
 				"container": "d365marketinginsights"
 			},
 			"columnDelimiter": ",",
@@ -59,7 +60,11 @@
 				"type": "String"
 			},
 			{
-				"name": "EmailAddressUsed",
+				"name": "Timestamp",
+				"type": "String"
+			},
+			{
+				"name": "ActivityId",
 				"type": "String"
 			},
 			{
@@ -67,11 +72,11 @@
 				"type": "String"
 			},
 			{
-				"name": "Timestamp",
+				"name": "EmailAddressUsed",
 				"type": "String"
 			},
 			{
-				"name": "ActivityId",
+				"name": "WasRemoteBounced",
 				"type": "String"
 			},
 			{
