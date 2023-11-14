@@ -37,44 +37,6 @@
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"name": "UsageType",
-									"type": "String"
-								},
-								"sink": {
-									"name": "usage_type"
-								}
-							},
-							{
-								"source": {
-									"name": "InteractionType",
-									"type": "String"
-								},
-								"sink": {
-									"name": "interaction_type"
-								}
-							},
-							{
-								"source": {
-									"name": "EmailAddressUsed",
-									"type": "String"
-								},
-								"sink": {
-									"name": "email_address_used"
-								}
-							},
-							{
-								"source": {
-									"name": "Timestamp",
-									"type": "String"
-								},
-								"sink": {
-									"name": "time_stamp"
-								}
-							}
-						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
