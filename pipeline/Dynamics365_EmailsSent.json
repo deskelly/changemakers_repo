@@ -95,12 +95,38 @@
 									"mappings": [
 										{
 											"source": {
-												"name": ""
+												"name": "UsageType",
+												"type": "String"
 											},
 											"sink": {
-												"name": "userName",
-												"type": "String",
-												"physicalType": "varchar"
+												"name": "usage_type"
+											}
+										},
+										{
+											"source": {
+												"name": "InteractionType",
+												"type": "String"
+											},
+											"sink": {
+												"name": "interaction_type"
+											}
+										},
+										{
+											"source": {
+												"name": "EmailAddressUsed",
+												"type": "String"
+											},
+											"sink": {
+												"name": "email_address_used"
+											}
+										},
+										{
+											"source": {
+												"name": "Timestamp",
+												"type": "String"
+											},
+											"sink": {
+												"name": "time_stamp"
 											}
 										}
 									],
