@@ -17,7 +17,7 @@
 				"folderPath": "csv/EmailClicked",
 				"container": "d365marketinginsights"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": "\t",
 			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": false,
@@ -25,96 +25,7 @@
 		},
 		"schema": [
 			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
-				"type": "String"
-			},
-			{
+				"name": "LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version",
 				"type": "String"
 			}
 		]
