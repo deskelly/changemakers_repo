@@ -5,6 +5,9 @@
 			"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Dynamics365"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [
