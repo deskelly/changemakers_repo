@@ -20,7 +20,9 @@
 						"referenceName": "Dynamics365_GetEmailsSent",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
@@ -50,8 +52,8 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Data flow1",
-							"type": "ExecuteDataFlow",
+							"name": "Copy data1",
+							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
 								"timeout": "0.12:00:00",
@@ -62,15 +64,7 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"dataflow": {
-									"referenceName": "ACastListenersPerEpisode",
-									"type": "DataFlowReference"
-								},
-								"compute": {
-									"coreCount": 16,
-									"computeType": "General"
-								},
-								"traceLevel": "Coarse"
+								"enableStaging": false
 							}
 						}
 					]
