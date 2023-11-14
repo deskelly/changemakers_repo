@@ -24,7 +24,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Dynamics365_GetEmailsSent",
+						"referenceName": "Dynamics365_GetEmailsDelivered",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -76,7 +76,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "csv/EmailSent",
+										"wildcardFolderPath": "csv/EmailDelivered",
 										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
@@ -140,13 +140,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Dynamics365_GetEmailsSent",
+									"referenceName": "Dynamics365_GetEmailsDelivered",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "Dynamics365_EmailsSent_AzureSqlTable",
+									"referenceName": "Dynamics365_EmailsDelivered_AzureSqlTable",
 									"type": "DatasetReference"
 								}
 							]
@@ -157,6 +157,8 @@
 			{
 				"name": "Delete Temp table if exists",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -183,6 +185,8 @@
 			{
 				"name": "Create table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Delete Temp table if exists",
@@ -216,6 +220,8 @@
 			{
 				"name": "Create index",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Create table",
@@ -249,6 +255,8 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -282,6 +290,8 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
