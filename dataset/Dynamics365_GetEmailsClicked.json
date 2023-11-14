@@ -1,0 +1,87 @@
+{
+	"name": "Dynamics365_GetEmailsClicked",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dynamics365_LS_GetEmailsSent",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csv/EmailSent",
+				"container": "d365marketinginsights"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "OrganizationId",
+				"type": "String"
+			},
+			{
+				"name": "SendingId",
+				"type": "String"
+			},
+			{
+				"name": "ContactId",
+				"type": "String"
+			},
+			{
+				"name": "AccountId",
+				"type": "String"
+			},
+			{
+				"name": "MessageId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyIterationId",
+				"type": "String"
+			},
+			{
+				"name": "UsageType",
+				"type": "String"
+			},
+			{
+				"name": "InteractionType",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddressUsed",
+				"type": "String"
+			},
+			{
+				"name": "EmailDomain",
+				"type": "String"
+			},
+			{
+				"name": "Timestamp",
+				"type": "String"
+			},
+			{
+				"name": "ActivityId",
+				"type": "String"
+			},
+			{
+				"name": "InternalMarketingInteractionId",
+				"type": "String"
+			},
+			{
+				"name": "Version",
+				"type": "String"
+			}
+		]
+	}
+}
