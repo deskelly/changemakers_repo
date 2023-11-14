@@ -1,0 +1,79 @@
+{
+	"name": "Dynamics365_Test",
+	"properties": {
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Dynamics365_GetEmailsClicked",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Dynamics365_EmailsClicked_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          {LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true) ~> source1",
+				"source1 derive(main_col = replace({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version},'\\\"\\\",\\\"\\\"','')) ~> derivedColumn1",
+				"derivedColumn1 derive(usage_type = split(substring(main_col, 2, length(main_col)-2), \",\")[26],",
+				"          interaction_type = split(substring(main_col, 2, length(main_col)-2), \",\")[11],",
+				"          email_address_used = split(substring(main_col, 2, length(main_col)-2), \",\")[10],",
+				"          time_stamp = split(substring(main_col, 2, length(main_col)-2), \",\")[13]) ~> derivedColumn2",
+				"derivedColumn2 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          date as string,",
+				"          impressions as string,",
+				"          reactions as string,",
+				"          shares as string,",
+				"          comments as string,",
+				"          follows as string,",
+				"          clicks as string,",
+				"          click_through_rate as string,",
+				"          video_view_rate as string,",
+				"          video_views_25 as string,",
+				"          video_completions as string,",
+				"          video_completion_rate as string,",
+				"          total_spend as string,",
+				"          average_cpm as string,",
+				"          average_cpc as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     recreate:true,",
+				"     format: 'table',",
+				"     preSQLs:['drop table if exists Temp_Raw_Dynamics365_EmailsClicked'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+			]
+		}
+	}
+}
