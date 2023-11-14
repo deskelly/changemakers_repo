@@ -2,7 +2,7 @@
 	"name": "Dynamics365_EmailsDelivered_AzureSqlTable",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+			"referenceName": "Dynamics365_LS_EmailsDelivered_AzureSqlDatabase",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
