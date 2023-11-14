@@ -23,6 +23,11 @@
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "main_col",
+				"type": "String"
+			}
+		]
 	}
 }
