@@ -5,6 +5,9 @@
 			"referenceName": "Dynamics365_LS_GetEmailsSent",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "Dynamics365"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
