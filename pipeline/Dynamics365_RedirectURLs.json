@@ -181,8 +181,6 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -207,7 +205,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "with grp_data as (\nselect \n    cast(time_stamp as date) as date\nfrom Temp_Raw_Dynamics365_EmailsClicked\n)\n, final_table as (\n    select\n        date\n        , count(1) as no_emails_clicked\n    from grp_data\n    where date >= '2022-10-01'\n    group by date\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    ON a.channel = 'Emails' \n    and a.sub_channel = 'Emails from Dynamics 365'\n    and a.date = b.date \nWHEN MATCHED THEN\n  UPDATE SET \n        a.conversion_total_clicks  = b.no_emails_clicked \nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,activity_implemented_by,conversion_total_clicks)\n  VALUES (\n        'Emails'\n        , 'Emails from Dynamics 365'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , 'Rishi Padda'\n        , b.no_emails_clicked\n        );"
+							"text": "with grp_data as (\nselect \n    cast(time_stamp as date) as date\n    , left(original_url, 128) as original_url\nfrom Temp_Raw_Dynamics365_RedirectURL\n)\n, final_table as (\n    select\n        date\n        , original_url\n        , count(1) as cnt\n    from grp_data\n    where date >= '2022-10-01'\n    group by date, original_url\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    ON a.channel = 'Social Media' \n    and a.sub_channel = 'Redirect URLs - Dynamics 365'\n    and a.date = b.date \nWHEN MATCHED THEN\n  UPDATE SET \n        a.impression_by_date = b.cnt\n        , a.users_by_date  = b.cnt\n        , a.activity_calendar_events = b.original_url\nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,impression_by_date,users_by_date,activity_calendar_events,activity_implemented_by)\n  VALUES (\n        'Social Media'\n        , 'Redirect URLs - Dynamics 365'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.cnt\n        , b.cnt\n        , b.original_url\n        , 'Rishi Padda'\n        );"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -216,8 +214,6 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
@@ -242,7 +238,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Dynamics365_EmailsClicked"
+							"text": "drop table if exists Temp_Raw_Dynamics365_RedirectURL"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
