@@ -17,7 +17,7 @@
 				"folderPath": "csv/EmailClicked",
 				"container": "d365marketinginsights"
 			},
-			"columnDelimiter": "|",
+			"columnDelimiter": "\u0001",
 			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
