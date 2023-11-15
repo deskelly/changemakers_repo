@@ -2,7 +2,7 @@
 	"name": "Dynamics365_GetRedirectURLs",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Dynamics365_LS_GetEmailsClicked",
+			"referenceName": "Dynamics365_LS_GetRedirectURLs",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -13,10 +13,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "csv/EmailClicked",
+				"fileName": "0-ffffffffffffffff",
+				"folderPath": "csv/RedirectLinkClicked",
 				"container": "d365marketinginsights"
 			},
-			"columnDelimiter": "\u0001",
+			"columnDelimiter": ",",
 			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
@@ -24,7 +25,127 @@
 		},
 		"schema": [
 			{
-				"name": "LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version",
+				"name": "LinkId",
+				"type": "String"
+			},
+			{
+				"name": "Link",
+				"type": "String"
+			},
+			{
+				"name": "OriginalUrl",
+				"type": "String"
+			},
+			{
+				"name": "ReferrerUri",
+				"type": "String"
+			},
+			{
+				"name": "MessageId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyIterationId",
+				"type": "String"
+			},
+			{
+				"name": "SendingId",
+				"type": "String"
+			},
+			{
+				"name": "InteractionType",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationId",
+				"type": "String"
+			},
+			{
+				"name": "Timestamp",
+				"type": "String"
+			},
+			{
+				"name": "VisitorId",
+				"type": "String"
+			},
+			{
+				"name": "SessionId",
+				"type": "String"
+			},
+			{
+				"name": "ContactId",
+				"type": "String"
+			},
+			{
+				"name": "AccountId",
+				"type": "String"
+			},
+			{
+				"name": "CountryIsoCode",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "PostalCode",
+				"type": "String"
+			},
+			{
+				"name": "BrowserId",
+				"type": "String"
+			},
+			{
+				"name": "BrowserVersion",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemId",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemVersion",
+				"type": "String"
+			},
+			{
+				"name": "SearchPhrase",
+				"type": "String"
+			},
+			{
+				"name": "SearchEngineName",
+				"type": "String"
+			},
+			{
+				"name": "VisitDuration",
+				"type": "String"
+			},
+			{
+				"name": "VisitorReturningStatus",
+				"type": "String"
+			},
+			{
+				"name": "VisitorAnonymousStatus",
+				"type": "String"
+			},
+			{
+				"name": "LeadId",
+				"type": "String"
+			},
+			{
+				"name": "InternalMarketingInteractionId",
+				"type": "String"
+			},
+			{
+				"name": "Version",
 				"type": "String"
 			}
 		]
