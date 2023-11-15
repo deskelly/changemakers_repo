@@ -24,12 +24,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Dynamics365_GetEmailsClicked",
+						"referenceName": "Dynamics365_GetRedirectURLs",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -73,7 +71,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Dynamics365_GetEmailsClicked_DataFlow",
+									"referenceName": "Dynamics365_GetRedirectURLs_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
@@ -89,6 +87,8 @@
 			{
 				"name": "Delete Temp table if exists",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -115,6 +115,8 @@
 			{
 				"name": "Create table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Delete Temp table if exists",
@@ -148,6 +150,8 @@
 			{
 				"name": "Create index",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Create table",
@@ -181,6 +185,8 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -214,6 +220,8 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
@@ -251,7 +259,7 @@
 			}
 		},
 		"folder": {
-			"name": "Dynamics365 Emails"
+			"name": "Dynamics365 RedirectURLs"
 		},
 		"annotations": [],
 		"lastPublishTime": "2023-10-23T11:09:52Z"
