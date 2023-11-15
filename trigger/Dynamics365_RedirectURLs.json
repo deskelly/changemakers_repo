@@ -1,0 +1,32 @@
+{
+	"name": "Dynamics365_RedirectURLs",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Dynamics365_RedirectURLs",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 3,
+				"startTime": "2023-11-15T12:59:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						45
+					],
+					"hours": [
+						6
+					]
+				}
+			}
+		}
+	}
+}
