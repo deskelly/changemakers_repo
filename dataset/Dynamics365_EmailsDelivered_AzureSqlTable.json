@@ -1,0 +1,80 @@
+{
+	"name": "Dynamics365_EmailsDelivered_AzureSqlTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dynamics365_LS_EmailsDelivered_AzureSqlDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "date",
+				"type": "nvarchar"
+			},
+			{
+				"name": "impressions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "reactions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "shares",
+				"type": "nvarchar"
+			},
+			{
+				"name": "comments",
+				"type": "nvarchar"
+			},
+			{
+				"name": "follows",
+				"type": "nvarchar"
+			},
+			{
+				"name": "clicks",
+				"type": "nvarchar"
+			},
+			{
+				"name": "click_through_rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "video_view_rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "video_views_25",
+				"type": "nvarchar"
+			},
+			{
+				"name": "video_completions",
+				"type": "nvarchar"
+			},
+			{
+				"name": "video_completion_rate",
+				"type": "nvarchar"
+			},
+			{
+				"name": "total_spend",
+				"type": "nvarchar"
+			},
+			{
+				"name": "average_cpm",
+				"type": "nvarchar"
+			},
+			{
+				"name": "average_cpc",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Temp_Raw_Dynamics365_EmailsDelievered"
+		}
+	}
+}

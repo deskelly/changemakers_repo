@@ -1,0 +1,135 @@
+{
+	"name": "Dynamics365_GetEmailsOpened",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dynamics365_LS_GetEmailsOpened",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csv/EmailOpened",
+				"container": "d365marketinginsights"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "ContactId",
+				"type": "String"
+			},
+			{
+				"name": "AccountId",
+				"type": "String"
+			},
+			{
+				"name": "MessageId",
+				"type": "String"
+			},
+			{
+				"name": "SendingId",
+				"type": "String"
+			},
+			{
+				"name": "EmailDomain",
+				"type": "String"
+			},
+			{
+				"name": "EmailAddressUsed",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyId",
+				"type": "String"
+			},
+			{
+				"name": "CustomerJourneyIterationId",
+				"type": "String"
+			},
+			{
+				"name": "InteractionType",
+				"type": "String"
+			},
+			{
+				"name": "UsageType",
+				"type": "String"
+			},
+			{
+				"name": "OrganizationId",
+				"type": "String"
+			},
+			{
+				"name": "Timestamp",
+				"type": "String"
+			},
+			{
+				"name": "VisitorId",
+				"type": "String"
+			},
+			{
+				"name": "SessionId",
+				"type": "String"
+			},
+			{
+				"name": "CountryIsoCode",
+				"type": "String"
+			},
+			{
+				"name": "State",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "PostalCode",
+				"type": "String"
+			},
+			{
+				"name": "BrowserId",
+				"type": "String"
+			},
+			{
+				"name": "BrowserVersion",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemId",
+				"type": "String"
+			},
+			{
+				"name": "OperatingSystemVersion",
+				"type": "String"
+			},
+			{
+				"name": "ActivityId",
+				"type": "String"
+			},
+			{
+				"name": "VisitorAnonymousStatus",
+				"type": "String"
+			},
+			{
+				"name": "LeadId",
+				"type": "String"
+			},
+			{
+				"name": "InternalMarketingInteractionId",
+				"type": "String"
+			},
+			{
+				"name": "Version",
+				"type": "String"
+			}
+		]
+	}
+}

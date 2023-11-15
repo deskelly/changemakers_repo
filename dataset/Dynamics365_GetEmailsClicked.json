@@ -1,0 +1,32 @@
+{
+	"name": "Dynamics365_GetEmailsClicked",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Dynamics365_LS_GetEmailsClicked",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "csv/EmailClicked",
+				"container": "d365marketinginsights"
+			},
+			"columnDelimiter": "\u0001",
+			"encodingName": "UTF-8",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version",
+				"type": "String"
+			}
+		]
+	}
+}

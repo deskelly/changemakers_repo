@@ -1,0 +1,79 @@
+{
+	"name": "GA_PageViews_DataFlow",
+	"properties": {
+		"description": "The derived column and window components have been added to calculated the unique row index i.e rowNumber()",
+		"folder": {
+			"name": "GoogleAnalytics"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GA_PageViews_GetFiles",
+						"type": "DatasetReference"
+					},
+					"name": "SourceProcessFiles"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "GA_PageViews_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1",
+					"rejectedDataLinkedService": {
+						"referenceName": "logging",
+						"type": "LinkedServiceReference"
+					}
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Column_1 as string,",
+				"          Column_2 as string,",
+				"          Column_3 as string,",
+				"          Column_4 as string,",
+				"          Column_5 as string,",
+				"          Column_6 as string,",
+				"          Column_7 as string,",
+				"          Column_8 as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: true,",
+				"     skipLines: 7,",
+				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
+				"SourceProcessFiles derive(Column_1 = left(Column_1, 128)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     preSQLs:['drop table if exists Temp_Raw_GA_PageViews','CREATE TABLE Temp_Raw_GA_PageViews(\\n     Column_1 varchar(128) null\\n     , Column_2 varchar(80) null\\n     , Column_3 varchar(80) null\\n     , Column_4 varchar(80) null\\n     , Column_5 varchar(80) null\\n     , Column_6 varchar(80) null\\n     , Column_7 varchar(80) null\\n     , Column_8 varchar(80) null\\n)'],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          Column_1,",
+				"          Column_2,",
+				"          Column_3,",
+				"          Column_4,",
+				"          Column_5,",
+				"          Column_6,",
+				"          Column_7,",
+				"          Column_8",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
