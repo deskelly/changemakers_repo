@@ -205,7 +205,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "with grp_data as (\nselect \n    cast(time_stamp as date) as date\nfrom Temp_Raw_Dynamics365_EmailsClicked\n)\n, final_table as (\n    select\n        date\n        , count(1) as no_emails_clicked\n    from grp_data\n    where date >= '2022-10-01'\n    group by date\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    ON a.channel = 'Emails' \n    and a.sub_channel = 'Emails from Dynamics 365'\n    and a.date = b.date \nWHEN MATCHED THEN\n  UPDATE SET \n        a.conversion_total_clicks  = b.no_emails_clicked \nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,conversion_total_clicks)\n  VALUES (\n        'Emails'\n        , 'Emails from Dynamics 365'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.no_emails_clicked\n        );"
+							"text": "with grp_data as (\nselect \n    cast(time_stamp as date) as date\nfrom Temp_Raw_Dynamics365_EmailsClicked\n)\n, final_table as (\n    select\n        date\n        , count(1) as no_emails_clicked\n    from grp_data\n    where date >= '2022-10-01'\n    group by date\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    ON a.channel = 'Emails' \n    and a.sub_channel = 'Emails from Dynamics 365'\n    and a.date = b.date \nWHEN MATCHED THEN\n  UPDATE SET \n        a.conversion_total_clicks  = b.no_emails_clicked \nWHEN NOT MATCHED THEN\n  INSERT (channel,sub_channel,date,timestamp,month,week,conversion_total_clicks)\n  VALUES (\n        'Emails'\n        , 'Emails from Dynamics 365'\n        , b.date \n        , b.date\n        , cast(format(b.date, 'yyyyMM') as int)\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\n        , b.no_emails_clicked\n        );\n"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -214,8 +214,6 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
