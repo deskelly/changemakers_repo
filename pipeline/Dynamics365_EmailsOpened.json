@@ -32,6 +32,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -167,14 +168,14 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+					"referenceName": "AzureSqlDatabase_Changemakers",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Dynamics365_SentEmails"
+							"text": "drop table if exists Temp_Raw_Dynamics365_EmailsOpened"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -200,14 +201,14 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+					"referenceName": "AzureSqlDatabase_Changemakers",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_SentEmails(\n\tusage_type varchar(80) NULL,\n\tinteraction_type varchar(80) NULL,\n\temail_address_used varchar(120) NULL,\n\ttime_stamp varchar(40) NULL,\n)"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_EmailsOpened(\n\tusage_type varchar(80) NULL,\n\tinteraction_type varchar(80) NULL,\n\temail_address_used varchar(120) NULL,\n\ttime_stamp varchar(40) NULL,\n)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -233,14 +234,14 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+					"referenceName": "AzureSqlDatabase_Changemakers",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE INDEX ts_202311141313 ON Temp_Raw_Dynamics365_SentEmails (time_stamp)"
+							"text": "CREATE INDEX ts_202311151015 ON Temp_Raw_Dynamics365_EmailsOpened(time_stamp)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -299,7 +300,7 @@
 				},
 				"userProperties": [],
 				"linkedServiceName": {
-					"referenceName": "Dynamics365_LS_EmailsSent_AzureSqlDatabase",
+					"referenceName": "AzureSqlDatabase_Changemakers",
 					"type": "LinkedServiceReference"
 				},
 				"typeProperties": {
