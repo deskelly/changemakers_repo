@@ -13,7 +13,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "0-ffffffffffffffff",
 				"folderPath": "csv/EmailOpened",
 				"container": "d365marketinginsights"
 			},
