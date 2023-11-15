@@ -29,10 +29,7 @@
 					"name": "derivedColumn1"
 				},
 				{
-					"name": "derivedColumn2"
-				},
-				{
-					"name": "select2"
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -42,20 +39,13 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(main_col = replace({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version},'\\\"\\\",\\\"\\\"','')) ~> derivedColumn1",
-				"derivedColumn1 derive(usage_type = split(substring(main_col, 2, length(main_col)-2), \",\")[26],",
-				"          interaction_type = split(substring(main_col, 2, length(main_col)-2), \",\")[11],",
-				"          email_address_used = split(substring(main_col, 2, length(main_col)-2), \",\")[10],",
-				"          time_stamp = split(substring(main_col, 2, length(main_col)-2), \",\")[13]) ~> derivedColumn2",
-				"derivedColumn2 select(mapColumn(",
-				"          usage_type,",
-				"          interaction_type,",
-				"          email_address_used,",
+				"source1 derive(time_stamp = substring({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, instr({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, '+00:00') -20, 10)) ~> derivedColumn1",
+				"derivedColumn1 select(mapColumn(",
 				"          time_stamp",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          date as string,",
