@@ -32,6 +32,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -138,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_EmailsClicked(\n\tusage_type varchar(80) NULL,\n\tinteraction_type varchar(80) NULL,\n\temail_address_used varchar(120) NULL,\n\ttime_stamp varchar(40) NULL,\n)"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_EmailsClicked(\n\ttime_stamp varchar(40) NULL\n)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
