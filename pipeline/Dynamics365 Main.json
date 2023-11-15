@@ -1,0 +1,84 @@
+{
+	"name": "Dynamics365 Main",
+	"properties": {
+		"activities": [
+			{
+				"name": "Emails Clicked",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_EmailsClicked",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Emails Delivered",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Emails Clicked",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_EmailsDelivered",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Emails Opened",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Emails Delivered",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_EmailsOpened",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "Emails Sent",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Emails Opened",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_EmailsSent",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "Dynamics365"
+		},
+		"annotations": []
+	}
+}
