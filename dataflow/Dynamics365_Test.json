@@ -16,17 +16,7 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				},
-				{
-					"name": "select1"
-				},
-				{
-					"name": "derivedColumn2"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          {LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version} as string",
@@ -34,14 +24,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
-				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(main_col = {LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}) ~> derivedColumn1",
-				"derivedColumn1 select(mapColumn(",
-				"          main_col",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 derive(time_stamp = substringIndex(main_col, '+00:00', 1)) ~> derivedColumn2"
+				"     ignoreNoFilesFound: true) ~> source1"
 			]
 		}
 	}
