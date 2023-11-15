@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Dynamics365_GetEmailsClicked",
+						"referenceName": "Dynamics365_GetRedirectURLs",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "Dynamics365_EmailsClicked_AzureSqlTable",
+						"referenceName": "Dynamics365_RedirectURLs_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -26,22 +26,49 @@
 			],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
-				},
-				{
 					"name": "select1"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          {LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version} as string",
+				"          LinkId as string,",
+				"          Link as string,",
+				"          OriginalUrl as string,",
+				"          ReferrerUri as string,",
+				"          MessageId as string,",
+				"          CustomerJourneyId as string,",
+				"          CustomerJourneyIterationId as string,",
+				"          SendingId as string,",
+				"          InteractionType as string,",
+				"          OrganizationId as string,",
+				"          Timestamp as string,",
+				"          VisitorId as string,",
+				"          SessionId as string,",
+				"          ContactId as string,",
+				"          AccountId as string,",
+				"          CountryIsoCode as string,",
+				"          State as string,",
+				"          City as string,",
+				"          PostalCode as string,",
+				"          BrowserId as string,",
+				"          BrowserVersion as string,",
+				"          OperatingSystemId as string,",
+				"          OperatingSystemVersion as string,",
+				"          SearchPhrase as string,",
+				"          SearchEngineName as string,",
+				"          VisitDuration as string,",
+				"          VisitorReturningStatus as string,",
+				"          VisitorAnonymousStatus as string,",
+				"          LeadId as string,",
+				"          InternalMarketingInteractionId as string,",
+				"          Version as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(time_stamp = substring({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, instr({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, '+00:00,') -20, 10)) ~> derivedColumn1",
-				"derivedColumn1 select(mapColumn(",
-				"          time_stamp",
+				"source1 select(mapColumn(",
+				"          OriginalUrl,",
+				"          Timestamp",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
