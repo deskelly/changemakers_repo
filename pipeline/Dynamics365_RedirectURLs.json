@@ -87,8 +87,6 @@
 			{
 				"name": "Delete Temp table if exists",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -106,7 +104,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Dynamics365_EmailsClicked"
+							"text": "drop table if exists Temp_Raw_Dynamics365_RedirectURL"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -115,8 +113,6 @@
 			{
 				"name": "Create table",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Delete Temp table if exists",
@@ -141,7 +137,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_EmailsClicked(\n\ttime_stamp varchar(40) NULL\n)"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_RedirectURL(\n\toriginal_url varchar(max) NULL,\n\ttime_stamp varchar(40) NULL\n)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -150,8 +146,6 @@
 			{
 				"name": "Create index",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Create table",
@@ -176,7 +170,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE INDEX ts_202311141508 ON Temp_Raw_Dynamics365_EmailsClicked(time_stamp)"
+							"text": "CREATE INDEX ts_202311151242 ON Temp_Raw_Dynamics365_RedirectURL (time_stamp)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
