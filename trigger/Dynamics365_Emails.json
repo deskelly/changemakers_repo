@@ -2,7 +2,7 @@
 	"name": "Dynamics365_Emails",
 	"properties": {
 		"annotations": [],
-		"runtimeState": "Stopped",
+		"runtimeState": "Started",
 		"pipelines": [
 			{
 				"pipelineReference": {
