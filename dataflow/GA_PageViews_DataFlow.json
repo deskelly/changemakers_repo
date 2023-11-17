@@ -22,18 +22,10 @@
 						"referenceName": "GA_PageViews_AzureSqlTable",
 						"type": "DatasetReference"
 					},
-					"name": "sink1",
-					"rejectedDataLinkedService": {
-						"referenceName": "logging",
-						"type": "LinkedServiceReference"
-					}
+					"name": "sink1"
 				}
 			],
-			"transformations": [
-				{
-					"name": "derivedColumn1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
 				"          Column_1 as string,",
@@ -50,30 +42,16 @@
 				"     ignoreNoFilesFound: true,",
 				"     skipLines: 7,",
 				"     partitionBy('hash', 1)) ~> SourceProcessFiles",
-				"SourceProcessFiles derive(Column_1 = left(Column_1, 128)) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:false,",
 				"     format: 'table',",
-				"     preSQLs:['drop table if exists Temp_Raw_GA_PageViews','CREATE TABLE Temp_Raw_GA_PageViews(\\n     Column_1 varchar(128) null\\n     , Column_2 varchar(80) null\\n     , Column_3 varchar(80) null\\n     , Column_4 varchar(80) null\\n     , Column_5 varchar(80) null\\n     , Column_6 varchar(80) null\\n     , Column_7 varchar(80) null\\n     , Column_8 varchar(80) null\\n)'],",
-				"     postSQLs:[(with field_extract as (\\n    select \\n        *\\n    from Temp_Raw_GA_PageViews\\n    where Column_2 is not null\\n    and trim(Column_1) != 'Page path and screen class'\\n)\\n, date_extract as (\\n    select \\n        dateadd(day, -1, cast(right(trim(Column_1), 8) as date)) as date\\n    from Temp_Raw_GA_PageViews\\n    where Column_1 like ('# End date:%')\\n)\\n, join_extracts as (\\n    select \\n        b.date\\n        , a.Column_1 as 'Page path and screen class'\\n        , a.Column_2 as 'Views'\\n        , a.Column_3 as 'Users'\\n        , a.Column_4 as 'Views per user'\\n        , a.Column_5 as 'Average engagement time'\\n        , a.Column_6 as 'Event count'\\n        , a.Column_7 as 'Conversions'\\n        , a.Column_8 as 'Total revenue'\\nfrom field_extract a\\ncross join date_extract b\\n)\\n, final_table as (\\n    select \\n        date\\n        , sum(cast([Event count] as int)) as impression_by_date\\n        , sum(cast(Users as int)) as users_by_date\\n        , sum(cast([Average engagement time] as decimal)) as time_spent_on_site_page_podcast_vodcast\\n    from join_extracts\\n    group by date\\n)\\n\\n-- select * from final_table\\n\\nMERGE INTO Changemakers_Combined_Overview a\\nUSING final_table b\\n    ON a.channel = 'Search' \\n    and a.sub_channel = 'Google Analytics'\\n    and a.date = b.date \\nWHEN MATCHED THEN\\n  UPDATE SET \\n        a.impression_by_date  = b.impression_by_date \\n        , a.users_by_date = b.users_by_date\\n        , a.time_spent_on_site_page_podcast_vodcast = b.time_spent_on_site_page_podcast_vodcast\\nWHEN NOT MATCHED THEN\\n  INSERT (channel,sub_channel,date,timestamp,month,week,impression_by_date,users_by_date,time_spent_on_site_page_podcast_vodcast)\\n  VALUES (\\n        'Search'\\n        , 'Google Analytics'\\n        , b.date \\n        , b.date\\n        , cast(format(b.date, 'yyyyMM') as int)\\n        , cast(concat(left(b.date,4),  right(datepart(ww, b.date) + 100, 2)) as int)\\n        , b.impression_by_date\\n        , b.users_by_date\\n        , b.time_spent_on_site_page_podcast_vodcast\\n        );),'drop table if exists Temp_Raw_GA_PageViews'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     mapColumn(",
-				"          Column_1,",
-				"          Column_2,",
-				"          Column_3,",
-				"          Column_4,",
-				"          Column_5,",
-				"          Column_6,",
-				"          Column_7,",
-				"          Column_8",
-				"     ),",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
