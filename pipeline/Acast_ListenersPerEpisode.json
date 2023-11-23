@@ -238,7 +238,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_ACastListenersPerEpisode"
+							"text": "drop table if exists Temp_Raw_ACastListenersPerEpisode;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
