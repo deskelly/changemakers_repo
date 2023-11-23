@@ -1,0 +1,36 @@
+{
+	"name": "ACastProgrammaticDownloads_GetFiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ACastDownloads_GetFiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ACast"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Downloads.csv",
+				"container": "acast"
+			},
+			"columnDelimiter": ";",
+			"rowDelimiter": "\n",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Downloads",
+				"type": "String"
+			}
+		]
+	}
+}
