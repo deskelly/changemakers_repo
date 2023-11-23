@@ -13,13 +13,6 @@
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
-				},
-				{
-					"dataset": {
-						"referenceName": "ACastDownloads_GetFiles",
-						"type": "DatasetReference"
-					},
-					"name": "source1"
 				}
 			],
 			"sinks": [
@@ -41,13 +34,6 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
-				"source(output(",
-				"          Date as string,",
-				"          Downloads as string",
-				"     ),",
-				"     allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     ignoreNoFilesFound: false) ~> source1",
 				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",
