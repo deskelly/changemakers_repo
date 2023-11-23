@@ -12,7 +12,9 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "Downloads.csv",
+				"container": "acast"
 			},
 			"columnDelimiter": ";",
 			"rowDelimiter": "\n",
