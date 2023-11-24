@@ -74,7 +74,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Temp_Raw_Dynamics365_EmailsClicked"
+			"table": "Temp_Raw_Dynamics365_Forms"
 		}
 	}
 }
