@@ -16,27 +16,54 @@
 				}
 			],
 			"sinks": [],
-			"transformations": [
-				{
-					"name": "substring"
-				},
-				{
-					"name": "select1"
-				}
-			],
+			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          {MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version} as string",
+				"          MessageId as string,",
+				"          PageId as string,",
+				"          FormId as string,",
+				"          FormName as string,",
+				"          FormSubmissionId as string,",
+				"          CustomerJourneyId as string,",
+				"          CustomerJourneyIterationId as string,",
+				"          Result as string,",
+				"          VisitorId as string,",
+				"          SessionId as string,",
+				"          ContactId as string,",
+				"          AccountId as string,",
+				"          ContactMatchingResult as string,",
+				"          LeadMatchingResult as string,",
+				"          CountryIsoCode as string,",
+				"          State as string,",
+				"          City as string,",
+				"          PostalCode as string,",
+				"          BrowserId as string,",
+				"          BrowserVersion as string,",
+				"          OperatingSystemId as string,",
+				"          OperatingSystemVersion as string,",
+				"          ReferrerUri as string,",
+				"          SendingId as string,",
+				"          SearchPhrase as string,",
+				"          SearchEngineName as string,",
+				"          VisitDuration as string,",
+				"          VisitorReturningStatus as string,",
+				"          ContactFailureMessage as string,",
+				"          LeadFailureMessage as string,",
+				"          Timestamp as string,",
+				"          VisitorAnonymousStatus as string,",
+				"          LeadId as string,",
+				"          SubmittedValues as string,",
+				"          WebsiteId as string,",
+				"          PageUrl as string,",
+				"          InternalMarketingInteractionId as string,",
+				"          OrganizationId as string,",
+				"          InteractionType as string,",
+				"          Version as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(time_stamp = substring({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, (instr({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, '+00:00,') -20), 19)) ~> substring",
-				"substring select(mapColumn(",
-				"          time_stamp",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     inferDriftedColumnTypes: true,",
+				"     ignoreNoFilesFound: true) ~> source1"
 			]
 		}
 	}
