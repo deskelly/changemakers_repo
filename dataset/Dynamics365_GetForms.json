@@ -13,7 +13,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "csv/EmailClicked",
+				"fileName": "0-ffffffffffffffff",
+				"folderPath": "csv/FormSubmitted",
 				"container": "d365marketinginsights"
 			},
 			"columnDelimiter": "\u0001",
@@ -24,7 +25,7 @@
 		},
 		"schema": [
 			{
-				"name": "LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version",
+				"name": "MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version",
 				"type": "String"
 			}
 		]
