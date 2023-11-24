@@ -24,7 +24,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "ACastListenersPerEpisode_GetFiles",
+						"referenceName": "ACastProgrammaticListeners_GetFiles",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -106,7 +106,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_ACastListenersPerEpisode"
+							"text": "drop table if exists Temp_Raw_ACastProgrammaticListenersPerEpisode;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -139,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_ACastListenersPerEpisode(\n\tdate date NULL\n\t, listeners int NULL\n\t, episode_name nvarchar(200) NULL\n);"
+							"text": "CREATE TABLE Temp_Raw_ACastProgrammaticListenersPerEpisode(\n\tdate date NULL\n\t, listeners int NULL\n\t, episode_name nvarchar(200) NULL\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -172,7 +172,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "with final_table as (\n  select\n      a.date\n      , a.listeners\n      , replace(replace(substring(a.episode_name, 2, 128), '%20', ' '), '.csv', '') as episode_name\n  from Temp_Raw_ACastListenersPerEpisode a\n)\n-- select * from final_table\nMERGE INTO Raw_ACastListenersPerEpisode a\nUSING final_table b\n    ON a.date = b.date \n    and a.episode_name = b.episode_name\nWHEN MATCHED THEN\n  UPDATE SET \n        a.listeners  = b.listeners \nWHEN NOT MATCHED THEN\n  INSERT (date, listeners, episode_name)\n  VALUES (\n        b.date\n        , b.listeners\n        , b.episode_name \n        );"
+							"text": "with final_table as (\n  select\n      a.date\n      , a.listeners\n      , replace(replace(substring(a.episode_name, 2, 128), '%20', ' '), '.csv', '') as episode_name\n  from Temp_Raw_ACastProgrammaticListenersPerEpisode a\n)\n-- select * from final_table\nMERGE INTO Raw_ACastProgrammaticListenersPerEpisode a\nUSING final_table b\n    ON a.date = b.date \n    and a.episode_name = b.episode_name\nWHEN MATCHED THEN\n  UPDATE SET \n        a.listeners  = b.listeners \nWHEN NOT MATCHED THEN\n  INSERT (date, listeners, episode_name)\n  VALUES (\n        b.date\n        , b.listeners\n        , b.episode_name \n        );"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -205,7 +205,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "with final_table as (\n    select\n        'Podcast/Vodcast' as channel\n        ,'Acast' as sub_channel\n        , 'Changemakers' as content\n    \t\t, cast(date as datetime) as date\n        , datename(month, date) as month\n        , concat(datename(month, date), ' ', year(date)) as month_year\n        , concat(datename(month, date), ' ', year(date), ' Week ', (DATEPART(week, date) - DATEPART(week, DATEADD(day, 1, EOMONTH(date, -1)))) + 1) as week\n        , datename(dw, date) as day_week\n        , case when datename(dw, date) in ('Saturday', 'Sunday') then 'Weekend' else 'Weekday' end as week_type\n        , 'Unspecified' as time_day\n        , listeners as impression_by_date\n        , listeners as users_by_date\n        , episode_name as activity_calendar_events    --using listerners here until more clarity\n        , date as event_occurence_by_date    --using listerners here until more clarity \n        , date as event_occurence_by_time    --using listerners here until more clarity\n        , 'Russell Gower' as activity_implemented_by\n    from Raw_ACastListenersPerEpisode\n    where date is not null\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    on a.channel = b.channel\n    and a.sub_channel = b.sub_channel\n    and a.date = b.date\n    and a.activity_calendar_events = b.activity_calendar_events \nWHEN MATCHED THEN\n  UPDATE SET \n        a.impression_by_date = b.impression_by_date\n        , a.users_by_date = b.users_by_date\n        , a.activity_calendar_events = b.activity_calendar_events\n        , a.event_occurence_by_date = b.event_occurence_by_date\n        , a.event_occurence_by_time = b.event_occurence_by_time\n        , a.activity_implemented_by = b.activity_implemented_by\nWHEN NOT MATCHED THEN\n  INSERT (channel, sub_channel, content, date, month, month_year, week, day_week, week_type, time_day, impression_by_date, users_by_date, activity_calendar_events, event_occurence_by_date, event_occurence_by_time, activity_implemented_by)\n  VALUES (\n        b.channel\n        , b.sub_channel\n        , b.content\n        , b.date \n        , b.month\n        , b.month_year\n        , b.week\n        , b.day_week\n        , b.week_type\n        , b.time_day\n        , b.impression_by_date\n        , b.users_by_date\n        , b.activity_calendar_events\n        , b.event_occurence_by_date\n        , b.event_occurence_by_time\n        , b.activity_implemented_by\n        );"
+							"text": "with final_table as (\n    select\n        'Podcast/Vodcast' as channel\n        ,'Acast' as sub_channel\n        , 'Programmatic' as content\n    \t\t, cast(date as datetime) as date\n        , datename(month, date) as month\n        , concat(datename(month, date), ' ', year(date)) as month_year\n        , concat(datename(month, date), ' ', year(date), ' Week ', (DATEPART(week, date) - DATEPART(week, DATEADD(day, 1, EOMONTH(date, -1)))) + 1) as week\n        , datename(dw, date) as day_week\n        , case when datename(dw, date) in ('Saturday', 'Sunday') then 'Weekend' else 'Weekday' end as week_type\n        , 'Unspecified' as time_day\n        , listeners as impression_by_date\n        , listeners as users_by_date\n        , episode_name as activity_calendar_events    --using listerners here until more clarity\n        , date as event_occurence_by_date    --using listerners here until more clarity \n        , date as event_occurence_by_time    --using listerners here until more clarity\n        , 'Russell Gower' as activity_implemented_by\n    from Raw_ACastProgrammaticListenersPerEpisode\n    where date is not null\n)\n\nMERGE INTO Changemakers_Combined_Overview a\nUSING final_table b\n    on a.channel = b.channel\n    and a.sub_channel = b.sub_channel\n    and a.date = b.date\n    and a.activity_calendar_events = b.activity_calendar_events \nWHEN MATCHED THEN\n  UPDATE SET \n        a.impression_by_date = b.impression_by_date\n        , a.users_by_date = b.users_by_date\n        , a.activity_calendar_events = b.activity_calendar_events\n        , a.event_occurence_by_date = b.event_occurence_by_date\n        , a.event_occurence_by_time = b.event_occurence_by_time\n        , a.activity_implemented_by = b.activity_implemented_by\nWHEN NOT MATCHED THEN\n  INSERT (channel, sub_channel, content, date, month, month_year, week, day_week, week_type, time_day, impression_by_date, users_by_date, activity_calendar_events, event_occurence_by_date, event_occurence_by_time, activity_implemented_by)\n  VALUES (\n        b.channel\n        , b.sub_channel\n        , b.content\n        , b.date \n        , b.month\n        , b.month_year\n        , b.week\n        , b.day_week\n        , b.week_type\n        , b.time_day\n        , b.impression_by_date\n        , b.users_by_date\n        , b.activity_calendar_events\n        , b.event_occurence_by_date\n        , b.event_occurence_by_time\n        , b.activity_implemented_by\n        );"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -238,7 +238,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_ACastListenersPerEpisode;"
+							"text": "drop table if exists Temp_Raw_ACastProgrammaticListenersPerEpisode;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
