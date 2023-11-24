@@ -2,7 +2,7 @@
 	"name": "ACastProgrammaticListeners_GetFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ACastDownloads_GetFiles",
+			"referenceName": "LS_ACastProgrammaticListenersPerEpisode_GetFiles",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
@@ -27,7 +27,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Downloads",
+				"name": "Listeners",
 				"type": "String"
 			}
 		]
