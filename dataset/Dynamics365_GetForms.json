@@ -18,7 +18,6 @@
 				"container": "d365marketinginsights"
 			},
 			"columnDelimiter": ",",
-			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
