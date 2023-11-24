@@ -15,8 +15,23 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
-			"transformations": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Dynamics365_Forms_AzureSqlTable",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "select1"
+				},
+				{
+					"name": "derivedColumn1"
+				}
+			],
 			"scriptLines": [
 				"source(output(",
 				"          MessageId as string,",
@@ -63,7 +78,42 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
-				"     ignoreNoFilesFound: true) ~> source1"
+				"     ignoreNoFilesFound: true) ~> source1",
+				"derivedColumn1 select(mapColumn(",
+				"          time_stamp",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"source1 derive(time_stamp = left(Timestamp, 19)\r",
+				"\r",
+				") ~> derivedColumn1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          date as string,",
+				"          impressions as string,",
+				"          reactions as string,",
+				"          shares as string,",
+				"          comments as string,",
+				"          follows as string,",
+				"          clicks as string,",
+				"          click_through_rate as string,",
+				"          video_view_rate as string,",
+				"          video_views_25 as string,",
+				"          video_completions as string,",
+				"          video_completion_rate as string,",
+				"          total_spend as string,",
+				"          average_cpm as string,",
+				"          average_cpc as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
