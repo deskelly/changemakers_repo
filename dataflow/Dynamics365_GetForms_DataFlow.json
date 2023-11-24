@@ -15,21 +15,10 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [
-				{
-					"dataset": {
-						"referenceName": "Dynamics365_EmailsClicked_AzureSqlTable",
-						"type": "DatasetReference"
-					},
-					"name": "sink1"
-				}
-			],
+			"sinks": [],
 			"transformations": [
 				{
-					"name": "derivedColumn1"
-				},
-				{
-					"name": "select1"
+					"name": "substring"
 				}
 			],
 			"scriptLines": [
@@ -39,40 +28,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(time_stamp = substring({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}{MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, instr({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}{MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, '+00:00,') -20, 19)\r",
-				") ~> derivedColumn1",
-				"derivedColumn1 select(mapColumn(",
-				"          time_stamp",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     input(",
-				"          date as string,",
-				"          impressions as string,",
-				"          reactions as string,",
-				"          shares as string,",
-				"          comments as string,",
-				"          follows as string,",
-				"          clicks as string,",
-				"          click_through_rate as string,",
-				"          video_view_rate as string,",
-				"          video_views_25 as string,",
-				"          video_completions as string,",
-				"          video_completion_rate as string,",
-				"          total_spend as string,",
-				"          average_cpm as string,",
-				"          average_cpc as string",
-				"     ),",
-				"     deletable:false,",
-				"     insertable:true,",
-				"     updateable:false,",
-				"     upsertable:false,",
-				"     format: 'table',",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"source1 derive(time_stamp = ERROR_FUNCTION('substring({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}{MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, instr({MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}{MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version}, __SINGLE_QUOTE__+00:00,__SINGLE_QUOTE__) -20, 19)')) ~> substring"
 			]
 		}
 	}
