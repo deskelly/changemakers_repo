@@ -27,9 +27,7 @@
 						"referenceName": "Dynamics365_GetForms",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -181,6 +179,8 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -214,6 +214,8 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
@@ -251,7 +253,7 @@
 			}
 		},
 		"folder": {
-			"name": "Dynamics365 Emails"
+			"name": "Dynamics365_Forms"
 		},
 		"annotations": [],
 		"lastPublishTime": "2023-10-23T11:09:52Z"
