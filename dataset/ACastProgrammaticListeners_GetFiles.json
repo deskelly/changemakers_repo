@@ -13,8 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "Downloads.csv",
-				"container": "acast"
+				"container": "acast-programmatic-listeners-per-episode"
 			},
 			"columnDelimiter": ";",
 			"rowDelimiter": "\n",
