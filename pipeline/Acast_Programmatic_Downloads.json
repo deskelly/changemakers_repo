@@ -53,7 +53,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Raw_ACastDownloads"
+							"text": "drop table if exists Raw_ACastProgrammaticDownloads;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -86,7 +86,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Raw_ACastDownloads(\n     date date NULL,\n     downloads int NULL\n) "
+							"text": "CREATE TABLE Raw_ACastProgrammaticDownloads(\n     date date NULL,\n     downloads int NULL\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
