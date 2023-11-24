@@ -24,7 +24,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Dynamics365_GetEmailsClicked",
+						"referenceName": "Dynamics365_GetForms",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
