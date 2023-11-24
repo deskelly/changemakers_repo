@@ -106,7 +106,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Dynamics365_EmailsClicked"
+							"text": "drop table if exists Temp_Raw_Dynamics365_Forms;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -139,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_EmailsClicked(\n\ttime_stamp varchar(40) NULL\n)"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_Forms(\n\ttime_stamp varchar(40) NULL\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -172,7 +172,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE INDEX ts_202311141508 ON Temp_Raw_Dynamics365_EmailsClicked(time_stamp)"
+							"text": "CREATE INDEX ts_202311241638 ON Temp_Raw_Dynamics365_Forms (time_stamp);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
