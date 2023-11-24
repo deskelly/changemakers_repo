@@ -10,7 +10,21 @@
 		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": [],
+		"schema": [
+			{
+				"name": "date",
+				"type": "date"
+			},
+			{
+				"name": "listeners",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "episode_name",
+				"type": "nvarchar"
+			}
+		],
 		"typeProperties": {
 			"schema": "dbo",
 			"table": "Temp_Raw_ACastProgrammaticListenersPerEpisode"
