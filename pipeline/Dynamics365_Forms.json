@@ -73,7 +73,7 @@
 							"userProperties": [],
 							"typeProperties": {
 								"dataflow": {
-									"referenceName": "Dynamics365_GetEmailsClicked_DataFlow",
+									"referenceName": "Dynamics365_GetForms_DataFlow",
 									"type": "DataFlowReference"
 								},
 								"compute": {
