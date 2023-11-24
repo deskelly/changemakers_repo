@@ -28,7 +28,7 @@
 			"scriptLines": [
 				"source(output(",
 				"          Date as string,",
-				"          Downloads as string",
+				"          Listeners as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
