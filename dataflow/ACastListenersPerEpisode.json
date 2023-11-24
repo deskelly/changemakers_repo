@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastListenersPerEpisode_GetFiles",
+						"referenceName": "ACastProgrammaticListeners_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ACastListenersPerEpisode_AzureSqlTable",
+						"referenceName": "ACastProgrammaticListeners_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -27,8 +27,8 @@
 			"transformations": [],
 			"scriptLines": [
 				"source(output(",
-				"          Date as date,",
-				"          Listeners as integer",
+				"          Date as string,",
+				"          Downloads as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
