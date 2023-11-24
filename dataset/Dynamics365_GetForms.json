@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "4-ffffffffffffffff",
+				"fileName": "0-ffffffffffffffff",
 				"folderPath": "csv/FormSubmitted",
 				"container": "d365marketinginsights"
 			},
