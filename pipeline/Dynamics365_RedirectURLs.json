@@ -238,7 +238,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "drop table if exists Temp_Raw_Dynamics365_RedirectURL"
+							"text": "drop table if exists Temp_Raw_Dynamics365_RedirectURL;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
