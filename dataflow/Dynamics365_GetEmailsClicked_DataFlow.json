@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "Dynamics365_GetForms",
+						"referenceName": "Dynamics365_GetEmailsClicked",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -27,17 +27,25 @@
 			"transformations": [
 				{
 					"name": "substring"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
 				"source(output(",
-				"          {MessageId,PageId,FormId,FormName,FormSubmissionId,CustomerJourneyId,CustomerJourneyIterationId,Result,VisitorId,SessionId,ContactId,AccountId,ContactMatchingResult,LeadMatchingResult,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,ReferrerUri,SendingId,SearchPhrase,SearchEngineName,VisitDuration,VisitorReturningStatus,ContactFailureMessage,LeadFailureMessage,Timestamp,VisitorAnonymousStatus,LeadId,SubmittedValues,WebsiteId,PageUrl,InternalMarketingInteractionId,OrganizationId,InteractionType,Version} as string",
+				"          {LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version} as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> source1",
-				"source1 derive(time_stamp = ERROR_FUNCTION('')) ~> substring",
-				" sink(allowSchemaDrift: true,",
+				"source1 derive(time_stamp = substring({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, instr({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, '+00:00,') - 20, 19)) ~> substring",
+				"substring select(mapColumn(",
+				"          time_stamp",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          date as string,",
