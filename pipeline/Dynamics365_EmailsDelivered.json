@@ -77,7 +77,7 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
-										"wildcardFolderPath": "csv/EmailOpened",
+										"wildcardFolderPath": "csv/EmailDelivered",
 										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
@@ -141,13 +141,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "Dynamics365_GetEmailsOpened",
+									"referenceName": "Dynamics365_GetEmailsDelivered",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "Dynamics365_EmailsOpened_AzureSqlTable",
+									"referenceName": "Dynamics365_EmailsDelivered_AzureSqlTable",
 									"type": "DatasetReference"
 								}
 							]
