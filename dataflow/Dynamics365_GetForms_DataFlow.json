@@ -86,7 +86,7 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"source1 derive(time_stamp = substring(Timestamp, 0,19),",
-				"          content = case(instr(PageUrl, 'hangemakers') > 0, 'Changemakers', 'A&P')) ~> derivedColumn1",
+				"          content = case(instr(PageUrl, 'changemakers') > 0, 'Changemakers', 'A&P')) ~> derivedColumn1",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
