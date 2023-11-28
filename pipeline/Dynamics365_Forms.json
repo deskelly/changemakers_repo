@@ -139,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_Forms(\n\ttime_stamp varchar(40) NULL\n);"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_Forms(\n\ttime_stamp varchar(40) NULL\n  , content varchchar(80) NULL\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
