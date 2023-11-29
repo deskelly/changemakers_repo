@@ -3,33 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "YouTube_DataFlow",
-				"type": "ExecuteDataFlow",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "YouTube_DataFlow",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
-				}
-			},
-			{
-				"name": "Get Metadata1_copy1",
+				"name": "Get Metadata1",
 				"description": "",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -68,7 +42,7 @@
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata1_copy1",
+						"activity": "Get Metadata1",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -77,9 +51,35 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata1_copy1').output.exists",
+						"value": "@activity('Get Metadata1').output.exists",
 						"type": "Expression"
-					}
+					},
+					"ifTrueActivities": [
+						{
+							"name": "YouTube_DataFlow",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "YouTube_DataFlow",
+									"type": "DataFlowReference"
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
+						}
+					]
 				}
 			}
 		],
