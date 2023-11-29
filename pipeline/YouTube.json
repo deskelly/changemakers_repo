@@ -77,7 +77,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata1_copy1').output.exists",
+						"value": "@activity('Get Metadata1_copy1').output.itemName == 'Table data.csv'",
 						"type": "Expression"
 					}
 				}
