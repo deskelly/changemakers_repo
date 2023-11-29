@@ -47,7 +47,7 @@
 				"     upsertable:false,",
 				"     recreate:true,",
 				"     format: 'table',",
-				"     preSQLs:['drop table if exists Temp_Raw_YouTube;','CREATE TABLE Temp_Raw_YouTube(\\n     content varchar(80) NULL,\\n     video_title varchar(255) NULL,\\n     video_publish_time datetime NULL,\\n     views int NULL,\\n    watch_time_hours decimal(20,10) NULL,\\n    subscribers int NULL,\\n    impressions int NULL,\\n    impressions_click_through_rate decimal(20,10) NULL\\n);','CREATE INDEX vpt_202311291611 ON Temp_Raw_YouTube (video_publish_time);'],",
+				"     preSQLs:['drop table if exists Raw_YouTube;','CREATE TABLE Raw_YouTube(\\n     content varchar(80) NULL,\\n     video_title varchar(255) NULL,\\n     video_publish_time datetime NULL,\\n     views int NULL,\\n    watch_time_hours decimal(20,10) NULL,\\n    subscribers int NULL,\\n    impressions int NULL,\\n    impressions_click_through_rate decimal(20,10) NULL\\n);','CREATE INDEX vpt_202311291611 ON Raw_YouTube (video_publish_time);'],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
