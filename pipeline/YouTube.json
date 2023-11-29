@@ -47,7 +47,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -77,7 +77,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@activity('Get Metadata1_copy1').output.itemName = True",
+						"value": "@activity('Get Metadata1_copy1').output.exists=True",
 						"type": "Expression"
 					}
 				}
