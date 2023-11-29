@@ -2,7 +2,7 @@
 	"name": "YouTube_DataFlow",
 	"properties": {
 		"folder": {
-			"name": "Twitter"
+			"name": "YouTube"
 		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
