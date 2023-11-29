@@ -74,6 +74,26 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "Forms Submitted",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Emails Sent",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_Forms",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
 			}
 		],
 		"folder": {
