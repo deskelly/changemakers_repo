@@ -38,7 +38,7 @@
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: true,",
+				"     ignoreNoFilesFound: false,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
 				"SourceProcessFiles sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
