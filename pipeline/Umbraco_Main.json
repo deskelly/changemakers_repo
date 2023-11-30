@@ -29,7 +29,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "update Changemakers_Combined_Overview\nset total_engagements = isnull(downloads_by_date, 0) + isnull(likes_consid_engage_by_date, 0) \nfrom Changemakers_Combined_Overview\nwhere sub_channel = 'Digital Changemakers Hub'\nand (downloads_by_date is not null or likes_consid_engage_by_date is not null)"
+							"text": "update Changemakers_Combined_Overview\nset total_engagements = isnull(downloads, 0) + isnull(likes_consid_engage, 0) \nfrom Changemakers_Combined_Overview\nwhere sub_channel = 'Digital Changemakers Hub'\nand (downloads is not null or likes_consid_engage is not null)"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
