@@ -5,7 +5,14 @@
 			{
 				"name": "Execute Pipeline1",
 				"type": "ExecutePipeline",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Execute Pipeline3",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -20,7 +27,7 @@
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline1",
+						"activity": "Execute Pipeline5",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -58,14 +65,7 @@
 			{
 				"name": "Execute Pipeline4",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "Execute Pipeline3",
-						"dependencyConditions": [
-							"Completed"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
