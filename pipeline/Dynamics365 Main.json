@@ -94,6 +94,26 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "RedirectURL's",
+				"type": "ExecutePipeline",
+				"dependsOn": [
+					{
+						"activity": "Forms Submitted",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "Dynamics365_RedirectURLs",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
 			}
 		],
 		"folder": {
