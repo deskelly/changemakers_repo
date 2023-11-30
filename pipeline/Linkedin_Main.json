@@ -3,11 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Execute Pipeline1",
+				"name": "Paid Campaigns",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline3",
+						"activity": "Visitors",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -23,11 +23,11 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline2",
+				"name": "Followers",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline5",
+						"activity": "Content Metrics",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -43,11 +43,11 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline3",
+				"name": "Visitors",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline2",
+						"activity": "Followers",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -63,7 +63,7 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline4",
+				"name": "Content All Posts",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
@@ -76,11 +76,11 @@
 				}
 			},
 			{
-				"name": "Execute Pipeline5",
+				"name": "Content Metrics",
 				"type": "ExecutePipeline",
 				"dependsOn": [
 					{
-						"activity": "Execute Pipeline4",
+						"activity": "Content All Posts",
 						"dependencyConditions": [
 							"Completed"
 						]
