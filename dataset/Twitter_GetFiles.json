@@ -17,7 +17,7 @@
 				"container": "twitter"
 			},
 			"columnDelimiter": ",",
-			"escapeChar": "\"",
+			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
