@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "test1.csv",
 				"folderPath": "converted",
 				"container": "twitter"
 			},
