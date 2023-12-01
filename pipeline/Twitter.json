@@ -351,6 +351,417 @@
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
 				}
+			},
+			{
+				"name": "Get Metadata1_FileCheck",
+				"description": "",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "des",
+						"value": "dsad"
+					}
+				],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Twitter_GetFiles",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"exists"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"modifiedDatetimeStart": {
+							"value": "@addDays(utcNow(), -20)",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1_FileCheck",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@activity('Get Metadata1_FileCheck').output.exists",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Get Metadata1_copy1",
+							"description": "",
+							"type": "GetMetadata",
+							"dependsOn": [
+								{
+									"activity": "Script3_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [
+								{
+									"name": "des",
+									"value": "dsad"
+								}
+							],
+							"typeProperties": {
+								"dataset": {
+									"referenceName": "Twitter_GetFiles",
+									"type": "DatasetReference"
+								},
+								"fieldList": [
+									"childItems"
+								],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": true,
+									"modifiedDatetimeStart": {
+										"value": "@addDays(utcNow(), -20)",
+										"type": "Expression"
+									},
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							}
+						},
+						{
+							"name": "ForEach1_copy1",
+							"type": "ForEach",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata1_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"items": {
+									"value": "@activity('Get Metadata1').output.childItems",
+									"type": "Expression"
+								},
+								"isSequential": true,
+								"activities": [
+									{
+										"name": "Data flow1_copy1",
+										"type": "ExecuteDataFlow",
+										"dependsOn": [],
+										"policy": {
+											"timeout": "0.12:00:00",
+											"retry": 0,
+											"retryIntervalInSeconds": 30,
+											"secureOutput": false,
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"dataflow": {
+												"referenceName": "Twitter_DataFlow",
+												"type": "DataFlowReference"
+											},
+											"compute": {
+												"coreCount": 16,
+												"computeType": "General"
+											},
+											"traceLevel": "Fine"
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "Script1_copy1",
+							"type": "Script",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_Twitter;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script2_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script1_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "CREATE TABLE Temp_Raw_Twitter(\n\t[tweet_text] varchar(max) NULL,\n\t[time_stamp] varchar(60) not NULL,\n\t[impressions] [int] NULL,\n\t[engagements] [int] NULL,\n\t[engagement_rate] [float] NULL,\n\t[retweets] [int] NULL,\n\t[replies] [int] NULL,\n\t[likes] [int] NULL,\n\t[user_profile_clicks] [int] NULL,\n\t[url_clicks] [int] NULL,\n\t[hashtag_clicks] [int] NULL,\n\t[detail_expands] [int] NULL,\n\t[permalink_clicks] [int] NULL,\n\t[app_opens] [int] NULL,\n\t[app_installs] [int] NULL,\n\t[follows] [int] NULL,\n\t[email_tweet] [int] NULL,\n\t[dial_phone] [int] NULL,\n\t[media_views] [int] NULL,\n\t[media_engagements] [int] NULL\n);"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script3_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script2_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "CREATE NONCLUSTERED INDEX ts_20231201901 ON Temp_Raw_Twitter (time_stamp);"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script4_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "ForEach1_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete \nfrom Raw_Twitter\nwhere time_stamp in (select distinct cast(left(time_stamp, 16) as datetime) from Temp_Raw_Twitter);"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script5_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script4_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "insert Raw_Twitter\n  select \n    tweet_text\n    , cast(left(time_stamp, 16) as datetime) as date\n    , impressions\n    , engagements\n    , engagement_rate\n    , retweets\n    , replies\n    , likes\n    , user_profile_clicks\n    , url_clicks\n    , hashtag_clicks\n    , detail_expands\n    , permalink_clicks\n    , app_opens\n    , app_installs\n    , follows\n    , email_tweet\n    , dial_phone\n    , media_views\n    , media_engagements\nfrom Temp_Raw_Twitter;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script6_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script5_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "delete from Changemakers_Combined_Overview where sub_channel = 'Twitter';"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script7_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script6_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "insert into Changemakers_Combined_Overview (channel,sub_channel,content,date, month, month_year, week, day_week, week_type, time_day, impressions, users, activity_calendar_events, event_occurence, event_occurence_by_time, activity_implemented_by, likes_consid_engage, shares, comments, follows, total_engagements, conversion_total_clicks, conversion_listened_watched, listened_watched_full_podcast_episode)\n  select\n    'Social Media' as 'channel'\n    ,'Twitter' as 'sub_channel'\n    , null \n\t\t, date as date\n        , datename(month, date) as month\n        , concat(datename(month, date), ' ', year(date)) as month_year\n        , concat(datename(month, date), ' ', year(date), ' Week ', (DATEPART(week, date) - DATEPART(week, DATEADD(day, 1, EOMONTH(date, -1)))) + 1) as week\n        , datename(dw, date) as day_week\n        , case when datename(dw, date) in ('Saturday', 'Sunday') then 'Weekend' else 'Weekday' end as week_type\n        , 'Unspecified' as time_day\n    , impressions\n    , impressions as users\n    , tweet_text as activity_calendar_events\n    , date as event_occurence\n    , date as event_occurence_by_time\n    , 'Janet Guest' as activity_implemented_by\n    , likes as likes_consid_engage\n    , retweets as shares\n    , replies as comments\n    , follows as follows\n    , (likes + retweets + replies + follows + user_profile_clicks + url_clicks + hashtag_clicks)  as total_engagements\n    , (user_profile_clicks + url_clicks + hashtag_clicks + detail_expands + permalink_clicks + app_opens + app_installs) as conversion_total_clicks\n    , media_views as conversion_listened_watched\n    , media_views as listened_watched_full_podcast_episode\nfrom Raw_Twitter;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						},
+						{
+							"name": "Script8_copy1",
+							"type": "Script",
+							"dependsOn": [
+								{
+									"activity": "Script7_copy1",
+									"dependencyConditions": [
+										"Completed"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"linkedServiceName": {
+								"referenceName": "AzureSqlDatabase_Changemakers",
+								"type": "LinkedServiceReference"
+							},
+							"typeProperties": {
+								"scripts": [
+									{
+										"type": "Query",
+										"text": "drop table if exists Temp_Raw_Twitter;"
+									}
+								],
+								"scriptBlockExecutionTimeout": "02:00:00"
+							}
+						}
+					]
+				}
 			}
 		],
 		"folder": {
