@@ -76,6 +76,7 @@
 				"     validateSchema: false,",
 				"     inferDriftedColumnTypes: true,",
 				"     ignoreNoFilesFound: true,",
+				"     purgeFiles: true,",
 				"     multiLineRow: true) ~> SourceProcessFiles",
 				"SourceProcessFiles select(mapColumn(",
 				"          tweet_text = {Tweet text},",
@@ -110,8 +111,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError',",
-				"     partitionBy('hash', 1)) ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
 			]
 		}
 	}
