@@ -33,7 +33,8 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true) ~> SourceProcessFiles",
+				"     purgeFiles: true,",
+				"     rowUrlColumn: 'fileName') ~> SourceProcessFiles",
 				"SourceProcessFiles derive(each(match(true()), $$ = replace($$, '\\\\n', ' '))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -79,9 +80,10 @@
 				"          {promoted media views} as string,",
 				"          {promoted media engagements} as string",
 				"     ),",
-				"     rowUrlColumn:'',",
+				"     partitionFileNames:[(fileName)],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> sink1"
 			]
 		}
 	}
