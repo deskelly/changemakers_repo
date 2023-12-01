@@ -16,12 +16,173 @@
 				"fileName": "tweet_activity_metrics_JCDecaux_UK_20230301_20230401_en_20231130142719.csv",
 				"container": "twitter"
 			},
-			"columnDelimiter": "\u0001",
-			"escapeChar": "\\",
+			"columnDelimiter": ",",
+			"escapeChar": "\"",
 			"firstRowAsHeader": true,
-			"quoteChar": ""
+			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "Tweet id",
+				"type": "String"
+			},
+			{
+				"name": "Tweet permalink",
+				"type": "String"
+			},
+			{
+				"name": "Tweet text",
+				"type": "String"
+			},
+			{
+				"name": "time",
+				"type": "String"
+			},
+			{
+				"name": "impressions",
+				"type": "String"
+			},
+			{
+				"name": "engagements",
+				"type": "String"
+			},
+			{
+				"name": "engagement rate",
+				"type": "String"
+			},
+			{
+				"name": "retweets",
+				"type": "String"
+			},
+			{
+				"name": "replies",
+				"type": "String"
+			},
+			{
+				"name": "likes",
+				"type": "String"
+			},
+			{
+				"name": "user profile clicks",
+				"type": "String"
+			},
+			{
+				"name": "url clicks",
+				"type": "String"
+			},
+			{
+				"name": "hashtag clicks",
+				"type": "String"
+			},
+			{
+				"name": "detail expands",
+				"type": "String"
+			},
+			{
+				"name": "permalink clicks",
+				"type": "String"
+			},
+			{
+				"name": "app opens",
+				"type": "String"
+			},
+			{
+				"name": "app installs",
+				"type": "String"
+			},
+			{
+				"name": "follows",
+				"type": "String"
+			},
+			{
+				"name": "email tweet",
+				"type": "String"
+			},
+			{
+				"name": "dial phone",
+				"type": "String"
+			},
+			{
+				"name": "media views",
+				"type": "String"
+			},
+			{
+				"name": "media engagements",
+				"type": "String"
+			},
+			{
+				"name": "promoted impressions",
+				"type": "String"
+			},
+			{
+				"name": "promoted engagements",
+				"type": "String"
+			},
+			{
+				"name": "promoted engagement rate",
+				"type": "String"
+			},
+			{
+				"name": "promoted retweets",
+				"type": "String"
+			},
+			{
+				"name": "promoted replies",
+				"type": "String"
+			},
+			{
+				"name": "promoted likes",
+				"type": "String"
+			},
+			{
+				"name": "promoted user profile clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted url clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted hashtag clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted detail expands",
+				"type": "String"
+			},
+			{
+				"name": "promoted permalink clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted app opens",
+				"type": "String"
+			},
+			{
+				"name": "promoted app installs",
+				"type": "String"
+			},
+			{
+				"name": "promoted follows",
+				"type": "String"
+			},
+			{
+				"name": "promoted email tweet",
+				"type": "String"
+			},
+			{
+				"name": "promoted dial phone",
+				"type": "String"
+			},
+			{
+				"name": "promoted media views",
+				"type": "String"
+			},
+			{
+				"name": "promoted media engagements",
+				"type": "String"
+			}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
