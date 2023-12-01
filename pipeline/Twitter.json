@@ -6,11 +6,9 @@
 				"name": "Get Metadata1",
 				"description": "",
 				"type": "GetMetadata",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
-						"activity": "Script1",
+						"activity": "Script3",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -52,8 +50,6 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -100,8 +96,6 @@
 			{
 				"name": "Script1",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -126,9 +120,16 @@
 				}
 			},
 			{
-				"name": "Twitter_DataFlow",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [],
+				"name": "Script2",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -137,16 +138,51 @@
 					"secureInput": false
 				},
 				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
 				"typeProperties": {
-					"dataflow": {
-						"referenceName": "Twitter_DataFlow",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "CREATE TABLE Temp_Raw_Twitter(\n\t[tweet_text] varchar(max) NULL,\n\t[time_stamp] varchar(60) not NULL,\n\t[impressions] [int] NULL,\n\t[engagements] [int] NULL,\n\t[engagement_rate] [float] NULL,\n\t[retweets] [int] NULL,\n\t[replies] [int] NULL,\n\t[likes] [int] NULL,\n\t[user_profile_clicks] [int] NULL,\n\t[url_clicks] [int] NULL,\n\t[hashtag_clicks] [int] NULL,\n\t[detail_expands] [int] NULL,\n\t[permalink_clicks] [int] NULL,\n\t[app_opens] [int] NULL,\n\t[app_installs] [int] NULL,\n\t[follows] [int] NULL,\n\t[email_tweet] [int] NULL,\n\t[dial_phone] [int] NULL,\n\t[media_views] [int] NULL,\n\t[media_engagements] [int] NULL\n);"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script3",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script2",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "CREATE NONCLUSTERED INDEX ts_20231201901 ON Temp_Raw_Twitter (time_stamp);"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
 				}
 			}
 		],
