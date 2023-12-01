@@ -80,7 +80,7 @@
 				"          {promoted media views} as string,",
 				"          {promoted media engagements} as string",
 				"     ),",
-				"     partitionFileNames:[(fileName)],",
+				"     partitionFileNames:[(test1.csv)],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
 				"     partitionBy('hash', 1)) ~> sink1"
