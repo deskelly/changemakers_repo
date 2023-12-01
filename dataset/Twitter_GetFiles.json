@@ -13,12 +13,11 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "tweet_activity_metrics_JCDecaux_UK_20230301_20230401_en_20231130142719.csv",
+				"fileName": "tweet_activity_metrics_JCDecaux_UK_20230401_20230501_en.csv",
 				"container": "twitter"
 			},
 			"columnDelimiter": ",",
-			"rowDelimiter": "\r",
-			"escapeChar": "\\",
+			"escapeChar": "\"",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
