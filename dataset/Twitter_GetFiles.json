@@ -22,11 +22,19 @@
 		},
 		"schema": [
 			{
-				"name": "Date",
+				"name": "Tweet id",
 				"type": "String"
 			},
 			{
-				"name": "Tweets published",
+				"name": "Tweet permalink",
+				"type": "String"
+			},
+			{
+				"name": "Tweet text",
+				"type": "String"
+			},
+			{
+				"name": "time",
 				"type": "String"
 			},
 			{
