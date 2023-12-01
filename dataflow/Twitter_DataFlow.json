@@ -32,8 +32,7 @@
 			"scriptLines": [
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     ignoreNoFilesFound: true,",
-				"     purgeFiles: true) ~> SourceProcessFiles",
+				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
 				"SourceProcessFiles derive(each(match(true()), $$ = replace($$, '\\\\r', ' '))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
