@@ -6,6 +6,8 @@
 				"name": "Get Metadata1",
 				"description": "",
 				"type": "GetMetadata",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script1",
@@ -32,9 +34,7 @@
 						"referenceName": "Twitter_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -98,6 +98,8 @@
 			{
 				"name": "Script1",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
