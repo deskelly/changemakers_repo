@@ -33,7 +33,7 @@
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true) ~> SourceProcessFiles",
-				"SourceProcessFiles derive(each(match(true()), $$ = replace($$, '\\\\t', ' '))) ~> derivedColumn1",
+				"SourceProcessFiles derive(each(match(true()), $$ = regexReplace($$, `[\\t\\v\\n\\r]`, ' '))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
