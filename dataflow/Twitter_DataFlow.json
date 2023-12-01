@@ -79,7 +79,7 @@
 				"          {promoted media views} as string,",
 				"          {promoted media engagements} as string",
 				"     ),",
-				"     filePattern:'',",
+				"     rowUrlColumn:'',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
