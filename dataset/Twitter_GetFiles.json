@@ -17,11 +17,5793 @@
 				"container": "twitter"
 			},
 			"columnDelimiter": ",",
+			"rowDelimiter": "\r",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "Tweet id",
+				"type": "String"
+			},
+			{
+				"name": "Tweet permalink",
+				"type": "String"
+			},
+			{
+				"name": "Tweet text",
+				"type": "String"
+			},
+			{
+				"name": "time",
+				"type": "String"
+			},
+			{
+				"name": "impressions",
+				"type": "String"
+			},
+			{
+				"name": "engagements",
+				"type": "String"
+			},
+			{
+				"name": "engagement rate",
+				"type": "String"
+			},
+			{
+				"name": "retweets",
+				"type": "String"
+			},
+			{
+				"name": "replies",
+				"type": "String"
+			},
+			{
+				"name": "likes",
+				"type": "String"
+			},
+			{
+				"name": "user profile clicks",
+				"type": "String"
+			},
+			{
+				"name": "url clicks",
+				"type": "String"
+			},
+			{
+				"name": "hashtag clicks",
+				"type": "String"
+			},
+			{
+				"name": "detail expands",
+				"type": "String"
+			},
+			{
+				"name": "permalink clicks",
+				"type": "String"
+			},
+			{
+				"name": "app opens",
+				"type": "String"
+			},
+			{
+				"name": "app installs",
+				"type": "String"
+			},
+			{
+				"name": "follows",
+				"type": "String"
+			},
+			{
+				"name": "email tweet",
+				"type": "String"
+			},
+			{
+				"name": "dial phone",
+				"type": "String"
+			},
+			{
+				"name": "media views",
+				"type": "String"
+			},
+			{
+				"name": "media engagements",
+				"type": "String"
+			},
+			{
+				"name": "promoted impressions",
+				"type": "String"
+			},
+			{
+				"name": "promoted engagements",
+				"type": "String"
+			},
+			{
+				"name": "promoted engagement rate",
+				"type": "String"
+			},
+			{
+				"name": "promoted retweets",
+				"type": "String"
+			},
+			{
+				"name": "promoted replies",
+				"type": "String"
+			},
+			{
+				"name": "promoted likes",
+				"type": "String"
+			},
+			{
+				"name": "promoted user profile clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted url clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted hashtag clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted detail expands",
+				"type": "String"
+			},
+			{
+				"name": "promoted permalink clicks",
+				"type": "String"
+			},
+			{
+				"name": "promoted app opens",
+				"type": "String"
+			},
+			{
+				"name": "promoted app installs",
+				"type": "String"
+			},
+			{
+				"name": "promoted follows",
+				"type": "String"
+			},
+			{
+				"name": "promoted email tweet",
+				"type": "String"
+			},
+			{
+				"name": "promoted dial phone",
+				"type": "String"
+			},
+			{
+				"name": "promoted media views",
+				"type": "String"
+			},
+			{
+				"name": "\"promoted media engagements\"\n\"1641820922104500225\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1641820922104500225",
+				"type": "String"
+			},
+			{
+				"name": "Keep an eye out for this wonderful campaign for @soulcapofficial and their strategic partners @OctagonUK to raise awareness of the launch of their Swim Proud Fund. To find out more about our Reach programme click here https://t.co/6DJQli0SnX https://t.co/c116JG6oyq",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-31 15:13 +0000",
+				"type": "String"
+			},
+			{
+				"name": "424.0",
+				"type": "String"
+			},
+			{
+				"name": "21.0",
+				"type": "String"
+			},
+			{
+				"name": "0.049528301886792456",
+				"type": "String"
+			},
+			{
+				"name": "0.046",
+				"type": "String"
+			},
+			{
+				"name": "0.047",
+				"type": "String"
+			},
+			{
+				"name": "2.048",
+				"type": "String"
+			},
+			{
+				"name": "0.049",
+				"type": "String"
+			},
+			{
+				"name": "0.050",
+				"type": "String"
+			},
+			{
+				"name": "0.051",
+				"type": "String"
+			},
+			{
+				"name": "12.052",
+				"type": "String"
+			},
+			{
+				"name": "0.053",
+				"type": "String"
+			},
+			{
+				"name": "054",
+				"type": "String"
+			},
+			{
+				"name": "055",
+				"type": "String"
+			},
+			{
+				"name": "056",
+				"type": "String"
+			},
+			{
+				"name": "057",
+				"type": "String"
+			},
+			{
+				"name": "058",
+				"type": "String"
+			},
+			{
+				"name": "100",
+				"type": "String"
+			},
+			{
+				"name": "760",
+				"type": "String"
+			},
+			{
+				"name": "-61",
+				"type": "String"
+			},
+			{
+				"name": "-62",
+				"type": "String"
+			},
+			{
+				"name": "-63",
+				"type": "String"
+			},
+			{
+				"name": "-64",
+				"type": "String"
+			},
+			{
+				"name": "-65",
+				"type": "String"
+			},
+			{
+				"name": "-66",
+				"type": "String"
+			},
+			{
+				"name": "-67",
+				"type": "String"
+			},
+			{
+				"name": "-68",
+				"type": "String"
+			},
+			{
+				"name": "-69",
+				"type": "String"
+			},
+			{
+				"name": "-70",
+				"type": "String"
+			},
+			{
+				"name": "-71",
+				"type": "String"
+			},
+			{
+				"name": "-72",
+				"type": "String"
+			},
+			{
+				"name": "-73",
+				"type": "String"
+			},
+			{
+				"name": "-74",
+				"type": "String"
+			},
+			{
+				"name": "-75",
+				"type": "String"
+			},
+			{
+				"name": "-76",
+				"type": "String"
+			},
+			{
+				"name": "-77",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1641762123301658625\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1641762123301658625",
+				"type": "String"
+			},
+			{
+				"name": "Watch Your ‘Month in a Minute’, with award winning analyst @Ianrwhittaker for a recap of recent developments in the industry, and head to the Digital Changemakers Hub for more reading and resources: https://t.co/8N968BIuG7 #DOOH #digitalmarketing https://t.co/L5xM0M8mTS",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-31 11:19 +0000",
+				"type": "String"
+			},
+			{
+				"name": "301.082",
+				"type": "String"
+			},
+			{
+				"name": "5.083",
+				"type": "String"
+			},
+			{
+				"name": "0.016611295681063124",
+				"type": "String"
+			},
+			{
+				"name": "0.085",
+				"type": "String"
+			},
+			{
+				"name": "0.086",
+				"type": "String"
+			},
+			{
+				"name": "0.087",
+				"type": "String"
+			},
+			{
+				"name": "0.088",
+				"type": "String"
+			},
+			{
+				"name": "0.089",
+				"type": "String"
+			},
+			{
+				"name": "0.090",
+				"type": "String"
+			},
+			{
+				"name": "3.091",
+				"type": "String"
+			},
+			{
+				"name": "0.092",
+				"type": "String"
+			},
+			{
+				"name": "093",
+				"type": "String"
+			},
+			{
+				"name": "094",
+				"type": "String"
+			},
+			{
+				"name": "095",
+				"type": "String"
+			},
+			{
+				"name": "096",
+				"type": "String"
+			},
+			{
+				"name": "097",
+				"type": "String"
+			},
+			{
+				"name": "58",
+				"type": "String"
+			},
+			{
+				"name": "299",
+				"type": "String"
+			},
+			{
+				"name": "-100",
+				"type": "String"
+			},
+			{
+				"name": "-101",
+				"type": "String"
+			},
+			{
+				"name": "-102",
+				"type": "String"
+			},
+			{
+				"name": "-103",
+				"type": "String"
+			},
+			{
+				"name": "-104",
+				"type": "String"
+			},
+			{
+				"name": "-105",
+				"type": "String"
+			},
+			{
+				"name": "-106",
+				"type": "String"
+			},
+			{
+				"name": "-107",
+				"type": "String"
+			},
+			{
+				"name": "-108",
+				"type": "String"
+			},
+			{
+				"name": "-109",
+				"type": "String"
+			},
+			{
+				"name": "-110",
+				"type": "String"
+			},
+			{
+				"name": "-111",
+				"type": "String"
+			},
+			{
+				"name": "-112",
+				"type": "String"
+			},
+			{
+				"name": "-113",
+				"type": "String"
+			},
+			{
+				"name": "-114",
+				"type": "String"
+			},
+			{
+				"name": "-115",
+				"type": "String"
+			},
+			{
+				"name": "-116",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1641473013689270273\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1641473013689270273",
+				"type": "String"
+			},
+			{
+				"name": "JCDecaux UK’s Reach programme is proud to partner with @soulcapofficial and their strategic partners @OctagonUK to raise awareness of the launch of their Swim Proud Fund. Find out more about this campaign and the Reach programme at https://t.co/6DJQli0SnX https://t.co/NcMcWloYK5",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-30 16:10 +0000",
+				"type": "String"
+			},
+			{
+				"name": "316.0",
+				"type": "String"
+			},
+			{
+				"name": "6.0122",
+				"type": "String"
+			},
+			{
+				"name": "0.0189873417721519",
+				"type": "String"
+			},
+			{
+				"name": "0.0124",
+				"type": "String"
+			},
+			{
+				"name": "0.0125",
+				"type": "String"
+			},
+			{
+				"name": "4.0126",
+				"type": "String"
+			},
+			{
+				"name": "0.0127",
+				"type": "String"
+			},
+			{
+				"name": "0.0128",
+				"type": "String"
+			},
+			{
+				"name": "0.0129",
+				"type": "String"
+			},
+			{
+				"name": "2.0130",
+				"type": "String"
+			},
+			{
+				"name": "0.0131",
+				"type": "String"
+			},
+			{
+				"name": "0132",
+				"type": "String"
+			},
+			{
+				"name": "0133",
+				"type": "String"
+			},
+			{
+				"name": "0134",
+				"type": "String"
+			},
+			{
+				"name": "0135",
+				"type": "String"
+			},
+			{
+				"name": "0136",
+				"type": "String"
+			},
+			{
+				"name": "0137",
+				"type": "String"
+			},
+			{
+				"name": "0138",
+				"type": "String"
+			},
+			{
+				"name": "-139",
+				"type": "String"
+			},
+			{
+				"name": "-140",
+				"type": "String"
+			},
+			{
+				"name": "-141",
+				"type": "String"
+			},
+			{
+				"name": "-142",
+				"type": "String"
+			},
+			{
+				"name": "-143",
+				"type": "String"
+			},
+			{
+				"name": "-144",
+				"type": "String"
+			},
+			{
+				"name": "-145",
+				"type": "String"
+			},
+			{
+				"name": "-146",
+				"type": "String"
+			},
+			{
+				"name": "-147",
+				"type": "String"
+			},
+			{
+				"name": "-148",
+				"type": "String"
+			},
+			{
+				"name": "-149",
+				"type": "String"
+			},
+			{
+				"name": "-150",
+				"type": "String"
+			},
+			{
+				"name": "-151",
+				"type": "String"
+			},
+			{
+				"name": "-152",
+				"type": "String"
+			},
+			{
+				"name": "-153",
+				"type": "String"
+			},
+			{
+				"name": "-154",
+				"type": "String"
+			},
+			{
+				"name": "-155",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1641364519128539136\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1641364519128539136",
+				"type": "String"
+			},
+			{
+				"name": "In the next episode of the JCDecaux Digital Changemakers podcast with @Ianrwhittaker, @LydiaAmoah_,  author of the Black Pound Report, holds up a mirror to the advertising industry, as well as the real changemakers making a difference. Find out more here https://t.co/qVfUlVJcaF https://t.co/5lgwnWAKwO",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-30 08:59 +0000",
+				"type": "String"
+			},
+			{
+				"name": "248.0",
+				"type": "String"
+			},
+			{
+				"name": "3.0161",
+				"type": "String"
+			},
+			{
+				"name": "0.012096774193548387",
+				"type": "String"
+			},
+			{
+				"name": "0.0163",
+				"type": "String"
+			},
+			{
+				"name": "0.0164",
+				"type": "String"
+			},
+			{
+				"name": "1.0165",
+				"type": "String"
+			},
+			{
+				"name": "0.0166",
+				"type": "String"
+			},
+			{
+				"name": "0.0167",
+				"type": "String"
+			},
+			{
+				"name": "0.0168",
+				"type": "String"
+			},
+			{
+				"name": "1.0169",
+				"type": "String"
+			},
+			{
+				"name": "0.0170",
+				"type": "String"
+			},
+			{
+				"name": "0171",
+				"type": "String"
+			},
+			{
+				"name": "0172",
+				"type": "String"
+			},
+			{
+				"name": "0173",
+				"type": "String"
+			},
+			{
+				"name": "0174",
+				"type": "String"
+			},
+			{
+				"name": "0175",
+				"type": "String"
+			},
+			{
+				"name": "37",
+				"type": "String"
+			},
+			{
+				"name": "1177",
+				"type": "String"
+			},
+			{
+				"name": "-178",
+				"type": "String"
+			},
+			{
+				"name": "-179",
+				"type": "String"
+			},
+			{
+				"name": "-180",
+				"type": "String"
+			},
+			{
+				"name": "-181",
+				"type": "String"
+			},
+			{
+				"name": "-182",
+				"type": "String"
+			},
+			{
+				"name": "-183",
+				"type": "String"
+			},
+			{
+				"name": "-184",
+				"type": "String"
+			},
+			{
+				"name": "-185",
+				"type": "String"
+			},
+			{
+				"name": "-186",
+				"type": "String"
+			},
+			{
+				"name": "-187",
+				"type": "String"
+			},
+			{
+				"name": "-188",
+				"type": "String"
+			},
+			{
+				"name": "-189",
+				"type": "String"
+			},
+			{
+				"name": "-190",
+				"type": "String"
+			},
+			{
+				"name": "-191",
+				"type": "String"
+			},
+			{
+				"name": "-192",
+				"type": "String"
+			},
+			{
+				"name": "-193",
+				"type": "String"
+			},
+			{
+				"name": "-194",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1641097687565991936\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1641097687565991936",
+				"type": "String"
+			},
+			{
+				"name": "We are so proud to be nominated for this award recognising our workplace support for mental health and wellbeing and we’d love your vote! The winners will be announced by @watercoolerevnt on 25th April. #workplacewellbeing #employeeculture https://t.co/KbtvryadHS. https://t.co/V36VNFF6Sz",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-29 15:19 +0000",
+				"type": "String"
+			},
+			{
+				"name": "444.0",
+				"type": "String"
+			},
+			{
+				"name": "11.0200",
+				"type": "String"
+			},
+			{
+				"name": "0.024774774774774775",
+				"type": "String"
+			},
+			{
+				"name": "1.0202",
+				"type": "String"
+			},
+			{
+				"name": "0.0203",
+				"type": "String"
+			},
+			{
+				"name": "2.0204",
+				"type": "String"
+			},
+			{
+				"name": "1.0205",
+				"type": "String"
+			},
+			{
+				"name": "1.0206",
+				"type": "String"
+			},
+			{
+				"name": "0.0207",
+				"type": "String"
+			},
+			{
+				"name": "5.0208",
+				"type": "String"
+			},
+			{
+				"name": "0.0209",
+				"type": "String"
+			},
+			{
+				"name": "0210",
+				"type": "String"
+			},
+			{
+				"name": "0211",
+				"type": "String"
+			},
+			{
+				"name": "0212",
+				"type": "String"
+			},
+			{
+				"name": "0213",
+				"type": "String"
+			},
+			{
+				"name": "0214",
+				"type": "String"
+			},
+			{
+				"name": "1215",
+				"type": "String"
+			},
+			{
+				"name": "1216",
+				"type": "String"
+			},
+			{
+				"name": "-217",
+				"type": "String"
+			},
+			{
+				"name": "-218",
+				"type": "String"
+			},
+			{
+				"name": "-219",
+				"type": "String"
+			},
+			{
+				"name": "-220",
+				"type": "String"
+			},
+			{
+				"name": "-221",
+				"type": "String"
+			},
+			{
+				"name": "-222",
+				"type": "String"
+			},
+			{
+				"name": "-223",
+				"type": "String"
+			},
+			{
+				"name": "-224",
+				"type": "String"
+			},
+			{
+				"name": "-225",
+				"type": "String"
+			},
+			{
+				"name": "-226",
+				"type": "String"
+			},
+			{
+				"name": "-227",
+				"type": "String"
+			},
+			{
+				"name": "-228",
+				"type": "String"
+			},
+			{
+				"name": "-229",
+				"type": "String"
+			},
+			{
+				"name": "-230",
+				"type": "String"
+			},
+			{
+				"name": "-231",
+				"type": "String"
+			},
+			{
+				"name": "-232",
+				"type": "String"
+			},
+			{
+				"name": "-233",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1638838484223029248\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1638838484223029248",
+				"type": "String"
+			},
+			{
+				"name": "Wishing our friends, partners, colleagues and their families Ramadan Mubarak from all at JCDecaux UK. #Ramadan2023 https://t.co/VyRqXkeeKm",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-23 09:41 +0000",
+				"type": "String"
+			},
+			{
+				"name": "329.0",
+				"type": "String"
+			},
+			{
+				"name": "7.0239",
+				"type": "String"
+			},
+			{
+				"name": "0.02127659574468085",
+				"type": "String"
+			},
+			{
+				"name": "0.0241",
+				"type": "String"
+			},
+			{
+				"name": "0.0242",
+				"type": "String"
+			},
+			{
+				"name": "1.0243",
+				"type": "String"
+			},
+			{
+				"name": "1.0244",
+				"type": "String"
+			},
+			{
+				"name": "0.0245",
+				"type": "String"
+			},
+			{
+				"name": "0.0246",
+				"type": "String"
+			},
+			{
+				"name": "5.0247",
+				"type": "String"
+			},
+			{
+				"name": "0.0248",
+				"type": "String"
+			},
+			{
+				"name": "0249",
+				"type": "String"
+			},
+			{
+				"name": "0250",
+				"type": "String"
+			},
+			{
+				"name": "0251",
+				"type": "String"
+			},
+			{
+				"name": "0252",
+				"type": "String"
+			},
+			{
+				"name": "0253",
+				"type": "String"
+			},
+			{
+				"name": "0254",
+				"type": "String"
+			},
+			{
+				"name": "0255",
+				"type": "String"
+			},
+			{
+				"name": "-256",
+				"type": "String"
+			},
+			{
+				"name": "-257",
+				"type": "String"
+			},
+			{
+				"name": "-258",
+				"type": "String"
+			},
+			{
+				"name": "-259",
+				"type": "String"
+			},
+			{
+				"name": "-260",
+				"type": "String"
+			},
+			{
+				"name": "-261",
+				"type": "String"
+			},
+			{
+				"name": "-262",
+				"type": "String"
+			},
+			{
+				"name": "-263",
+				"type": "String"
+			},
+			{
+				"name": "-264",
+				"type": "String"
+			},
+			{
+				"name": "-265",
+				"type": "String"
+			},
+			{
+				"name": "-266",
+				"type": "String"
+			},
+			{
+				"name": "-267",
+				"type": "String"
+			},
+			{
+				"name": "-268",
+				"type": "String"
+			},
+			{
+				"name": "-269",
+				"type": "String"
+			},
+			{
+				"name": "-270",
+				"type": "String"
+			},
+			{
+				"name": "-271",
+				"type": "String"
+			},
+			{
+				"name": "-272",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1637770160839839744\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1637770160839839744",
+				"type": "String"
+			},
+			{
+				"name": "We've been shortlisted for a Make A Difference Award recognising the way we support our people's workplace mental health and wellbeing! Every vote counts so please vote for us here: https://t.co/ipB6ro4ewf. The winners will be announced by @watercoolerevnt on 25th April https://t.co/SikyVSKRnw",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-20 10:56 +0000",
+				"type": "String"
+			},
+			{
+				"name": "386.0",
+				"type": "String"
+			},
+			{
+				"name": "17.0278",
+				"type": "String"
+			},
+			{
+				"name": "0.04404145077720207",
+				"type": "String"
+			},
+			{
+				"name": "4.0280",
+				"type": "String"
+			},
+			{
+				"name": "0.0281",
+				"type": "String"
+			},
+			{
+				"name": "7.0282",
+				"type": "String"
+			},
+			{
+				"name": "1.0283",
+				"type": "String"
+			},
+			{
+				"name": "0.0284",
+				"type": "String"
+			},
+			{
+				"name": "0.0285",
+				"type": "String"
+			},
+			{
+				"name": "4.0286",
+				"type": "String"
+			},
+			{
+				"name": "0.0287",
+				"type": "String"
+			},
+			{
+				"name": "0288",
+				"type": "String"
+			},
+			{
+				"name": "0289",
+				"type": "String"
+			},
+			{
+				"name": "0290",
+				"type": "String"
+			},
+			{
+				"name": "0291",
+				"type": "String"
+			},
+			{
+				"name": "0292",
+				"type": "String"
+			},
+			{
+				"name": "1293",
+				"type": "String"
+			},
+			{
+				"name": "1294",
+				"type": "String"
+			},
+			{
+				"name": "-295",
+				"type": "String"
+			},
+			{
+				"name": "-296",
+				"type": "String"
+			},
+			{
+				"name": "-297",
+				"type": "String"
+			},
+			{
+				"name": "-298",
+				"type": "String"
+			},
+			{
+				"name": "-299",
+				"type": "String"
+			},
+			{
+				"name": "-300",
+				"type": "String"
+			},
+			{
+				"name": "-301",
+				"type": "String"
+			},
+			{
+				"name": "-302",
+				"type": "String"
+			},
+			{
+				"name": "-303",
+				"type": "String"
+			},
+			{
+				"name": "-304",
+				"type": "String"
+			},
+			{
+				"name": "-305",
+				"type": "String"
+			},
+			{
+				"name": "-306",
+				"type": "String"
+			},
+			{
+				"name": "-307",
+				"type": "String"
+			},
+			{
+				"name": "-308",
+				"type": "String"
+			},
+			{
+				"name": "-309",
+				"type": "String"
+			},
+			{
+				"name": "-310",
+				"type": "String"
+			},
+			{
+				"name": "-311",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1636746939533254657\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1636746939533254657",
+				"type": "String"
+			},
+			{
+				"name": "\"\"\"For the mum who...\"\" Ahead of Mother’s Day on Sunday",
+				"type": "String"
+			},
+			{
+				"name": " @CadburyUK  tempts Out-of-Home audiences with the perfect Mother’s Day treat across Tesco stores UK-wide. @PublicisMedia https://t.co/lZjUEXRXXN\"",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-17 15:10 +0000",
+				"type": "String"
+			},
+			{
+				"name": "480.0",
+				"type": "String"
+			},
+			{
+				"name": "22.0",
+				"type": "String"
+			},
+			{
+				"name": "0.04583333333333333",
+				"type": "String"
+			},
+			{
+				"name": "6.0320",
+				"type": "String"
+			},
+			{
+				"name": "0.0321",
+				"type": "String"
+			},
+			{
+				"name": "6.0322",
+				"type": "String"
+			},
+			{
+				"name": "2.0323",
+				"type": "String"
+			},
+			{
+				"name": "0.0324",
+				"type": "String"
+			},
+			{
+				"name": "0.0325",
+				"type": "String"
+			},
+			{
+				"name": "4.0326",
+				"type": "String"
+			},
+			{
+				"name": "0.0327",
+				"type": "String"
+			},
+			{
+				"name": "0328",
+				"type": "String"
+			},
+			{
+				"name": "0329",
+				"type": "String"
+			},
+			{
+				"name": "0330",
+				"type": "String"
+			},
+			{
+				"name": "0331",
+				"type": "String"
+			},
+			{
+				"name": "0332",
+				"type": "String"
+			},
+			{
+				"name": "4333",
+				"type": "String"
+			},
+			{
+				"name": "4334",
+				"type": "String"
+			},
+			{
+				"name": "-335",
+				"type": "String"
+			},
+			{
+				"name": "-336",
+				"type": "String"
+			},
+			{
+				"name": "-337",
+				"type": "String"
+			},
+			{
+				"name": "-338",
+				"type": "String"
+			},
+			{
+				"name": "-339",
+				"type": "String"
+			},
+			{
+				"name": "-340",
+				"type": "String"
+			},
+			{
+				"name": "-341",
+				"type": "String"
+			},
+			{
+				"name": "-342",
+				"type": "String"
+			},
+			{
+				"name": "-343",
+				"type": "String"
+			},
+			{
+				"name": "-344",
+				"type": "String"
+			},
+			{
+				"name": "-345",
+				"type": "String"
+			},
+			{
+				"name": "-346",
+				"type": "String"
+			},
+			{
+				"name": "-347",
+				"type": "String"
+			},
+			{
+				"name": "-348",
+				"type": "String"
+			},
+			{
+				"name": "-349",
+				"type": "String"
+			},
+			{
+				"name": "-350",
+				"type": "String"
+			},
+			{
+				"name": "-351",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1636383278554034179\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1636383278554034179",
+				"type": "String"
+			},
+			{
+				"name": "@safemoonsimon @HananyaNaftali This was flyposting not advertising, and this picture is very old, so it was removed a long time ago....",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-16 15:05 +0000",
+				"type": "String"
+			},
+			{
+				"name": "17.0356",
+				"type": "String"
+			},
+			{
+				"name": "5.0357",
+				"type": "String"
+			},
+			{
+				"name": "0.29411764705882354",
+				"type": "String"
+			},
+			{
+				"name": "0.0359",
+				"type": "String"
+			},
+			{
+				"name": "0.0360",
+				"type": "String"
+			},
+			{
+				"name": "0.0361",
+				"type": "String"
+			},
+			{
+				"name": "1.0362",
+				"type": "String"
+			},
+			{
+				"name": "0.0363",
+				"type": "String"
+			},
+			{
+				"name": "0.0364",
+				"type": "String"
+			},
+			{
+				"name": "4.0365",
+				"type": "String"
+			},
+			{
+				"name": "0.0366",
+				"type": "String"
+			},
+			{
+				"name": "0367",
+				"type": "String"
+			},
+			{
+				"name": "0368",
+				"type": "String"
+			},
+			{
+				"name": "0369",
+				"type": "String"
+			},
+			{
+				"name": "0370",
+				"type": "String"
+			},
+			{
+				"name": "0371",
+				"type": "String"
+			},
+			{
+				"name": "0372",
+				"type": "String"
+			},
+			{
+				"name": "0373",
+				"type": "String"
+			},
+			{
+				"name": "-374",
+				"type": "String"
+			},
+			{
+				"name": "-375",
+				"type": "String"
+			},
+			{
+				"name": "-376",
+				"type": "String"
+			},
+			{
+				"name": "-377",
+				"type": "String"
+			},
+			{
+				"name": "-378",
+				"type": "String"
+			},
+			{
+				"name": "-379",
+				"type": "String"
+			},
+			{
+				"name": "-380",
+				"type": "String"
+			},
+			{
+				"name": "-381",
+				"type": "String"
+			},
+			{
+				"name": "-382",
+				"type": "String"
+			},
+			{
+				"name": "-383",
+				"type": "String"
+			},
+			{
+				"name": "-384",
+				"type": "String"
+			},
+			{
+				"name": "-385",
+				"type": "String"
+			},
+			{
+				"name": "-386",
+				"type": "String"
+			},
+			{
+				"name": "-387",
+				"type": "String"
+			},
+			{
+				"name": "-388",
+				"type": "String"
+			},
+			{
+				"name": "-389",
+				"type": "String"
+			},
+			{
+				"name": "-390",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1636018486567739392\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1636018486567739392",
+				"type": "String"
+			},
+			{
+				"name": "A powerful campaign by @Dove and a great example of Out-of-Home's ability to reach people out and about in cities with messages that matter. https://t.co/Ai7pwCPPXR",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-15 14:56 +0000",
+				"type": "String"
+			},
+			{
+				"name": "713.0",
+				"type": "String"
+			},
+			{
+				"name": "28.0",
+				"type": "String"
+			},
+			{
+				"name": "0.03927068723702665",
+				"type": "String"
+			},
+			{
+				"name": "4.0398",
+				"type": "String"
+			},
+			{
+				"name": "0.0399",
+				"type": "String"
+			},
+			{
+				"name": "8.0400",
+				"type": "String"
+			},
+			{
+				"name": "2.0401",
+				"type": "String"
+			},
+			{
+				"name": "2.0402",
+				"type": "String"
+			},
+			{
+				"name": "0.0403",
+				"type": "String"
+			},
+			{
+				"name": "12.0404",
+				"type": "String"
+			},
+			{
+				"name": "0.0405",
+				"type": "String"
+			},
+			{
+				"name": "0406",
+				"type": "String"
+			},
+			{
+				"name": "0407",
+				"type": "String"
+			},
+			{
+				"name": "0408",
+				"type": "String"
+			},
+			{
+				"name": "0409",
+				"type": "String"
+			},
+			{
+				"name": "0410",
+				"type": "String"
+			},
+			{
+				"name": "0411",
+				"type": "String"
+			},
+			{
+				"name": "0412",
+				"type": "String"
+			},
+			{
+				"name": "-413",
+				"type": "String"
+			},
+			{
+				"name": "-414",
+				"type": "String"
+			},
+			{
+				"name": "-415",
+				"type": "String"
+			},
+			{
+				"name": "-416",
+				"type": "String"
+			},
+			{
+				"name": "-417",
+				"type": "String"
+			},
+			{
+				"name": "-418",
+				"type": "String"
+			},
+			{
+				"name": "-419",
+				"type": "String"
+			},
+			{
+				"name": "-420",
+				"type": "String"
+			},
+			{
+				"name": "-421",
+				"type": "String"
+			},
+			{
+				"name": "-422",
+				"type": "String"
+			},
+			{
+				"name": "-423",
+				"type": "String"
+			},
+			{
+				"name": "-424",
+				"type": "String"
+			},
+			{
+				"name": "-425",
+				"type": "String"
+			},
+			{
+				"name": "-426",
+				"type": "String"
+			},
+			{
+				"name": "-427",
+				"type": "String"
+			},
+			{
+				"name": "-428",
+				"type": "String"
+			},
+			{
+				"name": "-429",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1635939737188851714\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1635939737188851714",
+				"type": "String"
+			},
+			{
+				"name": "Take 15 minutes to complete the advertising and marketing industry's All In Census and help build a more inclusive workplace where everyone feels they belong. #advertisingallin @The_IPA @ISBAsays\n\nTake part now: https://t.co/JxTbvZkvXc https://t.co/UVrggncGeb",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-15 09:43 +0000",
+				"type": "String"
+			},
+			{
+				"name": "667.0",
+				"type": "String"
+			},
+			{
+				"name": "19.0",
+				"type": "String"
+			},
+			{
+				"name": "0.02848575712143928",
+				"type": "String"
+			},
+			{
+				"name": "4.0437",
+				"type": "String"
+			},
+			{
+				"name": "0.0438",
+				"type": "String"
+			},
+			{
+				"name": "9.0439",
+				"type": "String"
+			},
+			{
+				"name": "0.0440",
+				"type": "String"
+			},
+			{
+				"name": "4.0441",
+				"type": "String"
+			},
+			{
+				"name": "0.0442",
+				"type": "String"
+			},
+			{
+				"name": "1.0443",
+				"type": "String"
+			},
+			{
+				"name": "0.0444",
+				"type": "String"
+			},
+			{
+				"name": "0445",
+				"type": "String"
+			},
+			{
+				"name": "0446",
+				"type": "String"
+			},
+			{
+				"name": "0447",
+				"type": "String"
+			},
+			{
+				"name": "0448",
+				"type": "String"
+			},
+			{
+				"name": "0449",
+				"type": "String"
+			},
+			{
+				"name": "1450",
+				"type": "String"
+			},
+			{
+				"name": "1451",
+				"type": "String"
+			},
+			{
+				"name": "-452",
+				"type": "String"
+			},
+			{
+				"name": "-453",
+				"type": "String"
+			},
+			{
+				"name": "-454",
+				"type": "String"
+			},
+			{
+				"name": "-455",
+				"type": "String"
+			},
+			{
+				"name": "-456",
+				"type": "String"
+			},
+			{
+				"name": "-457",
+				"type": "String"
+			},
+			{
+				"name": "-458",
+				"type": "String"
+			},
+			{
+				"name": "-459",
+				"type": "String"
+			},
+			{
+				"name": "-460",
+				"type": "String"
+			},
+			{
+				"name": "-461",
+				"type": "String"
+			},
+			{
+				"name": "-462",
+				"type": "String"
+			},
+			{
+				"name": "-463",
+				"type": "String"
+			},
+			{
+				"name": "-464",
+				"type": "String"
+			},
+			{
+				"name": "-465",
+				"type": "String"
+			},
+			{
+				"name": "-466",
+				"type": "String"
+			},
+			{
+				"name": "-467",
+				"type": "String"
+			},
+			{
+				"name": "-468",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1635613481088024576\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1635613481088024576",
+				"type": "String"
+			},
+			{
+				"name": "We are All In\nThe @ad_association census goes live tomorrow and will help build a better, more inclusive advertising industry for us all. Make sure your voice is heard.\nFind out more: https://t.co/qfQsGre2dt\nBookmark for tomorrow: https://t.co/9WhvG0DMz8",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-14 12:06 +0000",
+				"type": "String"
+			},
+			{
+				"name": "412.0",
+				"type": "String"
+			},
+			{
+				"name": "14.0474",
+				"type": "String"
+			},
+			{
+				"name": "0.03398058252427184",
+				"type": "String"
+			},
+			{
+				"name": "5.0476",
+				"type": "String"
+			},
+			{
+				"name": "0.0477",
+				"type": "String"
+			},
+			{
+				"name": "5.0478",
+				"type": "String"
+			},
+			{
+				"name": "0.0479",
+				"type": "String"
+			},
+			{
+				"name": "2.0480",
+				"type": "String"
+			},
+			{
+				"name": "0.0481",
+				"type": "String"
+			},
+			{
+				"name": "2.0482",
+				"type": "String"
+			},
+			{
+				"name": "0.0483",
+				"type": "String"
+			},
+			{
+				"name": "0484",
+				"type": "String"
+			},
+			{
+				"name": "0485",
+				"type": "String"
+			},
+			{
+				"name": "0486",
+				"type": "String"
+			},
+			{
+				"name": "0487",
+				"type": "String"
+			},
+			{
+				"name": "0488",
+				"type": "String"
+			},
+			{
+				"name": "0489",
+				"type": "String"
+			},
+			{
+				"name": "0490",
+				"type": "String"
+			},
+			{
+				"name": "-491",
+				"type": "String"
+			},
+			{
+				"name": "-492",
+				"type": "String"
+			},
+			{
+				"name": "-493",
+				"type": "String"
+			},
+			{
+				"name": "-494",
+				"type": "String"
+			},
+			{
+				"name": "-495",
+				"type": "String"
+			},
+			{
+				"name": "-496",
+				"type": "String"
+			},
+			{
+				"name": "-497",
+				"type": "String"
+			},
+			{
+				"name": "-498",
+				"type": "String"
+			},
+			{
+				"name": "-499",
+				"type": "String"
+			},
+			{
+				"name": "-500",
+				"type": "String"
+			},
+			{
+				"name": "-501",
+				"type": "String"
+			},
+			{
+				"name": "-502",
+				"type": "String"
+			},
+			{
+				"name": "-503",
+				"type": "String"
+			},
+			{
+				"name": "-504",
+				"type": "String"
+			},
+			{
+				"name": "-505",
+				"type": "String"
+			},
+			{
+				"name": "-506",
+				"type": "String"
+			},
+			{
+				"name": "-507",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1635302986456129537\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1635302986456129537",
+				"type": "String"
+			},
+			{
+				"name": "It's time to think big when it comes to programmatic DOOH - two-thirds (63%) of programmatic DOOH buyers intend to incorporate large formats into their campaigns in 2023, up from 48% last year. https://t.co/0soX6nahmJ    #ooh #dooh #prooh https://t.co/WUN3n0AG63",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-13 15:33 +0000",
+				"type": "String"
+			},
+			{
+				"name": "450.0",
+				"type": "String"
+			},
+			{
+				"name": "20.0513",
+				"type": "String"
+			},
+			{
+				"name": "0.044444444444444446",
+				"type": "String"
+			},
+			{
+				"name": "6.0515",
+				"type": "String"
+			},
+			{
+				"name": "0.0516",
+				"type": "String"
+			},
+			{
+				"name": "9.0517",
+				"type": "String"
+			},
+			{
+				"name": "0.0518",
+				"type": "String"
+			},
+			{
+				"name": "0.0519",
+				"type": "String"
+			},
+			{
+				"name": "0.0520",
+				"type": "String"
+			},
+			{
+				"name": "3.0521",
+				"type": "String"
+			},
+			{
+				"name": "0.0522",
+				"type": "String"
+			},
+			{
+				"name": "0523",
+				"type": "String"
+			},
+			{
+				"name": "0524",
+				"type": "String"
+			},
+			{
+				"name": "0525",
+				"type": "String"
+			},
+			{
+				"name": "0526",
+				"type": "String"
+			},
+			{
+				"name": "0527",
+				"type": "String"
+			},
+			{
+				"name": "89",
+				"type": "String"
+			},
+			{
+				"name": "2529",
+				"type": "String"
+			},
+			{
+				"name": "-530",
+				"type": "String"
+			},
+			{
+				"name": "-531",
+				"type": "String"
+			},
+			{
+				"name": "-532",
+				"type": "String"
+			},
+			{
+				"name": "-533",
+				"type": "String"
+			},
+			{
+				"name": "-534",
+				"type": "String"
+			},
+			{
+				"name": "-535",
+				"type": "String"
+			},
+			{
+				"name": "-536",
+				"type": "String"
+			},
+			{
+				"name": "-537",
+				"type": "String"
+			},
+			{
+				"name": "-538",
+				"type": "String"
+			},
+			{
+				"name": "-539",
+				"type": "String"
+			},
+			{
+				"name": "-540",
+				"type": "String"
+			},
+			{
+				"name": "-541",
+				"type": "String"
+			},
+			{
+				"name": "-542",
+				"type": "String"
+			},
+			{
+				"name": "-543",
+				"type": "String"
+			},
+			{
+				"name": "-544",
+				"type": "String"
+			},
+			{
+				"name": "-545",
+				"type": "String"
+			},
+			{
+				"name": "-546",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1634173693931782147\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1634173693931782147",
+				"type": "String"
+			},
+			{
+				"name": "It really is dachsh-ing! This giant Dachshund meets the Clapham Colossus for this special build for @Klarna, this big brand message stands out on this canvas for creativity. @emglobal #klarna #creativesolutions #creativeeffectiveness https://t.co/LBDdOJn7ZJ",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-10 12:45 +0000",
+				"type": "String"
+			},
+			{
+				"name": "743.0",
+				"type": "String"
+			},
+			{
+				"name": "45.0552",
+				"type": "String"
+			},
+			{
+				"name": "0.06056527590847914",
+				"type": "String"
+			},
+			{
+				"name": "5.0554",
+				"type": "String"
+			},
+			{
+				"name": "1.0555",
+				"type": "String"
+			},
+			{
+				"name": "15.0556",
+				"type": "String"
+			},
+			{
+				"name": "1.0557",
+				"type": "String"
+			},
+			{
+				"name": "1.0558",
+				"type": "String"
+			},
+			{
+				"name": "0.0559",
+				"type": "String"
+			},
+			{
+				"name": "14.0560",
+				"type": "String"
+			},
+			{
+				"name": "0.0561",
+				"type": "String"
+			},
+			{
+				"name": "0562",
+				"type": "String"
+			},
+			{
+				"name": "0563",
+				"type": "String"
+			},
+			{
+				"name": "0564",
+				"type": "String"
+			},
+			{
+				"name": "0565",
+				"type": "String"
+			},
+			{
+				"name": "0566",
+				"type": "String"
+			},
+			{
+				"name": "8567",
+				"type": "String"
+			},
+			{
+				"name": "8568",
+				"type": "String"
+			},
+			{
+				"name": "-569",
+				"type": "String"
+			},
+			{
+				"name": "-570",
+				"type": "String"
+			},
+			{
+				"name": "-571",
+				"type": "String"
+			},
+			{
+				"name": "-572",
+				"type": "String"
+			},
+			{
+				"name": "-573",
+				"type": "String"
+			},
+			{
+				"name": "-574",
+				"type": "String"
+			},
+			{
+				"name": "-575",
+				"type": "String"
+			},
+			{
+				"name": "-576",
+				"type": "String"
+			},
+			{
+				"name": "-577",
+				"type": "String"
+			},
+			{
+				"name": "-578",
+				"type": "String"
+			},
+			{
+				"name": "-579",
+				"type": "String"
+			},
+			{
+				"name": "-580",
+				"type": "String"
+			},
+			{
+				"name": "-581",
+				"type": "String"
+			},
+			{
+				"name": "-582",
+				"type": "String"
+			},
+			{
+				"name": "-583",
+				"type": "String"
+			},
+			{
+				"name": "-584",
+				"type": "String"
+			},
+			{
+				"name": "-585",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633752535990140928\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633752535990140928",
+				"type": "String"
+			},
+			{
+				"name": "➡️to find out more about how brands can make the most of the medium click here https://t.co/iSxC9FY5Zu as today's results underline the power of the public screen of Out-of-Home and the new digital capabilities including programmatic. https://t.co/kt6G57UCQz",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-09 08:52 +0000",
+				"type": "String"
+			},
+			{
+				"name": "599.0",
+				"type": "String"
+			},
+			{
+				"name": "18.0",
+				"type": "String"
+			},
+			{
+				"name": "0.03005008347245409",
+				"type": "String"
+			},
+			{
+				"name": "5.0593",
+				"type": "String"
+			},
+			{
+				"name": "0.0594",
+				"type": "String"
+			},
+			{
+				"name": "7.0595",
+				"type": "String"
+			},
+			{
+				"name": "0.0596",
+				"type": "String"
+			},
+			{
+				"name": "1.0597",
+				"type": "String"
+			},
+			{
+				"name": "0.0598",
+				"type": "String"
+			},
+			{
+				"name": "5.0599",
+				"type": "String"
+			},
+			{
+				"name": "0.0600",
+				"type": "String"
+			},
+			{
+				"name": "0601",
+				"type": "String"
+			},
+			{
+				"name": "0602",
+				"type": "String"
+			},
+			{
+				"name": "0603",
+				"type": "String"
+			},
+			{
+				"name": "0604",
+				"type": "String"
+			},
+			{
+				"name": "0605",
+				"type": "String"
+			},
+			{
+				"name": "0606",
+				"type": "String"
+			},
+			{
+				"name": "0607",
+				"type": "String"
+			},
+			{
+				"name": "-608",
+				"type": "String"
+			},
+			{
+				"name": "-609",
+				"type": "String"
+			},
+			{
+				"name": "-610",
+				"type": "String"
+			},
+			{
+				"name": "-611",
+				"type": "String"
+			},
+			{
+				"name": "-612",
+				"type": "String"
+			},
+			{
+				"name": "-613",
+				"type": "String"
+			},
+			{
+				"name": "-614",
+				"type": "String"
+			},
+			{
+				"name": "-615",
+				"type": "String"
+			},
+			{
+				"name": "-616",
+				"type": "String"
+			},
+			{
+				"name": "-617",
+				"type": "String"
+			},
+			{
+				"name": "-618",
+				"type": "String"
+			},
+			{
+				"name": "-619",
+				"type": "String"
+			},
+			{
+				"name": "-620",
+				"type": "String"
+			},
+			{
+				"name": "-621",
+				"type": "String"
+			},
+			{
+				"name": "-622",
+				"type": "String"
+			},
+			{
+				"name": "-623",
+				"type": "String"
+			},
+			{
+				"name": "-624",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633482610121887745\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633482610121887745",
+				"type": "String"
+			},
+			{
+				"name": "As our speakers shared at our 'Back to Business' briefing yesterday- business travel is back as brands see the value in face-to-face connections once again with new airport passenger insight unveiled ➡ #OOH #OOH #airportadvertising h #digitalmarketing https://t.co/UOzQAorm22",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-08 14:59 +0000",
+				"type": "String"
+			},
+			{
+				"name": "390.0",
+				"type": "String"
+			},
+			{
+				"name": "20.0630",
+				"type": "String"
+			},
+			{
+				"name": "0.05128205128205128",
+				"type": "String"
+			},
+			{
+				"name": "4.0632",
+				"type": "String"
+			},
+			{
+				"name": "0.0633",
+				"type": "String"
+			},
+			{
+				"name": "6.0634",
+				"type": "String"
+			},
+			{
+				"name": "2.0635",
+				"type": "String"
+			},
+			{
+				"name": "0.0636",
+				"type": "String"
+			},
+			{
+				"name": "0.0637",
+				"type": "String"
+			},
+			{
+				"name": "1.0638",
+				"type": "String"
+			},
+			{
+				"name": "0.0639",
+				"type": "String"
+			},
+			{
+				"name": "0640",
+				"type": "String"
+			},
+			{
+				"name": "0641",
+				"type": "String"
+			},
+			{
+				"name": "0642",
+				"type": "String"
+			},
+			{
+				"name": "0643",
+				"type": "String"
+			},
+			{
+				"name": "0644",
+				"type": "String"
+			},
+			{
+				"name": "76",
+				"type": "String"
+			},
+			{
+				"name": "7646",
+				"type": "String"
+			},
+			{
+				"name": "-647",
+				"type": "String"
+			},
+			{
+				"name": "-648",
+				"type": "String"
+			},
+			{
+				"name": "-649",
+				"type": "String"
+			},
+			{
+				"name": "-650",
+				"type": "String"
+			},
+			{
+				"name": "-651",
+				"type": "String"
+			},
+			{
+				"name": "-652",
+				"type": "String"
+			},
+			{
+				"name": "-653",
+				"type": "String"
+			},
+			{
+				"name": "-654",
+				"type": "String"
+			},
+			{
+				"name": "-655",
+				"type": "String"
+			},
+			{
+				"name": "-656",
+				"type": "String"
+			},
+			{
+				"name": "-657",
+				"type": "String"
+			},
+			{
+				"name": "-658",
+				"type": "String"
+			},
+			{
+				"name": "-659",
+				"type": "String"
+			},
+			{
+				"name": "-660",
+				"type": "String"
+			},
+			{
+				"name": "-661",
+				"type": "String"
+			},
+			{
+				"name": "-662",
+				"type": "String"
+			},
+			{
+				"name": "-663",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633416654297153538\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633416654297153538",
+				"type": "String"
+			},
+			{
+				"name": "Powerful campaign from @ScottishWidows highlighting the gender pension gap for International Women’s Day. Big brand messaging at Motion@Waterloo station. @Zenith_Media_UK  #IWDPensionGap #EmbraceEquity #IWD2023 https://t.co/cxyJfXofca",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-08 10:37 +0000",
+				"type": "String"
+			},
+			{
+				"name": "4046.0",
+				"type": "String"
+			},
+			{
+				"name": "212.0",
+				"type": "String"
+			},
+			{
+				"name": "0.05239742956005932",
+				"type": "String"
+			},
+			{
+				"name": "20.0671",
+				"type": "String"
+			},
+			{
+				"name": "6.0672",
+				"type": "String"
+			},
+			{
+				"name": "36.0",
+				"type": "String"
+			},
+			{
+				"name": "15.0674",
+				"type": "String"
+			},
+			{
+				"name": "0.0675",
+				"type": "String"
+			},
+			{
+				"name": "3.0676",
+				"type": "String"
+			},
+			{
+				"name": "45.0677",
+				"type": "String"
+			},
+			{
+				"name": "0.0678",
+				"type": "String"
+			},
+			{
+				"name": "0679",
+				"type": "String"
+			},
+			{
+				"name": "0680",
+				"type": "String"
+			},
+			{
+				"name": "0681",
+				"type": "String"
+			},
+			{
+				"name": "0682",
+				"type": "String"
+			},
+			{
+				"name": "0683",
+				"type": "String"
+			},
+			{
+				"name": "1473",
+				"type": "String"
+			},
+			{
+				"name": "87",
+				"type": "String"
+			},
+			{
+				"name": "-686",
+				"type": "String"
+			},
+			{
+				"name": "-687",
+				"type": "String"
+			},
+			{
+				"name": "-688",
+				"type": "String"
+			},
+			{
+				"name": "-689",
+				"type": "String"
+			},
+			{
+				"name": "-690",
+				"type": "String"
+			},
+			{
+				"name": "-691",
+				"type": "String"
+			},
+			{
+				"name": "-692",
+				"type": "String"
+			},
+			{
+				"name": "-693",
+				"type": "String"
+			},
+			{
+				"name": "-694",
+				"type": "String"
+			},
+			{
+				"name": "-695",
+				"type": "String"
+			},
+			{
+				"name": "-696",
+				"type": "String"
+			},
+			{
+				"name": "-697",
+				"type": "String"
+			},
+			{
+				"name": "-698",
+				"type": "String"
+			},
+			{
+				"name": "-699",
+				"type": "String"
+			},
+			{
+				"name": "-700",
+				"type": "String"
+			},
+			{
+				"name": "-701",
+				"type": "String"
+			},
+			{
+				"name": "-702",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633090273075970055\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633090273075970055",
+				"type": "String"
+			},
+			{
+				"name": "If you'd like to know more about this new Airport insight do drop us a line - and to read the press release with topline results click here. https://t.co/QunynkanIg",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 13:00 +0000",
+				"type": "String"
+			},
+			{
+				"name": "235.0",
+				"type": "String"
+			},
+			{
+				"name": "15.0708",
+				"type": "String"
+			},
+			{
+				"name": "0.06382978723404255",
+				"type": "String"
+			},
+			{
+				"name": "4.0710",
+				"type": "String"
+			},
+			{
+				"name": "1.0711",
+				"type": "String"
+			},
+			{
+				"name": "7.0712",
+				"type": "String"
+			},
+			{
+				"name": "0.0713",
+				"type": "String"
+			},
+			{
+				"name": "3.0714",
+				"type": "String"
+			},
+			{
+				"name": "0.0715",
+				"type": "String"
+			},
+			{
+				"name": "0.0716",
+				"type": "String"
+			},
+			{
+				"name": "0.0717",
+				"type": "String"
+			},
+			{
+				"name": "0718",
+				"type": "String"
+			},
+			{
+				"name": "0719",
+				"type": "String"
+			},
+			{
+				"name": "0720",
+				"type": "String"
+			},
+			{
+				"name": "0721",
+				"type": "String"
+			},
+			{
+				"name": "0722",
+				"type": "String"
+			},
+			{
+				"name": "0723",
+				"type": "String"
+			},
+			{
+				"name": "0724",
+				"type": "String"
+			},
+			{
+				"name": "-725",
+				"type": "String"
+			},
+			{
+				"name": "-726",
+				"type": "String"
+			},
+			{
+				"name": "-727",
+				"type": "String"
+			},
+			{
+				"name": "-728",
+				"type": "String"
+			},
+			{
+				"name": "-729",
+				"type": "String"
+			},
+			{
+				"name": "-730",
+				"type": "String"
+			},
+			{
+				"name": "-731",
+				"type": "String"
+			},
+			{
+				"name": "-732",
+				"type": "String"
+			},
+			{
+				"name": "-733",
+				"type": "String"
+			},
+			{
+				"name": "-734",
+				"type": "String"
+			},
+			{
+				"name": "-735",
+				"type": "String"
+			},
+			{
+				"name": "-736",
+				"type": "String"
+			},
+			{
+				"name": "-737",
+				"type": "String"
+			},
+			{
+				"name": "-738",
+				"type": "String"
+			},
+			{
+				"name": "-739",
+				"type": "String"
+			},
+			{
+				"name": "-740",
+				"type": "String"
+			},
+			{
+				"name": "-741",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633045206512685058\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633045206512685058",
+				"type": "String"
+			},
+			{
+				"name": "Samantha Zwertvaegher, Cisco explains that being top of mind is key for the brand, and they chose to invest in airport advertising so they could benefit from the perceived value it offered and the BDMs looking for new opportunities whilst travelling for work. #BacktoBusiness https://t.co/3z1a2JfNWF",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 10:01 +0000",
+				"type": "String"
+			},
+			{
+				"name": "699.0",
+				"type": "String"
+			},
+			{
+				"name": "30.0",
+				"type": "String"
+			},
+			{
+				"name": "0.04291845493562232",
+				"type": "String"
+			},
+			{
+				"name": "4.0749",
+				"type": "String"
+			},
+			{
+				"name": "1.0750",
+				"type": "String"
+			},
+			{
+				"name": "10.0751",
+				"type": "String"
+			},
+			{
+				"name": "2.0752",
+				"type": "String"
+			},
+			{
+				"name": "0.0753",
+				"type": "String"
+			},
+			{
+				"name": "0.0754",
+				"type": "String"
+			},
+			{
+				"name": "4.0755",
+				"type": "String"
+			},
+			{
+				"name": "0.0756",
+				"type": "String"
+			},
+			{
+				"name": "0757",
+				"type": "String"
+			},
+			{
+				"name": "0758",
+				"type": "String"
+			},
+			{
+				"name": "0759",
+				"type": "String"
+			},
+			{
+				"name": "0760",
+				"type": "String"
+			},
+			{
+				"name": "0761",
+				"type": "String"
+			},
+			{
+				"name": "9762",
+				"type": "String"
+			},
+			{
+				"name": "9763",
+				"type": "String"
+			},
+			{
+				"name": "-764",
+				"type": "String"
+			},
+			{
+				"name": "-765",
+				"type": "String"
+			},
+			{
+				"name": "-766",
+				"type": "String"
+			},
+			{
+				"name": "-767",
+				"type": "String"
+			},
+			{
+				"name": "-768",
+				"type": "String"
+			},
+			{
+				"name": "-769",
+				"type": "String"
+			},
+			{
+				"name": "-770",
+				"type": "String"
+			},
+			{
+				"name": "-771",
+				"type": "String"
+			},
+			{
+				"name": "-772",
+				"type": "String"
+			},
+			{
+				"name": "-773",
+				"type": "String"
+			},
+			{
+				"name": "-774",
+				"type": "String"
+			},
+			{
+				"name": "-775",
+				"type": "String"
+			},
+			{
+				"name": "-776",
+				"type": "String"
+			},
+			{
+				"name": "-777",
+				"type": "String"
+			},
+			{
+				"name": "-778",
+				"type": "String"
+			},
+			{
+				"name": "-779",
+				"type": "String"
+			},
+			{
+				"name": "-780",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633044379408449538\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633044379408449538",
+				"type": "String"
+			},
+			{
+				"name": "Peter Colvin describes the airport as “the ultimate platform to showcase your global brand credentials to an engaged elite” #BacktoBusiness https://t.co/hWn8bAxHR4",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:58 +0000",
+				"type": "String"
+			},
+			{
+				"name": "244.0",
+				"type": "String"
+			},
+			{
+				"name": "14.0786",
+				"type": "String"
+			},
+			{
+				"name": "0.05737704918032787",
+				"type": "String"
+			},
+			{
+				"name": "4.0788",
+				"type": "String"
+			},
+			{
+				"name": "0.0789",
+				"type": "String"
+			},
+			{
+				"name": "7.0790",
+				"type": "String"
+			},
+			{
+				"name": "0.0791",
+				"type": "String"
+			},
+			{
+				"name": "0.0792",
+				"type": "String"
+			},
+			{
+				"name": "0.0793",
+				"type": "String"
+			},
+			{
+				"name": "2.0794",
+				"type": "String"
+			},
+			{
+				"name": "0.0795",
+				"type": "String"
+			},
+			{
+				"name": "0796",
+				"type": "String"
+			},
+			{
+				"name": "0797",
+				"type": "String"
+			},
+			{
+				"name": "0798",
+				"type": "String"
+			},
+			{
+				"name": "0799",
+				"type": "String"
+			},
+			{
+				"name": "0800",
+				"type": "String"
+			},
+			{
+				"name": "1801",
+				"type": "String"
+			},
+			{
+				"name": "1802",
+				"type": "String"
+			},
+			{
+				"name": "-803",
+				"type": "String"
+			},
+			{
+				"name": "-804",
+				"type": "String"
+			},
+			{
+				"name": "-805",
+				"type": "String"
+			},
+			{
+				"name": "-806",
+				"type": "String"
+			},
+			{
+				"name": "-807",
+				"type": "String"
+			},
+			{
+				"name": "-808",
+				"type": "String"
+			},
+			{
+				"name": "-809",
+				"type": "String"
+			},
+			{
+				"name": "-810",
+				"type": "String"
+			},
+			{
+				"name": "-811",
+				"type": "String"
+			},
+			{
+				"name": "-812",
+				"type": "String"
+			},
+			{
+				"name": "-813",
+				"type": "String"
+			},
+			{
+				"name": "-814",
+				"type": "String"
+			},
+			{
+				"name": "-815",
+				"type": "String"
+			},
+			{
+				"name": "-816",
+				"type": "String"
+			},
+			{
+				"name": "-817",
+				"type": "String"
+			},
+			{
+				"name": "-818",
+				"type": "String"
+			},
+			{
+				"name": "-819",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633041483283546114\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633041483283546114",
+				"type": "String"
+			},
+			{
+				"name": "“Rate of converting prospects to actual customers nearly doubles when face-to-face meetings are added” #BacktoBusiness https://t.co/M5Jc4trqez",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:46 +0000",
+				"type": "String"
+			},
+			{
+				"name": "269.0",
+				"type": "String"
+			},
+			{
+				"name": "12.0825",
+				"type": "String"
+			},
+			{
+				"name": "0.04460966542750929",
+				"type": "String"
+			},
+			{
+				"name": "4.0827",
+				"type": "String"
+			},
+			{
+				"name": "0.0828",
+				"type": "String"
+			},
+			{
+				"name": "6.0829",
+				"type": "String"
+			},
+			{
+				"name": "0.0830",
+				"type": "String"
+			},
+			{
+				"name": "0.0831",
+				"type": "String"
+			},
+			{
+				"name": "0.0832",
+				"type": "String"
+			},
+			{
+				"name": "0.0833",
+				"type": "String"
+			},
+			{
+				"name": "0.0834",
+				"type": "String"
+			},
+			{
+				"name": "0835",
+				"type": "String"
+			},
+			{
+				"name": "0836",
+				"type": "String"
+			},
+			{
+				"name": "0837",
+				"type": "String"
+			},
+			{
+				"name": "0838",
+				"type": "String"
+			},
+			{
+				"name": "0839",
+				"type": "String"
+			},
+			{
+				"name": "2840",
+				"type": "String"
+			},
+			{
+				"name": "2841",
+				"type": "String"
+			},
+			{
+				"name": "-842",
+				"type": "String"
+			},
+			{
+				"name": "-843",
+				"type": "String"
+			},
+			{
+				"name": "-844",
+				"type": "String"
+			},
+			{
+				"name": "-845",
+				"type": "String"
+			},
+			{
+				"name": "-846",
+				"type": "String"
+			},
+			{
+				"name": "-847",
+				"type": "String"
+			},
+			{
+				"name": "-848",
+				"type": "String"
+			},
+			{
+				"name": "-849",
+				"type": "String"
+			},
+			{
+				"name": "-850",
+				"type": "String"
+			},
+			{
+				"name": "-851",
+				"type": "String"
+			},
+			{
+				"name": "-852",
+				"type": "String"
+			},
+			{
+				"name": "-853",
+				"type": "String"
+			},
+			{
+				"name": "-854",
+				"type": "String"
+			},
+			{
+				"name": "-855",
+				"type": "String"
+			},
+			{
+				"name": "-856",
+				"type": "String"
+			},
+			{
+				"name": "-857",
+				"type": "String"
+			},
+			{
+				"name": "-858",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633040882428436486\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633040882428436486",
+				"type": "String"
+			},
+			{
+				"name": "Peter Colvin, Global Media and Communications Consultant explains the importance of face-to-face interactions with 93% of communication coming from body language and tonal cues. #BacktoBusiness https://t.co/umHzabLDRa",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:44 +0000",
+				"type": "String"
+			},
+			{
+				"name": "259.0863",
+				"type": "String"
+			},
+			{
+				"name": "13.0",
+				"type": "String"
+			},
+			{
+				"name": "0.05019305019305019",
+				"type": "String"
+			},
+			{
+				"name": "4.0866",
+				"type": "String"
+			},
+			{
+				"name": "0.0867",
+				"type": "String"
+			},
+			{
+				"name": "6.0868",
+				"type": "String"
+			},
+			{
+				"name": "0.0869",
+				"type": "String"
+			},
+			{
+				"name": "0.0870",
+				"type": "String"
+			},
+			{
+				"name": "0.0871",
+				"type": "String"
+			},
+			{
+				"name": "3.0872",
+				"type": "String"
+			},
+			{
+				"name": "0.0873",
+				"type": "String"
+			},
+			{
+				"name": "0874",
+				"type": "String"
+			},
+			{
+				"name": "0875",
+				"type": "String"
+			},
+			{
+				"name": "0876",
+				"type": "String"
+			},
+			{
+				"name": "0877",
+				"type": "String"
+			},
+			{
+				"name": "0878",
+				"type": "String"
+			},
+			{
+				"name": "0879",
+				"type": "String"
+			},
+			{
+				"name": "0880",
+				"type": "String"
+			},
+			{
+				"name": "-881",
+				"type": "String"
+			},
+			{
+				"name": "-882",
+				"type": "String"
+			},
+			{
+				"name": "-883",
+				"type": "String"
+			},
+			{
+				"name": "-884",
+				"type": "String"
+			},
+			{
+				"name": "-885",
+				"type": "String"
+			},
+			{
+				"name": "-886",
+				"type": "String"
+			},
+			{
+				"name": "-887",
+				"type": "String"
+			},
+			{
+				"name": "-888",
+				"type": "String"
+			},
+			{
+				"name": "-889",
+				"type": "String"
+			},
+			{
+				"name": "-890",
+				"type": "String"
+			},
+			{
+				"name": "-891",
+				"type": "String"
+			},
+			{
+				"name": "-892",
+				"type": "String"
+			},
+			{
+				"name": "-893",
+				"type": "String"
+			},
+			{
+				"name": "-894",
+				"type": "String"
+			},
+			{
+				"name": "-895",
+				"type": "String"
+			},
+			{
+				"name": "-896",
+				"type": "String"
+			},
+			{
+				"name": "-897",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633039146804551682\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633039146804551682",
+				"type": "String"
+			},
+			{
+				"name": "The airport is a place for B2B influence with 2 in 3 respondents likely to search online for products seen advertised at the airport. #BacktoBusiness https://t.co/hQzKg4mcU7",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:37 +0000",
+				"type": "String"
+			},
+			{
+				"name": "305.0",
+				"type": "String"
+			},
+			{
+				"name": "16.0903",
+				"type": "String"
+			},
+			{
+				"name": "0.05245901639344262",
+				"type": "String"
+			},
+			{
+				"name": "4.0905",
+				"type": "String"
+			},
+			{
+				"name": "0.0906",
+				"type": "String"
+			},
+			{
+				"name": "6.0907",
+				"type": "String"
+			},
+			{
+				"name": "1.0908",
+				"type": "String"
+			},
+			{
+				"name": "0.0909",
+				"type": "String"
+			},
+			{
+				"name": "0.0910",
+				"type": "String"
+			},
+			{
+				"name": "0.0911",
+				"type": "String"
+			},
+			{
+				"name": "0.0912",
+				"type": "String"
+			},
+			{
+				"name": "0913",
+				"type": "String"
+			},
+			{
+				"name": "0914",
+				"type": "String"
+			},
+			{
+				"name": "0915",
+				"type": "String"
+			},
+			{
+				"name": "0916",
+				"type": "String"
+			},
+			{
+				"name": "0917",
+				"type": "String"
+			},
+			{
+				"name": "5918",
+				"type": "String"
+			},
+			{
+				"name": "5919",
+				"type": "String"
+			},
+			{
+				"name": "-920",
+				"type": "String"
+			},
+			{
+				"name": "-921",
+				"type": "String"
+			},
+			{
+				"name": "-922",
+				"type": "String"
+			},
+			{
+				"name": "-923",
+				"type": "String"
+			},
+			{
+				"name": "-924",
+				"type": "String"
+			},
+			{
+				"name": "-925",
+				"type": "String"
+			},
+			{
+				"name": "-926",
+				"type": "String"
+			},
+			{
+				"name": "-927",
+				"type": "String"
+			},
+			{
+				"name": "-928",
+				"type": "String"
+			},
+			{
+				"name": "-929",
+				"type": "String"
+			},
+			{
+				"name": "-930",
+				"type": "String"
+			},
+			{
+				"name": "-931",
+				"type": "String"
+			},
+			{
+				"name": "-932",
+				"type": "String"
+			},
+			{
+				"name": "-933",
+				"type": "String"
+			},
+			{
+				"name": "-934",
+				"type": "String"
+			},
+			{
+				"name": "-935",
+				"type": "String"
+			},
+			{
+				"name": "-936",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633038668939051009\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633038668939051009",
+				"type": "String"
+			},
+			{
+				"name": "93% agree business travel is vital or important with the key reasons why they travel for business being building relationships, meeting clients and human interaction. #BacktoBusiness https://t.co/OAwl8zsjVk",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:35 +0000",
+				"type": "String"
+			},
+			{
+				"name": "259.0941",
+				"type": "String"
+			},
+			{
+				"name": "14.0942",
+				"type": "String"
+			},
+			{
+				"name": "0.05405405405405406",
+				"type": "String"
+			},
+			{
+				"name": "4.0944",
+				"type": "String"
+			},
+			{
+				"name": "0.0945",
+				"type": "String"
+			},
+			{
+				"name": "7.0946",
+				"type": "String"
+			},
+			{
+				"name": "0.0947",
+				"type": "String"
+			},
+			{
+				"name": "1.0948",
+				"type": "String"
+			},
+			{
+				"name": "0.0949",
+				"type": "String"
+			},
+			{
+				"name": "2.0950",
+				"type": "String"
+			},
+			{
+				"name": "0.0951",
+				"type": "String"
+			},
+			{
+				"name": "0952",
+				"type": "String"
+			},
+			{
+				"name": "0953",
+				"type": "String"
+			},
+			{
+				"name": "0954",
+				"type": "String"
+			},
+			{
+				"name": "0955",
+				"type": "String"
+			},
+			{
+				"name": "0956",
+				"type": "String"
+			},
+			{
+				"name": "0957",
+				"type": "String"
+			},
+			{
+				"name": "0958",
+				"type": "String"
+			},
+			{
+				"name": "-959",
+				"type": "String"
+			},
+			{
+				"name": "-960",
+				"type": "String"
+			},
+			{
+				"name": "-961",
+				"type": "String"
+			},
+			{
+				"name": "-962",
+				"type": "String"
+			},
+			{
+				"name": "-963",
+				"type": "String"
+			},
+			{
+				"name": "-964",
+				"type": "String"
+			},
+			{
+				"name": "-965",
+				"type": "String"
+			},
+			{
+				"name": "-966",
+				"type": "String"
+			},
+			{
+				"name": "-967",
+				"type": "String"
+			},
+			{
+				"name": "-968",
+				"type": "String"
+			},
+			{
+				"name": "-969",
+				"type": "String"
+			},
+			{
+				"name": "-970",
+				"type": "String"
+			},
+			{
+				"name": "-971",
+				"type": "String"
+			},
+			{
+				"name": "-972",
+				"type": "String"
+			},
+			{
+				"name": "-973",
+				"type": "String"
+			},
+			{
+				"name": "-974",
+				"type": "String"
+			},
+			{
+				"name": "-975",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633038198581473280\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633038198581473280",
+				"type": "String"
+			},
+			{
+				"name": "Laura Tanner, Head of Marketing reveals findings from our latest research - 76% of business travellers look for new opportunities while on a business trip and 60% perceive B2B brands at the airport to be market leaders. #BacktoBusiness https://t.co/EayzW6FNaM",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:33 +0000",
+				"type": "String"
+			},
+			{
+				"name": "267.0",
+				"type": "String"
+			},
+			{
+				"name": "11.0981",
+				"type": "String"
+			},
+			{
+				"name": "0.04119850187265917",
+				"type": "String"
+			},
+			{
+				"name": "4.0983",
+				"type": "String"
+			},
+			{
+				"name": "0.0984",
+				"type": "String"
+			},
+			{
+				"name": "6.0985",
+				"type": "String"
+			},
+			{
+				"name": "0.0986",
+				"type": "String"
+			},
+			{
+				"name": "0.0987",
+				"type": "String"
+			},
+			{
+				"name": "0.0988",
+				"type": "String"
+			},
+			{
+				"name": "0.0989",
+				"type": "String"
+			},
+			{
+				"name": "0.0990",
+				"type": "String"
+			},
+			{
+				"name": "0991",
+				"type": "String"
+			},
+			{
+				"name": "0992",
+				"type": "String"
+			},
+			{
+				"name": "0993",
+				"type": "String"
+			},
+			{
+				"name": "0994",
+				"type": "String"
+			},
+			{
+				"name": "0995",
+				"type": "String"
+			},
+			{
+				"name": "1996",
+				"type": "String"
+			},
+			{
+				"name": "1997",
+				"type": "String"
+			},
+			{
+				"name": "-998",
+				"type": "String"
+			},
+			{
+				"name": "-999",
+				"type": "String"
+			},
+			{
+				"name": "-1000",
+				"type": "String"
+			},
+			{
+				"name": "-1001",
+				"type": "String"
+			},
+			{
+				"name": "-1002",
+				"type": "String"
+			},
+			{
+				"name": "-1003",
+				"type": "String"
+			},
+			{
+				"name": "-1004",
+				"type": "String"
+			},
+			{
+				"name": "-1005",
+				"type": "String"
+			},
+			{
+				"name": "-1006",
+				"type": "String"
+			},
+			{
+				"name": "-1007",
+				"type": "String"
+			},
+			{
+				"name": "-1008",
+				"type": "String"
+			},
+			{
+				"name": "-1009",
+				"type": "String"
+			},
+			{
+				"name": "-1010",
+				"type": "String"
+			},
+			{
+				"name": "-1011",
+				"type": "String"
+			},
+			{
+				"name": "-1012",
+				"type": "String"
+			},
+			{
+				"name": "-1013",
+				"type": "String"
+			},
+			{
+				"name": "-1014",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633035634880258048\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633035634880258048",
+				"type": "String"
+			},
+			{
+				"name": "29% of companies surveyed by Morgan Stanley say their firms are already back to pre-covid business travel levels. 48% expect full recovery by 2025. 2023 will be the year of business travel. #BacktoBusiness https://t.co/C6lXlkoLRG",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:23 +0000",
+				"type": "String"
+			},
+			{
+				"name": "301.01019",
+				"type": "String"
+			},
+			{
+				"name": "17.01020",
+				"type": "String"
+			},
+			{
+				"name": "0.05647840531561462",
+				"type": "String"
+			},
+			{
+				"name": "5.01022",
+				"type": "String"
+			},
+			{
+				"name": "0.01023",
+				"type": "String"
+			},
+			{
+				"name": "6.01024",
+				"type": "String"
+			},
+			{
+				"name": "0.01025",
+				"type": "String"
+			},
+			{
+				"name": "0.01026",
+				"type": "String"
+			},
+			{
+				"name": "0.01027",
+				"type": "String"
+			},
+			{
+				"name": "3.01028",
+				"type": "String"
+			},
+			{
+				"name": "0.01029",
+				"type": "String"
+			},
+			{
+				"name": "01030",
+				"type": "String"
+			},
+			{
+				"name": "01031",
+				"type": "String"
+			},
+			{
+				"name": "01032",
+				"type": "String"
+			},
+			{
+				"name": "01033",
+				"type": "String"
+			},
+			{
+				"name": "01034",
+				"type": "String"
+			},
+			{
+				"name": "31035",
+				"type": "String"
+			},
+			{
+				"name": "31036",
+				"type": "String"
+			},
+			{
+				"name": "-1037",
+				"type": "String"
+			},
+			{
+				"name": "-1038",
+				"type": "String"
+			},
+			{
+				"name": "-1039",
+				"type": "String"
+			},
+			{
+				"name": "-1040",
+				"type": "String"
+			},
+			{
+				"name": "-1041",
+				"type": "String"
+			},
+			{
+				"name": "-1042",
+				"type": "String"
+			},
+			{
+				"name": "-1043",
+				"type": "String"
+			},
+			{
+				"name": "-1044",
+				"type": "String"
+			},
+			{
+				"name": "-1045",
+				"type": "String"
+			},
+			{
+				"name": "-1046",
+				"type": "String"
+			},
+			{
+				"name": "-1047",
+				"type": "String"
+			},
+			{
+				"name": "-1048",
+				"type": "String"
+			},
+			{
+				"name": "-1049",
+				"type": "String"
+			},
+			{
+				"name": "-1050",
+				"type": "String"
+			},
+			{
+				"name": "-1051",
+				"type": "String"
+			},
+			{
+				"name": "-1052",
+				"type": "String"
+			},
+			{
+				"name": "-1053",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633034105376874499\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633034105376874499",
+				"type": "String"
+			},
+			{
+				"name": "David Hawkins, Commercial and Partnerships Director – Airport, kicks off with the latest airport traffic forecasts, which are expected to return to 93% of pre-pandemic figures in 2023. #BacktoBusiness https://t.co/B89a5ann6C",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:17 +0000",
+				"type": "String"
+			},
+			{
+				"name": "355.0",
+				"type": "String"
+			},
+			{
+				"name": "24.01059",
+				"type": "String"
+			},
+			{
+				"name": "0.0676056338028169",
+				"type": "String"
+			},
+			{
+				"name": "5.01061",
+				"type": "String"
+			},
+			{
+				"name": "0.01062",
+				"type": "String"
+			},
+			{
+				"name": "9.01063",
+				"type": "String"
+			},
+			{
+				"name": "1.01064",
+				"type": "String"
+			},
+			{
+				"name": "0.01065",
+				"type": "String"
+			},
+			{
+				"name": "0.01066",
+				"type": "String"
+			},
+			{
+				"name": "7.01067",
+				"type": "String"
+			},
+			{
+				"name": "0.01068",
+				"type": "String"
+			},
+			{
+				"name": "01069",
+				"type": "String"
+			},
+			{
+				"name": "01070",
+				"type": "String"
+			},
+			{
+				"name": "01071",
+				"type": "String"
+			},
+			{
+				"name": "01072",
+				"type": "String"
+			},
+			{
+				"name": "01073",
+				"type": "String"
+			},
+			{
+				"name": "21074",
+				"type": "String"
+			},
+			{
+				"name": "21075",
+				"type": "String"
+			},
+			{
+				"name": "-1076",
+				"type": "String"
+			},
+			{
+				"name": "-1077",
+				"type": "String"
+			},
+			{
+				"name": "-1078",
+				"type": "String"
+			},
+			{
+				"name": "-1079",
+				"type": "String"
+			},
+			{
+				"name": "-1080",
+				"type": "String"
+			},
+			{
+				"name": "-1081",
+				"type": "String"
+			},
+			{
+				"name": "-1082",
+				"type": "String"
+			},
+			{
+				"name": "-1083",
+				"type": "String"
+			},
+			{
+				"name": "-1084",
+				"type": "String"
+			},
+			{
+				"name": "-1085",
+				"type": "String"
+			},
+			{
+				"name": "-1086",
+				"type": "String"
+			},
+			{
+				"name": "-1087",
+				"type": "String"
+			},
+			{
+				"name": "-1088",
+				"type": "String"
+			},
+			{
+				"name": "-1089",
+				"type": "String"
+			},
+			{
+				"name": "-1090",
+				"type": "String"
+			},
+			{
+				"name": "-1091",
+				"type": "String"
+			},
+			{
+				"name": "-1092",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633032055620599808\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633032055620599808",
+				"type": "String"
+			},
+			{
+				"name": "How can brands stand out for the right reasons and why does public and trusted matter? Kelly Parker, CEO of @WavemakerUK, discusses this and more with @Ianrwhittaker in today’s #digitalchangemakers https://t.co/YIaAAbNLxu https://t.co/SAO0f8FAng",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:09 +0000",
+				"type": "String"
+			},
+			{
+				"name": "326.0",
+				"type": "String"
+			},
+			{
+				"name": "20.01098",
+				"type": "String"
+			},
+			{
+				"name": "0.06134969325153374",
+				"type": "String"
+			},
+			{
+				"name": "5.01100",
+				"type": "String"
+			},
+			{
+				"name": "0.01101",
+				"type": "String"
+			},
+			{
+				"name": "10.01102",
+				"type": "String"
+			},
+			{
+				"name": "1.01103",
+				"type": "String"
+			},
+			{
+				"name": "1.01104",
+				"type": "String"
+			},
+			{
+				"name": "0.01105",
+				"type": "String"
+			},
+			{
+				"name": "3.01106",
+				"type": "String"
+			},
+			{
+				"name": "0.01107",
+				"type": "String"
+			},
+			{
+				"name": "01108",
+				"type": "String"
+			},
+			{
+				"name": "01109",
+				"type": "String"
+			},
+			{
+				"name": "01110",
+				"type": "String"
+			},
+			{
+				"name": "01111",
+				"type": "String"
+			},
+			{
+				"name": "01112",
+				"type": "String"
+			},
+			{
+				"name": "01113",
+				"type": "String"
+			},
+			{
+				"name": "01114",
+				"type": "String"
+			},
+			{
+				"name": "-1115",
+				"type": "String"
+			},
+			{
+				"name": "-1116",
+				"type": "String"
+			},
+			{
+				"name": "-1117",
+				"type": "String"
+			},
+			{
+				"name": "-1118",
+				"type": "String"
+			},
+			{
+				"name": "-1119",
+				"type": "String"
+			},
+			{
+				"name": "-1120",
+				"type": "String"
+			},
+			{
+				"name": "-1121",
+				"type": "String"
+			},
+			{
+				"name": "-1122",
+				"type": "String"
+			},
+			{
+				"name": "-1123",
+				"type": "String"
+			},
+			{
+				"name": "-1124",
+				"type": "String"
+			},
+			{
+				"name": "-1125",
+				"type": "String"
+			},
+			{
+				"name": "-1126",
+				"type": "String"
+			},
+			{
+				"name": "-1127",
+				"type": "String"
+			},
+			{
+				"name": "-1128",
+				"type": "String"
+			},
+			{
+				"name": "-1129",
+				"type": "String"
+			},
+			{
+				"name": "-1130",
+				"type": "String"
+			},
+			{
+				"name": "-1131",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1633030675954561025\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1633030675954561025",
+				"type": "String"
+			},
+			{
+				"name": "Fantastic to see so many of our guests in-person at our #BacktoBusiness event this morning. https://t.co/QOX3pAzeRY",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-07 09:03 +0000",
+				"type": "String"
+			},
+			{
+				"name": "330.0",
+				"type": "String"
+			},
+			{
+				"name": "20.01137",
+				"type": "String"
+			},
+			{
+				"name": "0.06060606060606061",
+				"type": "String"
+			},
+			{
+				"name": "5.01139",
+				"type": "String"
+			},
+			{
+				"name": "0.01140",
+				"type": "String"
+			},
+			{
+				"name": "5.01141",
+				"type": "String"
+			},
+			{
+				"name": "2.01142",
+				"type": "String"
+			},
+			{
+				"name": "1.01143",
+				"type": "String"
+			},
+			{
+				"name": "0.01144",
+				"type": "String"
+			},
+			{
+				"name": "2.01145",
+				"type": "String"
+			},
+			{
+				"name": "0.01146",
+				"type": "String"
+			},
+			{
+				"name": "01147",
+				"type": "String"
+			},
+			{
+				"name": "01148",
+				"type": "String"
+			},
+			{
+				"name": "01149",
+				"type": "String"
+			},
+			{
+				"name": "01150",
+				"type": "String"
+			},
+			{
+				"name": "01151",
+				"type": "String"
+			},
+			{
+				"name": "51152",
+				"type": "String"
+			},
+			{
+				"name": "51153",
+				"type": "String"
+			},
+			{
+				"name": "-1154",
+				"type": "String"
+			},
+			{
+				"name": "-1155",
+				"type": "String"
+			},
+			{
+				"name": "-1156",
+				"type": "String"
+			},
+			{
+				"name": "-1157",
+				"type": "String"
+			},
+			{
+				"name": "-1158",
+				"type": "String"
+			},
+			{
+				"name": "-1159",
+				"type": "String"
+			},
+			{
+				"name": "-1160",
+				"type": "String"
+			},
+			{
+				"name": "-1161",
+				"type": "String"
+			},
+			{
+				"name": "-1162",
+				"type": "String"
+			},
+			{
+				"name": "-1163",
+				"type": "String"
+			},
+			{
+				"name": "-1164",
+				"type": "String"
+			},
+			{
+				"name": "-1165",
+				"type": "String"
+			},
+			{
+				"name": "-1166",
+				"type": "String"
+			},
+			{
+				"name": "-1167",
+				"type": "String"
+			},
+			{
+				"name": "-1168",
+				"type": "String"
+			},
+			{
+				"name": "-1169",
+				"type": "String"
+			},
+			{
+				"name": "-1170",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1631660743513849858\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1631660743513849858",
+				"type": "String"
+			},
+			{
+				"name": "NOW LIVE - Check out the latest campaigns across our #OOH environments this week.\n\n@Specsavers @Tesco @JohnLewisRetail @BATplc https://t.co/4Ma2vAhLdQ",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-03 14:20 +0000",
+				"type": "String"
+			},
+			{
+				"name": "393.0",
+				"type": "String"
+			},
+			{
+				"name": "31.01176",
+				"type": "String"
+			},
+			{
+				"name": "0.07888040712468193",
+				"type": "String"
+			},
+			{
+				"name": "4.01178",
+				"type": "String"
+			},
+			{
+				"name": "0.01179",
+				"type": "String"
+			},
+			{
+				"name": "8.01180",
+				"type": "String"
+			},
+			{
+				"name": "1.01181",
+				"type": "String"
+			},
+			{
+				"name": "1.01182",
+				"type": "String"
+			},
+			{
+				"name": "0.01183",
+				"type": "String"
+			},
+			{
+				"name": "7.01184",
+				"type": "String"
+			},
+			{
+				"name": "0.01185",
+				"type": "String"
+			},
+			{
+				"name": "01186",
+				"type": "String"
+			},
+			{
+				"name": "01187",
+				"type": "String"
+			},
+			{
+				"name": "01188",
+				"type": "String"
+			},
+			{
+				"name": "01189",
+				"type": "String"
+			},
+			{
+				"name": "01190",
+				"type": "String"
+			},
+			{
+				"name": "112",
+				"type": "String"
+			},
+			{
+				"name": "101192",
+				"type": "String"
+			},
+			{
+				"name": "-1193",
+				"type": "String"
+			},
+			{
+				"name": "-1194",
+				"type": "String"
+			},
+			{
+				"name": "-1195",
+				"type": "String"
+			},
+			{
+				"name": "-1196",
+				"type": "String"
+			},
+			{
+				"name": "-1197",
+				"type": "String"
+			},
+			{
+				"name": "-1198",
+				"type": "String"
+			},
+			{
+				"name": "-1199",
+				"type": "String"
+			},
+			{
+				"name": "-1200",
+				"type": "String"
+			},
+			{
+				"name": "-1201",
+				"type": "String"
+			},
+			{
+				"name": "-1202",
+				"type": "String"
+			},
+			{
+				"name": "-1203",
+				"type": "String"
+			},
+			{
+				"name": "-1204",
+				"type": "String"
+			},
+			{
+				"name": "-1205",
+				"type": "String"
+			},
+			{
+				"name": "-1206",
+				"type": "String"
+			},
+			{
+				"name": "-1207",
+				"type": "String"
+			},
+			{
+				"name": "-1208",
+				"type": "String"
+			},
+			{
+				"name": "-1209",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1631640339676102657\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1631640339676102657",
+				"type": "String"
+			},
+			{
+				"name": "The Community Channel is proud to support @TCFcharityUK taking this important message to the power of the public screen. @TRES_LDN \nFind out more about The Community Channel at https://t.co/M462lVtEtO https://t.co/wCRRySzquW",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-03 12:59 +0000",
+				"type": "String"
+			},
+			{
+				"name": "613.0",
+				"type": "String"
+			},
+			{
+				"name": "63.0",
+				"type": "String"
+			},
+			{
+				"name": "0.10277324632952692",
+				"type": "String"
+			},
+			{
+				"name": "7.01217",
+				"type": "String"
+			},
+			{
+				"name": "0.01218",
+				"type": "String"
+			},
+			{
+				"name": "8.01219",
+				"type": "String"
+			},
+			{
+				"name": "3.01220",
+				"type": "String"
+			},
+			{
+				"name": "2.01221",
+				"type": "String"
+			},
+			{
+				"name": "0.01222",
+				"type": "String"
+			},
+			{
+				"name": "31.01223",
+				"type": "String"
+			},
+			{
+				"name": "0.01224",
+				"type": "String"
+			},
+			{
+				"name": "01225",
+				"type": "String"
+			},
+			{
+				"name": "01226",
+				"type": "String"
+			},
+			{
+				"name": "01227",
+				"type": "String"
+			},
+			{
+				"name": "01228",
+				"type": "String"
+			},
+			{
+				"name": "01229",
+				"type": "String"
+			},
+			{
+				"name": "121230",
+				"type": "String"
+			},
+			{
+				"name": "121231",
+				"type": "String"
+			},
+			{
+				"name": "-1232",
+				"type": "String"
+			},
+			{
+				"name": "-1233",
+				"type": "String"
+			},
+			{
+				"name": "-1234",
+				"type": "String"
+			},
+			{
+				"name": "-1235",
+				"type": "String"
+			},
+			{
+				"name": "-1236",
+				"type": "String"
+			},
+			{
+				"name": "-1237",
+				"type": "String"
+			},
+			{
+				"name": "-1238",
+				"type": "String"
+			},
+			{
+				"name": "-1239",
+				"type": "String"
+			},
+			{
+				"name": "-1240",
+				"type": "String"
+			},
+			{
+				"name": "-1241",
+				"type": "String"
+			},
+			{
+				"name": "-1242",
+				"type": "String"
+			},
+			{
+				"name": "-1243",
+				"type": "String"
+			},
+			{
+				"name": "-1244",
+				"type": "String"
+			},
+			{
+				"name": "-1245",
+				"type": "String"
+			},
+			{
+				"name": "-1246",
+				"type": "String"
+			},
+			{
+				"name": "-1247",
+				"type": "String"
+			},
+			{
+				"name": "-1248",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1631332921335324681\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1631332921335324681",
+				"type": "String"
+			},
+			{
+				"name": "Chuffed to win this award which shows how data can empower us all. Find out more about our approach to data and our award-winning insight through our podcast featuring our Director of Data and insight Chris Felton. https://t.co/i9xj76PW98 https://t.co/0ZQ7LAoy8W https://t.co/BimnUwIAHD",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-02 16:37 +0000",
+				"type": "String"
+			},
+			{
+				"name": "433.0",
+				"type": "String"
+			},
+			{
+				"name": "16.01254",
+				"type": "String"
+			},
+			{
+				"name": "0.03695150115473441",
+				"type": "String"
+			},
+			{
+				"name": "4.01256",
+				"type": "String"
+			},
+			{
+				"name": "0.01257",
+				"type": "String"
+			},
+			{
+				"name": "5.01258",
+				"type": "String"
+			},
+			{
+				"name": "2.01259",
+				"type": "String"
+			},
+			{
+				"name": "3.01260",
+				"type": "String"
+			},
+			{
+				"name": "0.01261",
+				"type": "String"
+			},
+			{
+				"name": "2.01262",
+				"type": "String"
+			},
+			{
+				"name": "0.01263",
+				"type": "String"
+			},
+			{
+				"name": "01264",
+				"type": "String"
+			},
+			{
+				"name": "01265",
+				"type": "String"
+			},
+			{
+				"name": "01266",
+				"type": "String"
+			},
+			{
+				"name": "01267",
+				"type": "String"
+			},
+			{
+				"name": "01268",
+				"type": "String"
+			},
+			{
+				"name": "01269",
+				"type": "String"
+			},
+			{
+				"name": "01270",
+				"type": "String"
+			},
+			{
+				"name": "-1271",
+				"type": "String"
+			},
+			{
+				"name": "-1272",
+				"type": "String"
+			},
+			{
+				"name": "-1273",
+				"type": "String"
+			},
+			{
+				"name": "-1274",
+				"type": "String"
+			},
+			{
+				"name": "-1275",
+				"type": "String"
+			},
+			{
+				"name": "-1276",
+				"type": "String"
+			},
+			{
+				"name": "-1277",
+				"type": "String"
+			},
+			{
+				"name": "-1278",
+				"type": "String"
+			},
+			{
+				"name": "-1279",
+				"type": "String"
+			},
+			{
+				"name": "-1280",
+				"type": "String"
+			},
+			{
+				"name": "-1281",
+				"type": "String"
+			},
+			{
+				"name": "-1282",
+				"type": "String"
+			},
+			{
+				"name": "-1283",
+				"type": "String"
+			},
+			{
+				"name": "-1284",
+				"type": "String"
+			},
+			{
+				"name": "-1285",
+				"type": "String"
+			},
+			{
+				"name": "-1286",
+				"type": "String"
+			},
+			{
+				"name": "-1287",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1631213427040432129\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1631213427040432129",
+				"type": "String"
+			},
+			{
+				"name": "Whatever the outcome, we are proud to be shortlisted for 2 awards in today's Mediatel Media Research awards. Chuffed for our Data &amp; Insight team whose work underlines Out-of-Home's effectiveness and role in omnichannel campaigns. #MMRA2023\n#OOH  #data #insight https://t.co/wcphU8Vca6",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-02 08:42 +0000",
+				"type": "String"
+			},
+			{
+				"name": "474.0",
+				"type": "String"
+			},
+			{
+				"name": "24.01293",
+				"type": "String"
+			},
+			{
+				"name": "0.05063291139240506",
+				"type": "String"
+			},
+			{
+				"name": "4.01295",
+				"type": "String"
+			},
+			{
+				"name": "0.01296",
+				"type": "String"
+			},
+			{
+				"name": "7.01297",
+				"type": "String"
+			},
+			{
+				"name": "3.01298",
+				"type": "String"
+			},
+			{
+				"name": "1.01299",
+				"type": "String"
+			},
+			{
+				"name": "0.01300",
+				"type": "String"
+			},
+			{
+				"name": "8.01301",
+				"type": "String"
+			},
+			{
+				"name": "0.01302",
+				"type": "String"
+			},
+			{
+				"name": "01303",
+				"type": "String"
+			},
+			{
+				"name": "01304",
+				"type": "String"
+			},
+			{
+				"name": "01305",
+				"type": "String"
+			},
+			{
+				"name": "01306",
+				"type": "String"
+			},
+			{
+				"name": "01307",
+				"type": "String"
+			},
+			{
+				"name": "11308",
+				"type": "String"
+			},
+			{
+				"name": "11309",
+				"type": "String"
+			},
+			{
+				"name": "-1310",
+				"type": "String"
+			},
+			{
+				"name": "-1311",
+				"type": "String"
+			},
+			{
+				"name": "-1312",
+				"type": "String"
+			},
+			{
+				"name": "-1313",
+				"type": "String"
+			},
+			{
+				"name": "-1314",
+				"type": "String"
+			},
+			{
+				"name": "-1315",
+				"type": "String"
+			},
+			{
+				"name": "-1316",
+				"type": "String"
+			},
+			{
+				"name": "-1317",
+				"type": "String"
+			},
+			{
+				"name": "-1318",
+				"type": "String"
+			},
+			{
+				"name": "-1319",
+				"type": "String"
+			},
+			{
+				"name": "-1320",
+				"type": "String"
+			},
+			{
+				"name": "-1321",
+				"type": "String"
+			},
+			{
+				"name": "-1322",
+				"type": "String"
+			},
+			{
+				"name": "-1323",
+				"type": "String"
+			},
+			{
+				"name": "-1324",
+				"type": "String"
+			},
+			{
+				"name": "-1325",
+				"type": "String"
+			},
+			{
+				"name": "-1326",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1630947539158552576\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1630947539158552576",
+				"type": "String"
+			},
+			{
+				"name": "@dallaswiles You can watch the Month in a Minute with @Ianrwhittaker here. If you've got thoughts on any of our content we'd love to hear them. https://t.co/agdbVaduoF",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-01 15:06 +0000",
+				"type": "String"
+			},
+			{
+				"name": "148.0",
+				"type": "String"
+			},
+			{
+				"name": "10.01332",
+				"type": "String"
+			},
+			{
+				"name": "0.06756756756756757",
+				"type": "String"
+			},
+			{
+				"name": "0.01334",
+				"type": "String"
+			},
+			{
+				"name": "0.01335",
+				"type": "String"
+			},
+			{
+				"name": "1.01336",
+				"type": "String"
+			},
+			{
+				"name": "0.01337",
+				"type": "String"
+			},
+			{
+				"name": "1.01338",
+				"type": "String"
+			},
+			{
+				"name": "0.01339",
+				"type": "String"
+			},
+			{
+				"name": "5.01340",
+				"type": "String"
+			},
+			{
+				"name": "0.01341",
+				"type": "String"
+			},
+			{
+				"name": "01342",
+				"type": "String"
+			},
+			{
+				"name": "01343",
+				"type": "String"
+			},
+			{
+				"name": "01344",
+				"type": "String"
+			},
+			{
+				"name": "01345",
+				"type": "String"
+			},
+			{
+				"name": "01346",
+				"type": "String"
+			},
+			{
+				"name": "32",
+				"type": "String"
+			},
+			{
+				"name": "31348",
+				"type": "String"
+			},
+			{
+				"name": "-1349",
+				"type": "String"
+			},
+			{
+				"name": "-1350",
+				"type": "String"
+			},
+			{
+				"name": "-1351",
+				"type": "String"
+			},
+			{
+				"name": "-1352",
+				"type": "String"
+			},
+			{
+				"name": "-1353",
+				"type": "String"
+			},
+			{
+				"name": "-1354",
+				"type": "String"
+			},
+			{
+				"name": "-1355",
+				"type": "String"
+			},
+			{
+				"name": "-1356",
+				"type": "String"
+			},
+			{
+				"name": "-1357",
+				"type": "String"
+			},
+			{
+				"name": "-1358",
+				"type": "String"
+			},
+			{
+				"name": "-1359",
+				"type": "String"
+			},
+			{
+				"name": "-1360",
+				"type": "String"
+			},
+			{
+				"name": "-1361",
+				"type": "String"
+			},
+			{
+				"name": "-1362",
+				"type": "String"
+			},
+			{
+				"name": "-1363",
+				"type": "String"
+			},
+			{
+				"name": "-1364",
+				"type": "String"
+			},
+			{
+				"name": "-1365",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1630890455696015360\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1630890455696015360",
+				"type": "String"
+			},
+			{
+				"name": "No need to itch, scratch or flake as Nizoral reaches consumers in Rail with this powerful brand immersion across digital screens and banners at London Waterloo. @RapportWW #CreativeSolutions #Powerofthepublicscreen #creativeeffectiveness https://t.co/ylmdXzpNeJ https://t.co/dmJbcGAVCH",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-01 11:19 +0000",
+				"type": "String"
+			},
+			{
+				"name": "336.0",
+				"type": "String"
+			},
+			{
+				"name": "26.0",
+				"type": "String"
+			},
+			{
+				"name": "0.07738095238095238",
+				"type": "String"
+			},
+			{
+				"name": "4.01373",
+				"type": "String"
+			},
+			{
+				"name": "0.01374",
+				"type": "String"
+			},
+			{
+				"name": "6.01375",
+				"type": "String"
+			},
+			{
+				"name": "0.01376",
+				"type": "String"
+			},
+			{
+				"name": "2.01377",
+				"type": "String"
+			},
+			{
+				"name": "0.01378",
+				"type": "String"
+			},
+			{
+				"name": "4.01379",
+				"type": "String"
+			},
+			{
+				"name": "0.01380",
+				"type": "String"
+			},
+			{
+				"name": "01381",
+				"type": "String"
+			},
+			{
+				"name": "01382",
+				"type": "String"
+			},
+			{
+				"name": "01383",
+				"type": "String"
+			},
+			{
+				"name": "01384",
+				"type": "String"
+			},
+			{
+				"name": "01385",
+				"type": "String"
+			},
+			{
+				"name": "101386",
+				"type": "String"
+			},
+			{
+				"name": "101387",
+				"type": "String"
+			},
+			{
+				"name": "-1388",
+				"type": "String"
+			},
+			{
+				"name": "-1389",
+				"type": "String"
+			},
+			{
+				"name": "-1390",
+				"type": "String"
+			},
+			{
+				"name": "-1391",
+				"type": "String"
+			},
+			{
+				"name": "-1392",
+				"type": "String"
+			},
+			{
+				"name": "-1393",
+				"type": "String"
+			},
+			{
+				"name": "-1394",
+				"type": "String"
+			},
+			{
+				"name": "-1395",
+				"type": "String"
+			},
+			{
+				"name": "-1396",
+				"type": "String"
+			},
+			{
+				"name": "-1397",
+				"type": "String"
+			},
+			{
+				"name": "-1398",
+				"type": "String"
+			},
+			{
+				"name": "-1399",
+				"type": "String"
+			},
+			{
+				"name": "-1400",
+				"type": "String"
+			},
+			{
+				"name": "-1401",
+				"type": "String"
+			},
+			{
+				"name": "-1402",
+				"type": "String"
+			},
+			{
+				"name": "-1403",
+				"type": "String"
+			},
+			{
+				"name": "-1404",
+				"type": "String"
+			},
+			{
+				"name": "\"-\"\n\"1630856880594493441\"",
+				"type": "String"
+			},
+			{
+				"name": "https://twitter.com/JCDecaux_UK/status/1630856880594493441",
+				"type": "String"
+			},
+			{
+				"name": "Watch Your ‘Month in a Minute’, with award winning analyst @Ianrwhittaker for a recap of recent developments in the industry, and head to the Digital Changemakers Hub for more reading and resources: https://t.co/8N968BIuG7 #DigitalChangemakers #digitalmarketing https://t.co/4JnTqryE4t",
+				"type": "String"
+			},
+			{
+				"name": "2023-03-01 09:05 +0000",
+				"type": "String"
+			},
+			{
+				"name": "283.0",
+				"type": "String"
+			},
+			{
+				"name": "17.01410",
+				"type": "String"
+			},
+			{
+				"name": "0.06007067137809187",
+				"type": "String"
+			},
+			{
+				"name": "4.01412",
+				"type": "String"
+			},
+			{
+				"name": "0.01413",
+				"type": "String"
+			},
+			{
+				"name": "4.01414",
+				"type": "String"
+			},
+			{
+				"name": "1.01415",
+				"type": "String"
+			},
+			{
+				"name": "0.01416",
+				"type": "String"
+			},
+			{
+				"name": "0.01417",
+				"type": "String"
+			},
+			{
+				"name": "6.01418",
+				"type": "String"
+			},
+			{
+				"name": "0.01419",
+				"type": "String"
+			},
+			{
+				"name": "01420",
+				"type": "String"
+			},
+			{
+				"name": "01421",
+				"type": "String"
+			},
+			{
+				"name": "01422",
+				"type": "String"
+			},
+			{
+				"name": "01423",
+				"type": "String"
+			},
+			{
+				"name": "01424",
+				"type": "String"
+			},
+			{
+				"name": "65",
+				"type": "String"
+			},
+			{
+				"name": "21426",
+				"type": "String"
+			},
+			{
+				"name": "-1427",
+				"type": "String"
+			},
+			{
+				"name": "-1428",
+				"type": "String"
+			},
+			{
+				"name": "-1429",
+				"type": "String"
+			},
+			{
+				"name": "-1430",
+				"type": "String"
+			},
+			{
+				"name": "-1431",
+				"type": "String"
+			},
+			{
+				"name": "-1432",
+				"type": "String"
+			},
+			{
+				"name": "-1433",
+				"type": "String"
+			},
+			{
+				"name": "-1434",
+				"type": "String"
+			},
+			{
+				"name": "-1435",
+				"type": "String"
+			},
+			{
+				"name": "-1436",
+				"type": "String"
+			},
+			{
+				"name": "-1437",
+				"type": "String"
+			},
+			{
+				"name": "-1438",
+				"type": "String"
+			},
+			{
+				"name": "-1439",
+				"type": "String"
+			},
+			{
+				"name": "-1440",
+				"type": "String"
+			},
+			{
+				"name": "-1441",
+				"type": "String"
+			},
+			{
+				"name": "-1442",
+				"type": "String"
+			},
+			{
+				"name": "-1443",
+				"type": "String"
+			},
+			{
+				"name": "-1444",
+				"type": "String"
+			}
+		]
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
