@@ -32,7 +32,9 @@
 						"referenceName": "Twitter_GetFiles",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -180,6 +182,171 @@
 						{
 							"type": "Query",
 							"text": "CREATE NONCLUSTERED INDEX ts_20231201901 ON Temp_Raw_Twitter (time_stamp);"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script4",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete \nfrom Raw_Twitter\nwhere time_stamp in (select distinct cast(left(time_stamp, 16) as datetime) from Temp_Raw_Twitter);"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script5",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script4",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "insert Raw_Twitter\n  select \n    tweet_text\n    , cast(left(time_stamp, 16) as datetime) as date\n    , impressions\n    , engagements\n    , engagement_rate\n    , retweets\n    , replies\n    , likes\n    , user_profile_clicks\n    , url_clicks\n    , hashtag_clicks\n    , detail_expands\n    , permalink_clicks\n    , app_opens\n    , app_installs\n    , follows\n    , email_tweet\n    , dial_phone\n    , media_views\n    , media_engagements\nfrom Temp_Raw_Twitter;"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script6",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script5",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "delete from Changemakers_Combined_Overview where sub_channel = 'Twitter';"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script7",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script6",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "insert into Changemakers_Combined_Overview (channel,sub_channel,content,date, month, month_year, week, day_week, week_type, time_day, impressions, users, activity_calendar_events, event_occurence, event_occurence_by_time, activity_implemented_by, likes_consid_engage, shares, comments, follows, total_engagements, conversion_total_clicks, conversion_listened_watched, listened_watched_full_podcast_episode)\n  select\n    'Social Media' as 'channel'\n    ,'Twitter' as 'sub_channel'\n    , null \n\t\t, date as date\n        , datename(month, date) as month\n        , concat(datename(month, date), ' ', year(date)) as month_year\n        , concat(datename(month, date), ' ', year(date), ' Week ', (DATEPART(week, date) - DATEPART(week, DATEADD(day, 1, EOMONTH(date, -1)))) + 1) as week\n        , datename(dw, date) as day_week\n        , case when datename(dw, date) in ('Saturday', 'Sunday') then 'Weekend' else 'Weekday' end as week_type\n        , 'Unspecified' as time_day\n    , impressions\n    , impressions as users\n    , tweets_published as activity_calendar_events\n    , date as event_occurence\n    , date as event_occurence_by_time\n    , 'Janet Guest' as activity_implemented_by\n    , likes as likes_consid_engage\n    , retweets as shares\n    , replies as comments\n    , follows as follows\n    , (likes + retweets + replies + follows + user_profile_clicks + url_clicks + hashtag_clicks)  as total_engagements\n    , (user_profile_clicks + url_clicks + hashtag_clicks + detail_expands + permalink_clicks + app_opens + app_installs) as conversion_total_clicks\n    , media_views as conversion_listened_watched\n    , media_views as listened_watched_full_podcast_episode\nfrom Raw_Twitter;"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			},
+			{
+				"name": "Script8",
+				"type": "Script",
+				"dependsOn": [
+					{
+						"activity": "Script7",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "drop table if exists Temp_Raw_Twitter;"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
