@@ -34,7 +34,7 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     purgeFiles: true) ~> SourceProcessFiles",
-				"SourceProcessFiles derive(each(match(true()), $$ = replace($$, '\\\\n', ' '))) ~> derivedColumn1",
+				"SourceProcessFiles derive(each(match(true()), $$ = replace($$, '\\\\r', ' '))) ~> derivedColumn1",
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
