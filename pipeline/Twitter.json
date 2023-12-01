@@ -61,12 +61,12 @@
 					},
 					"ifTrueActivities": [
 						{
-							"name": "Get Metadata1_copy1",
+							"name": "Get Metadata1",
 							"description": "",
 							"type": "GetMetadata",
 							"dependsOn": [
 								{
-									"activity": "Script3_copy1",
+									"activity": "Script3",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -108,11 +108,11 @@
 							}
 						},
 						{
-							"name": "ForEach1_copy1",
+							"name": "ForEach1",
 							"type": "ForEach",
 							"dependsOn": [
 								{
-									"activity": "Get Metadata1_copy1",
+									"activity": "Get Metadata1",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -154,7 +154,7 @@
 							}
 						},
 						{
-							"name": "Script1_copy1",
+							"name": "Script1",
 							"type": "Script",
 							"dependsOn": [],
 							"policy": {
@@ -180,11 +180,11 @@
 							}
 						},
 						{
-							"name": "Script2_copy1",
+							"name": "Script2",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script1_copy1",
+									"activity": "Script1",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -213,11 +213,11 @@
 							}
 						},
 						{
-							"name": "Script3_copy1",
+							"name": "Script3",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script2_copy1",
+									"activity": "Script2",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -246,11 +246,11 @@
 							}
 						},
 						{
-							"name": "Script4_copy1",
+							"name": "Script4",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "ForEach1_copy1",
+									"activity": "ForEach1",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -279,11 +279,11 @@
 							}
 						},
 						{
-							"name": "Script5_copy1",
+							"name": "Script5",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script4_copy1",
+									"activity": "Script4",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -312,11 +312,11 @@
 							}
 						},
 						{
-							"name": "Script6_copy1",
+							"name": "Script6",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script5_copy1",
+									"activity": "Script5",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -345,11 +345,11 @@
 							}
 						},
 						{
-							"name": "Script7_copy1",
+							"name": "Script7",
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script6_copy1",
+									"activity": "Script6",
 									"dependencyConditions": [
 										"Completed"
 									]
@@ -382,7 +382,7 @@
 							"type": "Script",
 							"dependsOn": [
 								{
-									"activity": "Script7_copy1",
+									"activity": "Script7",
 									"dependencyConditions": [
 										"Completed"
 									]
