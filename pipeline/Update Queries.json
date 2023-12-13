@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Script1",
+				"name": "Script Content Flag Update",
 				"type": "Script",
 				"dependsOn": [],
 				"policy": {
