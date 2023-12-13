@@ -1,0 +1,37 @@
+{
+	"name": "Update Queries",
+	"properties": {
+		"activities": [
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase_Changemakers",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "with content_find as (\n\tselect \n\t\tchannel\n\t\t,sub_channel\n\t\t,content\n\t\t,activity_calendar_events\n\t\t, case \t\n\t\t\twhen charindex('#changemakers', activity_calendar_events) > 1 then 'Changemakers'\n\t\t\twhen charindex('#jcduk', activity_calendar_events) > 1 then 'A&P'\n\t\t\twhen charindex('#results', activity_calendar_events) > 1 then 'Business/Industry'\n\t\t\twhen charindex('#esg', activity_calendar_events) > 1 then 'ESG'\n\t\t\twhen charindex('#teambehindthescreens', activity_calendar_events) > 1 then 'People'\n\t\t\twhen charindex('#insight', activity_calendar_events) > 1 then 'Insights'\n\t\t\twhen charindex('#programmatic', activity_calendar_events) > 1 then 'Programmatic'\n\t\t\t\telse 'Unspecified' end as contentFlag\n\tfrom Changemakers_Combined_Overview\n\twhere activity_calendar_events is not null\n\tand (content is null or content = 'Unspecified')\n)\n\nupdate cco\n\tset cco.content = cf.contentFlag\nfrom Changemakers_Combined_Overview cco\ninner join content_find cf \non cco.sub_channel = cf.sub_channel and cco.activity_calendar_events = cf.activity_calendar_events\nwhere cf.contentFlag != 'Unspecified'"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "zUpdates"
+		},
+		"annotations": []
+	}
+}
