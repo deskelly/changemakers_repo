@@ -28,7 +28,7 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"itemName"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -139,7 +139,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "CREATE TABLE Temp_Raw_Dynamics365_Forms(\n\ttime_stamp varchar(40) NULL\n  , content varchar(80) NULL\n);"
+							"text": "CREATE TABLE Temp_Raw_Dynamics365_Forms(\n\ttime_stamp varchar(40) NULL\n  , content varchar(80) NULL\n  , form_submission_id varchar(80) null\n);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
