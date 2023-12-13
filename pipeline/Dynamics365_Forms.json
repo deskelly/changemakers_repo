@@ -181,8 +181,6 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -216,8 +214,6 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
