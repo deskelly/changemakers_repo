@@ -26,9 +26,6 @@
 			],
 			"transformations": [
 				{
-					"name": "substring"
-				},
-				{
 					"name": "select1"
 				},
 				{
@@ -73,15 +70,12 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     multiLineRow: true) ~> source1",
-				"derivedColumn1 derive(time_stamp = substring({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, instr({LinkId,ContactId,AccountId,LinkFriendlyName,OriginalLink,OriginalUrl,MessageId,SendingId,EmailDomain,EmailAddressUsed,InteractionType,OrganizationId,Timestamp,VisitorId,SessionId,CountryIsoCode,State,City,PostalCode,BrowserId,BrowserVersion,OperatingSystemId,OperatingSystemVersion,CustomerJourneyId,CustomerJourneyIterationId,UsageType,ActivityId,VisitorAnonymousStatus,LeadId,InternalMarketingInteractionId,Version}, '+00:00,') - 20, 19)) ~> substring",
-				"substring select(mapColumn(",
+				"derivedColumn1 select(mapColumn(",
 				"          time_stamp",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"source1 derive(time_stamp = toDate(left(Timestamp,19),'yyyy-MM-dd mm:hh:ss')\r",
-				"\r",
-				") ~> derivedColumn1",
+				"source1 derive(time_stamp = toTimestamp(left(Timestamp,19), \"MM/dd/yyy HH:mm:ss\")) ~> derivedColumn1",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
