@@ -27,9 +27,7 @@
 						"referenceName": "Dynamics365_GetForms",
 						"type": "DatasetReference"
 					},
-					"fieldList": [
-						"childItems"
-					],
+					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,
@@ -181,6 +179,8 @@
 			{
 				"name": "Main Update",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -214,6 +214,8 @@
 			{
 				"name": "Delete Temp table",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Main Update",
