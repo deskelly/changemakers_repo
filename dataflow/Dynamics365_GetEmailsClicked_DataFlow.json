@@ -27,9 +27,6 @@
 			"transformations": [
 				{
 					"name": "select1"
-				},
-				{
-					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -70,12 +67,11 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: true,",
 				"     multiLineRow: true) ~> source1",
-				"derivedColumn1 select(mapColumn(",
-				"          time_stamp",
+				"source1 select(mapColumn(",
+				"          time_stamp = Timestamp",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"source1 derive(time_stamp = toTimestamp(left(Timestamp,19), \"MM/dd/yyy HH:mm:ss\")) ~> derivedColumn1",
 				"select1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
