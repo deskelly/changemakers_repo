@@ -1,0 +1,32 @@
+{
+	"name": "Update Queries",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Update Queries",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-12-13T11:02:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						40
+					],
+					"hours": [
+						8
+					]
+				}
+			}
+		}
+	}
+}
