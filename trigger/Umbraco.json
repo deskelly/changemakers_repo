@@ -1,0 +1,32 @@
+{
+	"name": "Umbraco",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Umbraco_Main",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2023-12-14T13:47:00",
+				"timeZone": "GMT Standard Time",
+				"schedule": {
+					"minutes": [
+						43
+					],
+					"hours": [
+						7
+					]
+				}
+			}
+		}
+	}
+}
