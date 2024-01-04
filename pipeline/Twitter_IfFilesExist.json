@@ -190,8 +190,6 @@
 			{
 				"name": "Script4",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -216,7 +214,7 @@
 					"scripts": [
 						{
 							"type": "Query",
-							"text": "delete \nfrom Raw_Twitter\nwhere time_stamp in (select distinct cast(left(time_stamp, 16) as datetime) from Temp_Raw_Twitter);"
+							"text": "delete \nfrom Raw_Twitter\nwhere date in (select distinct cast(left(time_stamp, 16) as datetime) from Temp_Raw_Twitter);"
 						}
 					],
 					"scriptBlockExecutionTimeout": "02:00:00"
@@ -225,8 +223,6 @@
 			{
 				"name": "Script5",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script4",
@@ -260,8 +256,6 @@
 			{
 				"name": "Script6",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script5",
@@ -295,8 +289,6 @@
 			{
 				"name": "Script7",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script6",
@@ -330,8 +322,6 @@
 			{
 				"name": "Script8_copy1",
 				"type": "Script",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script7",
