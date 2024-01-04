@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastDownloads_GetFiles",
+						"referenceName": "ACastProgrammaticDownloads_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "SourceProcessFiles"
