@@ -320,7 +320,7 @@
 				}
 			},
 			{
-				"name": "Script8_copy1",
+				"name": "Script8",
 				"type": "Script",
 				"dependsOn": [
 					{
