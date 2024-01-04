@@ -190,6 +190,8 @@
 			{
 				"name": "Script4",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -223,6 +225,8 @@
 			{
 				"name": "Script5",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script4",
@@ -256,6 +260,8 @@
 			{
 				"name": "Script6",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script5",
@@ -289,6 +295,8 @@
 			{
 				"name": "Script7",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script6",
@@ -322,6 +330,8 @@
 			{
 				"name": "Script8_copy1",
 				"type": "Script",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Script7",
