@@ -27,7 +27,7 @@
 				"type": "String"
 			},
 			{
-				"name": "Listeners",
+				"name": "Downloads",
 				"type": "String"
 			}
 		]
