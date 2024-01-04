@@ -28,7 +28,7 @@
 			"scriptLines": [
 				"source(output(",
 				"          Date as string,",
-				"          Listeners as string",
+				"          Downloads as string",
 				"     ),",
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
@@ -47,7 +47,7 @@
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
 				"          date = Date,",
-				"          listeners = Listeners,",
+				"          listeners = Downloads,",
 				"          episode_name",
 				"     )) ~> sink1"
 			]
