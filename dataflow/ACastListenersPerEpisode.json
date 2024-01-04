@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ACastProgrammaticListeners_GetFiles",
+						"referenceName": "ACastListeners_GetFiles",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
@@ -18,7 +18,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ACastProgrammaticListeners_AzureSqlTable",
+						"referenceName": "ACastListeners_AzureSqlTable",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
@@ -37,11 +37,6 @@
 				"     rowUrlColumn: 'episode_name') ~> source1",
 				"source1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
-				"     input(",
-				"          date as date,",
-				"          listeners as integer,",
-				"          episode_name as string",
-				"     ),",
 				"     deletable:false,",
 				"     insertable:true,",
 				"     updateable:false,",
