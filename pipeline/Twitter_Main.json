@@ -70,7 +70,7 @@
 									"referenceName": "Twitter_IfFilesExist",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": false
+								"waitOnCompletion": true
 							}
 						}
 					]
